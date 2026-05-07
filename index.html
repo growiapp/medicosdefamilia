@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Médicos de Familia — Centro médico</title>
+<meta name="description" content="Centro médico Médicos de Familia. Atención clínica, pediátrica, psicológica, ginecológica y nutricional para toda la familia." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Tokens ---------- */
+  :root {
+    --bg: #f6f4ef;
+    --bg-2: #ffffff;
+    --bg-3: #ece8df;
+    --ink: #1c2622;
+    --ink-2: #3d4843;
+    --ink-3: #74807a;
+    --line: #e0dbcf;
+    --line-2: #d2ccbd;
+    --primary: #2c5547;
+    --primary-2: #1f3f35;
+    --primary-soft: #dfe7e1;
+    --shadow-sm: 0 1px 2px rgba(28,38,34,.05);
+    --shadow-md: 0 1px 3px rgba(28,38,34,.06), 0 8px 24px -12px rgba(28,38,34,.10);
+    --maxw: 1160px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+
+  h1, h2, h3, h4 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.012em;
+    color: var(--ink);
+    margin: 0 0 .4em;
+    text-wrap: balance;
+  }
+  h1 { font-size: clamp(2.1rem, 4.6vw, 3.2rem); letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+  h3 { font-size: 1.15rem; }
+
+  p { margin: 0 0 1em; color: var(--ink-2); text-wrap: pretty; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  .eyebrow {
+    display: block;
+    font-size: .82rem;
+    font-weight: 500;
+    color: var(--ink-3);
+    margin-bottom: 12px;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: .94rem;
+    border: 1px solid transparent;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--primary-2); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line-2);
+  }
+  .btn-ghost:hover { border-color: var(--ink-2); }
+  .btn-wa {
+    background: #128C7E;
+    color: #fff;
+  }
+  .btn-wa:hover { background: #0d6e63; }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    gap: 24px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .brand-mark {
+    width: 28px; height: 28px;
+    border-radius: 2px;
+    background: var(--primary);
+    color: #fff;
+    display: grid; place-items: center;
+    font-family: 'Source Serif 4', serif;
+    font-size: .95rem;
+    font-weight: 500;
+    align-self: center;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    padding: 0; margin: 0;
+  }
+  .nav-links a {
+    font-size: .92rem;
+    color: var(--ink-2);
+    transition: color .12s ease;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-cta { margin-left: 8px; }
+
+  .menu-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--line-2);
+    border-radius: 3px;
+    width: 40px; height: 40px;
+    align-items: center; justify-content: center;
+    color: var(--ink);
+  }
+  .menu-toggle svg { width: 20px; height: 20px; }
+
+  .mobile-drawer {
+    display: none;
+    position: fixed;
+    inset: 64px 0 auto 0;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+    z-index: 49;
+  }
+  .mobile-drawer.open { display: block; }
+  .mobile-drawer ul {
+    list-style: none; padding: 12px; margin: 0;
+    display: flex; flex-direction: column;
+  }
+  .mobile-drawer a {
+    display: block; padding: 14px 16px;
+    font-size: 1rem;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-drawer a:last-of-type { border-bottom: 0; }
+  .mobile-drawer .btn { margin: 12px 16px 16px; display: flex; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 64px 0 80px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-lede {
+    font-size: 1.1rem;
+    color: var(--ink-2);
+    max-width: 50ch;
+    margin-bottom: 32px;
+    line-height: 1.65;
+  }
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+
+  /* Hero datos — bloque tipográfico simple */
+  .hero-info {
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+  .hero-info dl {
+    display: grid;
+    gap: 18px;
+    margin: 0;
+  }
+  .hero-info-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .hero-info-row dt {
+    font-size: .78rem;
+    color: var(--ink-3);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0;
+  }
+  .hero-info-row dd {
+    margin: 0;
+    color: var(--ink);
+    font-size: .98rem;
+    line-height: 1.5;
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 80px 0; }
+  .section-head {
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+  .section-head.center { text-align: center; }
+  .section-head p {
+    font-size: 1.02rem;
+    color: var(--ink-2);
+    margin-top: 12px;
+  }
+
+  /* ---------- Filosofía ---------- */
+  .philosophy {
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .philosophy-text p {
+    font-size: 1.04rem;
+    line-height: 1.75;
+  }
+  .pillars {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .pillar {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .pillar-num { display: none; }
+  .pillar h4 {
+    margin: 0 0 6px;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+  .pillar p { margin: 0; font-size: .96rem; color: var(--ink-2); line-height: 1.6; }
+
+  /* ---------- Profesionales ---------- */
+  .pro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .pro-card {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    padding-right: 24px;
+  }
+  .pro-name {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin: 0 0 3px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .pro-spec {
+    font-size: .88rem;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  /* ---------- Servicios ---------- */
+  .services {
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .service-grid {
+    max-width: 720px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+  }
+  .service-row {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: baseline;
+  }
+  .service-row h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .service-row p {
+    font-size: .96rem;
+    color: var(--ink-2);
+    margin: 0;
+    line-height: 1.6;
+  }
+  @media (max-width: 640px) {
+    .service-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  /* ---------- Horarios + Contacto ---------- */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .info-col {
+    padding: 40px 40px 40px 0;
+  }
+  .info-col + .info-col {
+    padding-left: 48px;
+    border-left: 1px solid var(--line);
+  }
+  .info-col h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.2rem;
+    margin: 0 0 24px;
+    font-weight: 500;
+  }
+  .schedule { display: grid; gap: 0; }
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+    font-size: .96rem;
+  }
+  .schedule-row:last-child { border-bottom: 0; }
+  .schedule-row .day { color: var(--ink); }
+  .schedule-row .hours { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .schedule-row.closed .hours { color: var(--ink-3); }
+  .schedule-note {
+    margin-top: 16px;
+    font-size: .85rem;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+
+  .contact-list { list-style: none; padding: 0; margin: 0 0 24px; }
+  .contact-list li {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+    font-size: .96rem;
+  }
+  .contact-list li:last-child { border-bottom: 0; }
+  .contact-list .label {
+    font-size: .72rem;
+    color: var(--ink-3);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .contact-list .value { color: var(--ink); }
+  .contact-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+
+  /* ---------- Mapa ---------- */
+  .map-wrap {
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    aspect-ratio: 21/9;
+    background: #e8e3d3;
+  }
+  .map-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .map-pin {
+    position: absolute;
+    top: 50%; left: 52%;
+    transform: translate(-50%, -100%);
+    z-index: 2;
+  }
+  .map-pin svg {
+    width: 32px; height: 38px;
+    color: var(--primary);
+    filter: drop-shadow(0 2px 4px rgba(28,38,34,.25));
+  }
+  .map-card {
+    position: absolute;
+    bottom: 20px; left: 20px;
+    background: #fff;
+    padding: 16px 20px;
+    border-radius: 3px;
+    box-shadow: var(--shadow-md);
+    max-width: 320px;
+    border: 1px solid var(--line);
+  }
+  .map-card strong {
+    display: block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .map-card span { font-size: .88rem; color: var(--ink-2); }
+  .map-card a {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: .88rem;
+    color: var(--primary);
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+
+  /* ---------- Encontranos / SEO ---------- */
+  .findus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-top: 56px;
+    padding-top: 56px;
+    border-top: 1px solid var(--line);
+  }
+  .findus h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.4rem;
+    margin: 0 0 12px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .findus p {
+    font-size: 1rem;
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+  .findus-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+  .findus-list li {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: .94rem;
+    align-items: baseline;
+  }
+  .findus-list .label {
+    font-size: .76rem;
+    color: var(--ink-3);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .findus-list .value { color: var(--ink); }
+
+  /* ---------- Footer ---------- */
+  footer.site-footer {
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    color: var(--ink-2);
+    padding: 56px 0 28px;
+    font-size: .9rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .footer-brand p { color: var(--ink-2); max-width: 38ch; margin-top: 14px; line-height: 1.6; }
+  .footer-col h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: .76rem;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 500;
+    margin: 0 0 14px;
+  }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .footer-col a { color: var(--ink); }
+  .footer-col a:hover { color: var(--primary); }
+  .footer-col li { color: var(--ink); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: .82rem;
+    color: var(--ink-3);
+  }
+  .footer-bottom a { color: var(--ink-2); }
+  .footer-bottom a:hover { color: var(--primary); }
+
+  /* ---------- Demo bar ---------- */
+  .demo-bar {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: #f3f1ec;
+    padding: 9px 14px 9px 12px;
+    border-radius: 4px;
+    font-size: .8rem;
+    z-index: 60;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: var(--shadow-md);
+    max-width: calc(100% - 32px);
+  }
+  .demo-bar .demo-tag {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    font-size: .66rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    flex: none;
+  }
+  .demo-bar .demo-close {
+    background: transparent; border: 0; color: #b8bfba; font-size: 1.05rem;
+    line-height: 1; padding: 0 4px; margin-left: 4px;
+  }
+  .demo-bar .demo-close:hover { color: #fff; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    section { padding: 56px 0; }
+    .hero { padding: 40px 0 56px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .placard { max-width: 480px; }
+    .philosophy-grid { grid-template-columns: 1fr; gap: 40px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .info-col { padding: 32px 0; border-bottom: 1px solid var(--line); }
+    .info-col + .info-col { padding-left: 0; border-left: 0; }
+    .info-col:last-child { border-bottom: 0; }
+    .findus { grid-template-columns: 1fr; gap: 32px; padding-top: 40px; margin-top: 40px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (max-width: 720px) {
+    .nav-links, .nav-cta { display: none; }
+    .menu-toggle { display: inline-flex; }
+    .placard { padding: 28px 24px 24px; }
+    .map-card { left: 16px; right: 16px; bottom: 16px; max-width: none; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .demo-bar { font-size: .74rem; }
+  }
+  @media (max-width: 420px) {
+    .hero-actions .btn { flex: 1; }
+    .placard-row { grid-template-columns: 76px 1fr; gap: 10px; }
+    .contact-list li { grid-template-columns: 84px 1fr; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======= HEADER ======= -->
+<header class="site-header" id="header">
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="#inicio" class="brand" aria-label="Médicos de Familia, inicio">
+      <span class="brand-mark">M</span>
+      <span>Médicos de Familia</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#centro">El centro</a></li>
+      <li><a href="#profesionales">Profesionales</a></li>
+      <li><a href="#servicios">Especialidades</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn btn-primary nav-cta">Pedir turno</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul>
+      <li><a href="#centro">El centro</a></li>
+      <li><a href="#profesionales">Profesionales</a></li>
+      <li><a href="#servicios">Especialidades</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn btn-primary">Pedir turno</a>
+  </div>
+</header>
+
+<!-- ======= HERO ======= -->
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">Centro médico · Buenos Aires</span>
+      <h1>Atención integral para toda la familia</h1>
+      <p class="hero-lede">Un equipo clínico, psicológico y de acompañamiento que trabaja en conjunto para cuidar a las personas en su contexto. Sin apuro, con escucha y continuidad.</p>
+      <div class="hero-actions">
+        <a href="#servicios" class="btn btn-ghost">Ver especialidades</a>
+        <a href="#contacto" class="btn btn-primary">Pedir turno</a>
+      </div>
+    </div>
+
+    <aside class="hero-info" aria-label="Datos del centro">
+      <dl>
+        <div class="hero-info-row"><dt>Dirección</dt><dd>Calle de ejemplo 0000<br/>Ciudad de Buenos Aires</dd></div>
+        <div class="hero-info-row"><dt>Atención</dt><dd>Lunes a viernes, 08 a 20 h<br/>Sábados, 09 a 13 h</dd></div>
+        <div class="hero-info-row"><dt>Teléfono</dt><dd>+54 11 0000-0000</dd></div>
+        <div class="hero-info-row"><dt>WhatsApp</dt><dd>+54 9 11 0000-0000</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- ======= FILOSOFÍA ======= -->
+<section class="philosophy" id="centro">
+  <div class="container philosophy-grid">
+    <div class="philosophy-text">
+      <span class="eyebrow">El centro</span>
+      <h2>Una mirada integral de la persona y su familia.</h2>
+      <p>En Médicos de Familia entendemos la salud como algo que excede lo estrictamente clínico. Cada persona es parte de una historia, un vínculo y un contexto: cuidar bien implica escuchar, conectar y trabajar en conjunto con quienes acompañan al paciente.</p>
+      <p>Nuestro equipo combina especialidades médicas, psicológicas y de acompañamiento, para que cada consulta sea un espacio de confianza y continuidad. Atendemos a niños, adultos y adultos mayores con la misma vocación: estar cerca, sin apuro, con criterio profesional.</p>
+    </div>
+    <div class="pillars" aria-label="Ejes de trabajo">
+      <div class="pillar">
+        <h4>Mirada biológica</h4>
+        <p>Diagnóstico clínico riguroso, prevención y seguimiento personalizado a lo largo del tiempo.</p>
+      </div>
+      <div class="pillar">
+        <h4>Mirada psicológica</h4>
+        <p>Espacios de escucha y acompañamiento emocional integrados al cuidado de la salud.</p>
+      </div>
+      <div class="pillar">
+        <h4>Mirada vincular</h4>
+        <p>La familia y los vínculos como parte del tratamiento. Tiempo real para cada persona.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PROFESIONALES ======= -->
+<section id="profesionales">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Equipo</span>
+      <h2>Profesionales del centro.</h2>
+      <p>Equipo interdisciplinario que trabaja en conjunto para acompañar a cada paciente y su familia.</p>
+    </div>
+    <div class="pro-grid" id="proGrid"></div>
+  </div>
+</section>
+
+<!-- ======= SERVICIOS ======= -->
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Especialidades</span>
+      <h2>Lo que ofrecemos en el centro.</h2>
+    </div>
+    <div class="service-grid">
+      <article class="service-row">
+        <h3>Medicina familiar</h3>
+        <p>Médico de cabecera para chequeos, prevención y seguimiento continuo de toda la familia.</p>
+      </article>
+      <article class="service-row">
+        <h3>Pediatría</h3>
+        <p>Crecimiento, controles, vacunación y acompañamiento durante la infancia y adolescencia.</p>
+      </article>
+      <article class="service-row">
+        <h3>Psicología</h3>
+        <p>Espacios de escucha individual, de pareja y familiar para todas las etapas de la vida.</p>
+      </article>
+      <article class="service-row">
+        <h3>Ginecología</h3>
+        <p>Controles, salud reproductiva y acompañamiento integral en cada etapa de la mujer.</p>
+      </article>
+      <article class="service-row">
+        <h3>Nutrición</h3>
+        <p>Planes personalizados orientados a hábitos sostenibles, no a dietas restrictivas.</p>
+      </article>
+      <article class="service-row">
+        <h3>Acompañamiento integral</h3>
+        <p>Coordinación entre profesionales para que el paciente y su familia se sientan cuidados.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======= HORARIOS Y CONTACTO ======= -->
+<section id="horarios">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Horarios y contacto</span>
+      <h2>Cómo encontrarnos.</h2>
+    </div>
+    <div class="info-grid" id="contacto">
+      <div class="info-col">
+        <h3>Horarios de atención</h3>
+        <div class="schedule">
+          <div class="schedule-row"><span class="day">Lunes a viernes</span><span class="hours">08:00 — 20:00</span></div>
+          <div class="schedule-row"><span class="day">Sábados</span><span class="hours">09:00 — 13:00</span></div>
+          <div class="schedule-row closed"><span class="day">Domingos y feriados</span><span class="hours">Cerrado</span></div>
+        </div>
+        <p class="schedule-note">La atención es con turno previo. Para urgencias o consultas fuera de horario, escribinos por WhatsApp.</p>
+      </div>
+      <div class="info-col">
+        <h3>Datos de contacto</h3>
+        <ul class="contact-list">
+          <li><span class="label">Dirección</span><span class="value">Calle de ejemplo 0000, CABA</span></li>
+          <li><span class="label">Teléfono</span><span class="value">+54 11 0000-0000</span></li>
+          <li><span class="label">WhatsApp</span><span class="value">+54 9 11 0000-0000</span></li>
+          <li><span class="label">Correo</span><span class="value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c0f0302180d0f18032c010908050f031f08090a0d010500050d420d1e">[email&#160;protected]</a></span></li>
+        </ul>
+        <div class="contact-actions">
+          <a href="https://wa.me/0000000000" class="btn btn-wa" rel="noopener">Escribir por WhatsApp</a>
+          <a href="tel:+5411000000000" class="btn btn-ghost">Llamar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= UBICACIÓN ======= -->
+<section id="ubicacion" style="padding-top: 0;">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Ubicación</span>
+      <h2>Dónde estamos.</h2>
+    </div>
+    <div class="map-wrap" role="img" aria-label="Mapa con la ubicación del centro médico">
+      <svg class="map-svg" viewBox="0 0 800 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d2ccbd" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="800" height="340" fill="#ecе8df"/>
+        <rect width="800" height="340" fill="#ece8df"/>
+        <rect width="800" height="340" fill="url(#grid)"/>
+        <path d="M 0 80 L 800 60" stroke="#fff" stroke-width="20"/>
+        <path d="M 0 200 L 800 220" stroke="#fff" stroke-width="26"/>
+        <path d="M 180 0 L 200 340" stroke="#fff" stroke-width="20"/>
+        <path d="M 480 0 L 500 340" stroke="#fff" stroke-width="30"/>
+        <path d="M 680 0 L 700 340" stroke="#fff" stroke-width="16"/>
+        <rect x="220" y="100" width="220" height="80" rx="3" fill="#cdd7c8"/>
+        <rect x="60" y="100" width="80" height="60" rx="2" fill="#dfd9c9"/>
+        <rect x="60" y="240" width="100" height="70" rx="2" fill="#dfd9c9"/>
+        <rect x="240" y="240" width="180" height="70" rx="2" fill="#dfd9c9"/>
+        <rect x="540" y="100" width="100" height="80" rx="2" fill="#dfd9c9"/>
+        <rect x="720" y="100" width="60" height="100" rx="2" fill="#dfd9c9"/>
+      </svg>
+      <div class="map-pin" aria-hidden="true">
+        <svg viewBox="0 0 24 32" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20C24 5.4 18.6 0 12 0zm0 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/></svg>
+      </div>
+      <div class="map-card">
+        <strong>Médicos de Familia</strong>
+        <span>Calle de ejemplo 0000, CABA</span>
+        <a href="#" rel="noopener">Cómo llegar →</a>
+      </div>
+    </div>
+
+    <!-- ======= Encontranos ======= -->
+    <div class="findus" id="encontranos">
+      <div>
+        <span class="eyebrow">Información visible</span>
+        <h3>Para que las familias puedan encontrarnos fácilmente</h3>
+        <p>Mantenemos visibles nuestra dirección, teléfonos y horarios para que llegar al centro sea sencillo, también desde una búsqueda en internet. Cuidamos la presencia institucional como parte del cuidado de quienes nos eligen.</p>
+      </div>
+      <ul class="findus-list">
+        <li><span class="label">Nombre</span><span class="value">Médicos de Familia</span></li>
+        <li><span class="label">Dirección</span><span class="value">Calle de ejemplo 0000, CABA</span></li>
+        <li><span class="label">Teléfono</span><span class="value">+54 11 0000-0000</span></li>
+        <li><span class="label">Horarios</span><span class="value">Lun a Vie 08–20 h · Sáb 09–13 h</span></li>
+        <li><span class="label">Sitio web</span><span class="value">medicosdefamilia.ar</span></li>
+        <li><span class="label">Especialidades</span><span class="value">Clínica, pediatría, psicología, ginecología, nutrición</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#inicio" class="brand">
+          <span class="brand-mark">M</span>
+          <span>Médicos de Familia</span>
+        </a>
+        <p>Atención clínica, psicológica y humana para acompañar a cada paciente y su familia.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Centro</h4>
+        <ul>
+          <li><a href="#centro">El centro</a></li>
+          <li><a href="#profesionales">Profesionales</a></li>
+          <li><a href="#servicios">Especialidades</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li>Calle de ejemplo 0000, CABA</li>
+          <li>+54 11 0000-0000</li>
+          <li><a href="/cdn-cgi/l/email-protection#a6c5c9c8d2c7c5d2c9e6cbc3c2cfc5c9d5c2c3c0c7cbcfcacfc788c7d4"><span class="__cf_email__" data-cfemail="583b37362c393b2c3718353d3c313b372b3c3d3e39353134313976392a">[email&#160;protected]</span></a></li>
+          <li><a href="https://wa.me/0000000000">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Dirección médica</h4>
+        <ul>
+          <li>Dr. N. Apellido</li>
+          <li>M.N. 00000</li>
+          <li>Atención con turno previo</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Médicos de Familia</span>
+      <span>medicosdefamilia.ar</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ======= DEMO BAR ======= -->
+<div class="demo-bar" id="demoBar" role="status">
+  <span class="demo-tag">Demo</span>
+  <span>Mockup visual — contenido editable y reemplazable por información real.</span>
+  <button class="demo-close" aria-label="Cerrar aviso" onclick="document.getElementById('demoBar').remove()">×</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ---------- Mobile menu ----------
+  const toggle = document.getElementById('menuToggle');
+  const drawer = document.getElementById('mobileDrawer');
+  toggle.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    drawer.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // ---------- Header scrolled state ----------
+  const header = document.getElementById('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ---------- Profesionales grid ----------
+  const pros = [
+    { n: 'Dra. Ana Martínez',     s: 'Clínica médica' },
+    { n: 'Dr. Juan Pérez',        s: 'Pediatría' },
+    { n: 'Lic. María Rodríguez',  s: 'Psicología' },
+    { n: 'Dra. Carolina López',   s: 'Ginecología' },
+    { n: 'Lic. Sofía Fernández',  s: 'Nutrición' },
+    { n: 'Dr. Martín Gómez',      s: 'Clínica médica' },
+    { n: 'Dra. Valeria Suárez',   s: 'Pediatría' },
+    { n: 'Lic. Tomás Álvarez',    s: 'Psicología' },
+    { n: 'Dra. Laura Benítez',    s: 'Ginecología' },
+    { n: 'Dr. Pablo Castro',      s: 'Clínica médica' },
+    { n: 'Lic. Camila Ortiz',     s: 'Nutrición' },
+    { n: 'Dra. Lucía Romero',     s: 'Pediatría' },
+    { n: 'Dr. Federico Díaz',     s: 'Clínica médica' },
+    { n: 'Lic. Gabriela Núñez',   s: 'Psicología' },
+    { n: 'Dra. Marcela Acosta',   s: 'Ginecología' },
+  ];
+  const initials = full => {
+    const p = full.replace(/^(Dra?\.|Lic\.)\s*/, '').split(' ');
+    return ((p[0]?.[0] || '') + (p[1]?.[0] || '')).toUpperCase();
+  };
+  const grid = document.getElementById('proGrid');
+  grid.innerHTML = pros.map(p => `
+    <article class="pro-card">
+      <h3 class="pro-name">${p.n}</h3>
+      <p class="pro-spec">${p.s}</p>
+    </article>
+  `).join('');
+</script>
+
+</body>
+</html>
