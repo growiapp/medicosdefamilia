@@ -9,13 +9,18 @@
   <meta name="description" content="Médicos de Familia es un centro médico integral para niños, adultos y familias. Atención clínica, pediátrica, ginecológica, psicológica y nutricional con turno previo." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#284f43" />
-  <link rel="canonical" href="https://medicosdefamilia.ar/" />
+  <link rel="canonical" href="https://medicosdefamilia.com.ar/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Médicos de Familia | Centro médico integral" />
   <meta property="og:description" content="Atención médica cercana, profesional y continua para toda la familia." />
-  <meta property="og:url" content="https://medicosdefamilia.ar/" />
+  <meta property="og:url" content="https://medicosdefamilia.com.ar/" />
   <meta property="og:locale" content="es_AR" />
+  <meta property="og:image" content="./logo-medicos-familia.jpg" />
+
+  <!-- TODO Growi: subir el logo real con este nombre en la misma carpeta del HTML -->
+  <link rel="icon" href="./logo-medicos-familia.jpg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="./logo-medicos-familia.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -253,18 +258,23 @@
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(40, 79, 67, .24);
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(40, 79, 67, .18);
       border-radius: 50%;
       display: grid;
       place-items: center;
-      color: var(--green);
-      background: linear-gradient(180deg, #fffdf8 0%, #eef3ed 100%);
-      font-family: "Source Serif 4", Georgia, serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      box-shadow: inset 0 0 0 5px rgba(40, 79, 67, .045);
+      background: #f1f3ee;
+      box-shadow: inset 0 0 0 4px rgba(255, 253, 248, .62);
+      overflow: hidden;
+      flex: none;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     .brand-text {
@@ -415,8 +425,8 @@
     .hero-grid {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .78fr);
-      gap: clamp(36px, 7vw, 98px);
+      grid-template-columns: minmax(0, 1.02fr) minmax(420px, .76fr);
+      gap: clamp(36px, 6.4vw, 88px);
       align-items: center;
     }
 
@@ -479,7 +489,9 @@
 
     .hero-panel {
       position: relative;
-      min-height: 610px;
+      min-height: unset;
+      display: grid;
+      gap: 16px;
       border: 1px solid rgba(201, 191, 173, .82);
       border-radius: var(--radius-lg);
       background:
@@ -541,7 +553,7 @@
     .appointment-card {
       display: grid;
       gap: 18px;
-      padding: 26px;
+      padding: 24px;
       border-radius: 22px;
       background: var(--paper-2);
       border: 1px solid rgba(201, 191, 173, .72);
@@ -549,14 +561,15 @@
     }
 
     .appointment-card h2 {
-      font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+      font-size: clamp(1.45rem, 2.1vw, 1.82rem);
       letter-spacing: -.025em;
     }
 
     .appointment-card p {
       color: var(--ink-soft);
-      line-height: 1.7;
-      max-width: 38ch;
+      line-height: 1.66;
+      max-width: 42ch;
+      font-size: .98rem;
     }
 
     .quick-contact {
@@ -615,19 +628,18 @@
     }
 
     .panel-bottom {
-      position: absolute;
-      left: 34px;
-      right: 34px;
-      bottom: 34px;
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: .9fr 1.1fr;
       gap: 14px;
+      padding: 0 34px 34px;
     }
 
     .mini-note,
     .mini-hours {
       padding: 18px;
-      min-height: 132px;
+      min-height: 126px;
       border: 1px solid rgba(201, 191, 173, .7);
       border-radius: 20px;
       background: rgba(255, 253, 248, .72);
@@ -1421,6 +1433,14 @@
       .reveal { opacity: 1; transform: none; }
     }
 
+    @media (max-width: 1180px) {
+      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(390px, .72fr); gap: 42px; }
+      .panel-top { padding: 28px 28px 20px; }
+      .panel-bottom { padding: 0 28px 28px; }
+      .quick-row { grid-template-columns: 34px 1fr; }
+      .quick-row small { display: none; }
+    }
+
     @media (max-width: 1080px) {
       .nav-links { display: none; }
       .menu-toggle { display: block; }
@@ -1431,7 +1451,7 @@
       .cta-panel {
         grid-template-columns: 1fr;
       }
-      .hero-panel { min-height: 560px; }
+      .hero-panel { min-height: unset; }
       .pro-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1440,7 +1460,7 @@
     @media (max-width: 740px) {
       :root { --header-h: 72px; }
       .container, .nav { width: min(100% - 28px, var(--maxw)); }
-      .brand-mark { width: 38px; height: 38px; }
+      .brand-mark { width: 40px; height: 40px; }
       .brand-subtitle { display: none; }
       .nav-actions .btn { display: none; }
       .mobile-drawer .mobile-actions { grid-template-columns: 1fr; }
@@ -1457,12 +1477,8 @@
       }
       .panel-top { padding: 24px; }
       .panel-bottom {
-        position: relative;
-        left: auto;
-        right: auto;
-        bottom: auto;
         grid-template-columns: 1fr;
-        padding: 0 24px;
+        padding: 0 24px 24px;
       }
       .appointment-card { padding: 22px; }
       .quick-row { grid-template-columns: 34px 1fr; }
@@ -1502,7 +1518,7 @@
   <header class="site-header" id="header">
     <nav class="nav" aria-label="Navegación principal">
       <a href="#inicio" class="brand" aria-label="Médicos de Familia, inicio">
-        <span class="brand-mark" aria-hidden="true">M</span>
+        <span class="brand-mark" aria-hidden="true"><img src="./logo-medicos-familia.jpg" alt="" loading="eager" /></span>
         <span class="brand-text">
           <span class="brand-name">Médicos de Familia</span>
           <span class="brand-subtitle">Centro médico integral</span>
@@ -1518,8 +1534,8 @@
       </ul>
 
       <div class="nav-actions">
-        <!-- TODO Growi: reemplazar número real de WhatsApp -->
-        <a class="btn btn-light" href="https://wa.me/5491100000000" target="_blank" rel="noopener">WhatsApp</a>
+        <!-- WhatsApp real: 3513199546 -->
+        <a class="btn btn-light" href="https://wa.me/543513199546" target="_blank" rel="noopener">WhatsApp</a>
         <a class="btn btn-primary" href="#contacto">Pedir turno</a>
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-controls="mobileDrawer" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
@@ -1540,7 +1556,7 @@
           <li><a href="#contacto">Contacto</a></li>
         </ul>
         <div class="mobile-actions">
-          <a class="btn btn-whatsapp" href="https://wa.me/5491100000000" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/543513199546" target="_blank" rel="noopener">Escribir por WhatsApp</a>
           <a class="btn btn-primary" href="#contacto">Pedir turno</a>
         </div>
       </div>
@@ -1551,9 +1567,9 @@
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <span class="eyebrow">Centro médico · Buenos Aires</span>
+          <span class="eyebrow">Centro médico · Córdoba</span>
           <h1 id="hero-title">Una atención médica más cercana para cada etapa de la familia.</h1>
-          <p class="hero-lede">Médicos de Familia reúne atención clínica, pediátrica, ginecológica, psicológica y nutricional en un mismo lugar, con una mirada humana, continuidad profesional y turnos claros.</p>
+          <p class="hero-lede">Médicos de Familia reúne atención clínica, pediátrica, ginecológica, psicológica y nutricional en Córdoba, con una mirada humana, continuidad profesional y canales de turno claros.</p>
           <div class="hero-actions" aria-label="Acciones principales">
             <a class="btn btn-primary" href="#contacto">Pedir turno</a>
             <a class="btn btn-light" href="#profesionales">Ver profesionales</a>
@@ -1589,19 +1605,19 @@
               </div>
 
               <div class="quick-contact">
-                <a class="quick-row" href="https://wa.me/5491100000000" target="_blank" rel="noopener">
+                <a class="quick-row" href="https://wa.me/543513199546" target="_blank" rel="noopener">
                   <span class="quick-icon">W</span>
-                  <span><strong>Escribir por WhatsApp</strong><span>Respuesta para turnos y consultas</span></span>
+                  <span><strong>Escribir por WhatsApp</strong><span>Turnos al 3513199546</span></span>
                   <small>→</small>
                 </a>
-                <a class="quick-row" href="tel:+541100000000">
+                <a class="quick-row" href="tel:+543514214225">
                   <span class="quick-icon">T</span>
-                  <span><strong>Llamar al centro</strong><span>+54 11 0000-0000</span></span>
+                  <span><strong>Llamar al centro</strong><span>(0351) 4214225</span></span>
                   <small>→</small>
                 </a>
                 <a class="quick-row" href="#ubicacion">
                   <span class="quick-icon">U</span>
-                  <span><strong>Cómo llegar</strong><span>Calle de ejemplo 0000, CABA</span></span>
+                  <span><strong>Cómo llegar</strong><span>27 de abril 1254, Córdoba</span></span>
                   <small>→</small>
                 </a>
               </div>
@@ -1761,27 +1777,27 @@
           <section class="contact-card" aria-labelledby="contact-title">
             <h3 id="contact-title">Datos del centro</h3>
             <ul class="contact-list">
-              <!-- TODO Growi: reemplazar dirección, teléfono, WhatsApp e email reales -->
+              <!-- Datos reales cargados. TODO Growi: confirmar email, horarios y dominio final -->
               <li class="contact-item">
                 <span class="contact-item-icon" aria-hidden="true">D</span>
-                <span><small>Dirección</small><strong>Calle de ejemplo 0000, CABA</strong></span>
+                <span><small>Dirección</small><strong>27 de abril 1254, Córdoba</strong></span>
               </li>
               <li class="contact-item">
                 <span class="contact-item-icon" aria-hidden="true">T</span>
-                <span><small>Teléfono</small><a href="tel:+541100000000">+54 11 0000-0000</a></span>
+                <span><small>Teléfono</small><a href="tel:+543514214225">(0351) 4214225</a></span>
               </li>
               <li class="contact-item">
                 <span class="contact-item-icon" aria-hidden="true">W</span>
-                <span><small>WhatsApp</small><a href="https://wa.me/5491100000000" target="_blank" rel="noopener">+54 9 11 0000-0000</a></span>
+                <span><small>WhatsApp</small><a href="https://wa.me/543513199546" target="_blank" rel="noopener">3513199546</a></span>
               </li>
               <li class="contact-item">
                 <span class="contact-item-icon" aria-hidden="true">@</span>
-                <span><small>Email</small><a href="mailto:contacto@medicosdefamilia.ar">contacto@medicosdefamilia.ar</a></span>
+                <span><small>Email</small><a href="mailto:contacto@medicosdefamilia.com.ar">contacto@medicosdefamilia.com.ar</a></span>
               </li>
             </ul>
             <div class="contact-actions">
-              <a class="btn btn-whatsapp" href="https://wa.me/5491100000000" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-              <a class="btn btn-light" href="tel:+541100000000">Llamar</a>
+              <a class="btn btn-whatsapp" href="https://wa.me/543513199546" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+              <a class="btn btn-light" href="tel:+543514214225">Llamar</a>
               <a class="btn btn-light" href="#ubicacion">Cómo llegar</a>
             </div>
           </section>
@@ -1822,8 +1838,8 @@
           <span class="map-pin" aria-hidden="true"></span>
           <div class="map-caption">
             <h3>Médicos de Familia</h3>
-            <p>Calle de ejemplo 0000, Ciudad de Buenos Aires.</p>
-            <a class="link-arrow" href="https://maps.google.com/?q=Calle%20de%20ejemplo%200000%20CABA" target="_blank" rel="noopener">Abrir indicaciones <span aria-hidden="true">→</span></a>
+            <p>27 de abril 1254, Córdoba, Argentina 5000.</p>
+            <a class="link-arrow" href="https://maps.google.com/?q=27%20de%20abril%201254%20Córdoba%20Argentina%205000" target="_blank" rel="noopener">Abrir indicaciones <span aria-hidden="true">→</span></a>
           </div>
         </div>
 
@@ -1835,11 +1851,11 @@
           </div>
 
           <dl class="location-facts">
-            <!-- TODO Growi: reemplazar datos reales de ubicación y dominio final -->
-            <div><dt>Dirección</dt><dd>Calle de ejemplo 0000, CABA</dd></div>
-            <div><dt>Referencia</dt><dd>A metros de Av. Principal</dd></div>
+            <!-- Datos reales cargados. TODO Growi: confirmar referencia, email, horarios y dominio final -->
+            <div><dt>Dirección</dt><dd>27 de abril 1254, Córdoba</dd></div>
+            <div><dt>Referencia</dt><dd>Zona centro de Córdoba</dd></div>
             <div><dt>Turnos</dt><dd>Con coordinación previa por teléfono o WhatsApp</dd></div>
-            <div><dt>Sitio</dt><dd>medicosdefamilia.ar</dd></div>
+            <div><dt>Sitio</dt><dd>medicosdefamilia.com.ar</dd></div>
           </dl>
         </aside>
       </div>
@@ -1855,7 +1871,7 @@
           </div>
           <div class="cta-actions">
             <a class="btn btn-light" href="#contacto">Pedir turno</a>
-            <a class="btn btn-whatsapp" href="https://wa.me/5491100000000" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/543513199546" target="_blank" rel="noopener">WhatsApp</a>
           </div>
         </div>
       </div>
@@ -1867,7 +1883,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#inicio" class="brand" aria-label="Médicos de Familia, inicio">
-            <span class="brand-mark" aria-hidden="true">M</span>
+            <span class="brand-mark" aria-hidden="true"><img src="./logo-medicos-familia.jpg" alt="" loading="eager" /></span>
             <span class="brand-text">
               <span class="brand-name">Médicos de Familia</span>
               <span class="brand-subtitle">Centro médico integral</span>
@@ -1889,10 +1905,10 @@
         <div class="footer-col">
           <h3>Contacto</h3>
           <ul>
-            <li>Calle de ejemplo 0000, CABA</li>
-            <li><a href="tel:+541100000000">+54 11 0000-0000</a></li>
-            <li><a href="mailto:contacto@medicosdefamilia.ar">contacto@medicosdefamilia.ar</a></li>
-            <li><a href="https://wa.me/5491100000000" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li>27 de abril 1254, Córdoba</li>
+            <li><a href="tel:+543514214225">(0351) 4214225</a></li>
+            <li><a href="mailto:contacto@medicosdefamilia.com.ar">contacto@medicosdefamilia.com.ar</a></li>
+            <li><a href="https://wa.me/543513199546" target="_blank" rel="noopener">WhatsApp</a></li>
           </ul>
         </div>
 
@@ -2030,13 +2046,13 @@
       "@type": "MedicalClinic",
       "name": "Médicos de Familia",
       "description": "Centro médico integral con atención clínica, pediátrica, ginecológica, psicológica y nutricional.",
-      "url": "https://medicosdefamilia.ar/",
-      "telephone": "+54 11 0000-0000",
-      "email": "contacto@medicosdefamilia.ar",
+      "url": "https://medicosdefamilia.com.ar/",
+      "telephone": "+54 351 4214225",
+      "email": "contacto@medicosdefamilia.com.ar",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Calle de ejemplo 0000",
-        "addressLocality": "Ciudad Autónoma de Buenos Aires",
+        "streetAddress": "27 de abril 1254",
+        "addressLocality": "Córdoba",
         "addressCountry": "AR"
       },
       "openingHoursSpecification": [
