@@ -489,30 +489,52 @@
 
     .hero-panel {
       position: relative;
-      min-height: unset;
-      display: grid;
-      gap: 16px;
-      border: 1px solid rgba(201, 191, 173, .82);
-      border-radius: var(--radius-lg);
+      isolation: isolate;
+      padding: 18px;
+      border: 1px solid rgba(201, 191, 173, .84);
+      border-radius: 34px;
       background:
-        linear-gradient(145deg, rgba(255, 253, 248, .92), rgba(237, 242, 235, .88)),
-        radial-gradient(circle at 78% 20%, rgba(185, 120, 85, .13), transparent 18rem);
-      box-shadow: var(--shadow-md);
+        linear-gradient(145deg, rgba(255, 253, 248, .94), rgba(238, 243, 236, .92)),
+        radial-gradient(circle at 100% 0%, rgba(40, 79, 67, .12), transparent 18rem);
+      box-shadow: 0 28px 80px -56px rgba(23, 34, 29, .48);
       overflow: hidden;
     }
 
-    .hero-panel::before {
+    .hero-panel::before,
+    .hero-panel::after {
       content: "";
       position: absolute;
-      inset: 22px;
-      border: 1px solid rgba(201, 191, 173, .52);
-      border-radius: 22px;
+      border-radius: 999px;
       pointer-events: none;
+      z-index: 0;
     }
 
-    .panel-top {
+    .hero-panel::before {
+      width: 240px;
+      height: 240px;
+      right: -72px;
+      top: -88px;
+      background: radial-gradient(circle, rgba(40, 79, 67, .16) 0%, rgba(40, 79, 67, .06) 42%, transparent 72%);
+    }
+
+    .hero-panel::after {
+      width: 180px;
+      height: 180px;
+      left: -72px;
+      bottom: -92px;
+      background: radial-gradient(circle, rgba(185, 120, 85, .10) 0%, rgba(185, 120, 85, .04) 45%, transparent 72%);
+    }
+
+    .panel-shell {
       position: relative;
-      padding: 34px 34px 26px;
+      z-index: 1;
+      display: grid;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid rgba(201, 191, 173, .64);
+      border-radius: 28px;
+      background: rgba(255, 252, 247, .72);
+      backdrop-filter: blur(12px);
     }
 
     .panel-label {
@@ -520,11 +542,10 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      padding-bottom: 24px;
-      margin-bottom: 28px;
+      padding-bottom: 16px;
       border-bottom: 1px solid rgba(201, 191, 173, .66);
       color: var(--muted);
-      font-size: .78rem;
+      font-size: .77rem;
       letter-spacing: .1em;
       text-transform: uppercase;
       font-weight: 800;
@@ -550,125 +571,159 @@
       box-shadow: 0 0 0 5px rgba(40, 79, 67, .1);
     }
 
-    .appointment-card {
+    .panel-feature {
       display: grid;
-      gap: 18px;
-      padding: 24px;
-      border-radius: 22px;
-      background: var(--paper-2);
-      border: 1px solid rgba(201, 191, 173, .72);
+      gap: 16px;
+      padding: 26px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255, 253, 248, .96) 0%, rgba(245, 248, 242, .94) 100%);
+      border: 1px solid rgba(201, 191, 173, .7);
       box-shadow: var(--shadow-sm);
     }
 
-    .appointment-card h2 {
-      font-size: clamp(1.45rem, 2.1vw, 1.82rem);
-      letter-spacing: -.025em;
+    .feature-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(40, 79, 67, .08);
+      color: var(--green);
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
     }
 
-    .appointment-card p {
+    .panel-feature h2 {
+      font-size: clamp(1.5rem, 2.15vw, 1.95rem);
+      letter-spacing: -.03em;
+      max-width: 13ch;
+    }
+
+    .panel-feature p {
       color: var(--ink-soft);
-      line-height: 1.66;
-      max-width: 42ch;
+      line-height: 1.68;
       font-size: .98rem;
+      max-width: 38ch;
     }
 
-    .quick-contact {
+    .feature-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .feature-pills span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 253, 248, .92);
+      border: 1px solid rgba(221, 213, 197, .84);
+      color: var(--ink-soft);
+      font-size: .82rem;
+      font-weight: 650;
+    }
+
+    .panel-actions-grid {
       display: grid;
       gap: 10px;
-      margin-top: 2px;
     }
 
     .quick-row {
       display: grid;
-      grid-template-columns: 34px 1fr auto;
+      grid-template-columns: 40px 1fr auto;
       align-items: center;
-      gap: 12px;
-      padding: 12px;
-      border: 1px solid rgba(221, 213, 197, .8);
-      border-radius: 15px;
-      background: rgba(247, 244, 237, .58);
-      transition: border-color .18s ease, background .18s ease, transform .18s ease;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(221, 213, 197, .82);
+      border-radius: 18px;
+      background: rgba(250, 248, 243, .9);
+      transition: border-color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease;
     }
 
     .quick-row:hover {
-      transform: translateX(2px);
-      border-color: rgba(40, 79, 67, .28);
-      background: rgba(223, 233, 223, .42);
+      transform: translateY(-1px);
+      border-color: rgba(40, 79, 67, .3);
+      background: rgba(242, 246, 240, .96);
+      box-shadow: 0 18px 30px -28px rgba(23, 34, 29, .36);
     }
 
     .quick-icon {
-      width: 34px;
-      height: 34px;
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
       display: grid;
       place-items: center;
       color: var(--green);
-      background: var(--green-soft);
+      background: linear-gradient(180deg, #eff5ef, #dfe9df);
       font-weight: 900;
       font-size: .84rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
     }
 
-    .quick-row strong {
+    .quick-content strong {
       display: block;
       color: var(--ink);
-      font-size: .94rem;
-      line-height: 1.2;
+      font-size: .95rem;
+      line-height: 1.24;
     }
 
-    .quick-row span {
+    .quick-content span {
       display: block;
       color: var(--muted);
-      font-size: .82rem;
-      margin-top: 2px;
+      font-size: .83rem;
+      margin-top: 3px;
     }
 
     .quick-row small {
       color: var(--green);
       font-weight: 800;
+      font-size: 1rem;
     }
 
-    .panel-bottom {
-      position: relative;
-      z-index: 1;
+    .panel-meta-grid {
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 14px;
-      padding: 0 34px 34px;
+      grid-template-columns: .84fr 1fr 1.08fr;
+      gap: 10px;
     }
 
-    .mini-note,
-    .mini-hours {
+    .meta-card {
+      min-height: 148px;
       padding: 18px;
-      min-height: 126px;
-      border: 1px solid rgba(201, 191, 173, .7);
-      border-radius: 20px;
-      background: rgba(255, 253, 248, .72);
-      backdrop-filter: blur(10px);
+      border: 1px solid rgba(201, 191, 173, .72);
+      border-radius: 22px;
+      background: rgba(255, 253, 248, .86);
     }
 
-    .mini-note span,
-    .mini-hours span {
+    .meta-card > span {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: var(--muted);
-      font-size: .72rem;
+      font-size: .71rem;
       letter-spacing: .1em;
       text-transform: uppercase;
       font-weight: 850;
     }
 
-    .mini-note strong {
+    .meta-card strong {
       display: block;
-      font-family: "Source Serif 4", Georgia, serif;
       color: var(--green);
-      font-size: 2rem;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.8rem;
       line-height: 1;
       letter-spacing: -.03em;
       margin-bottom: 8px;
     }
 
-    .mini-note p,
-    .mini-hours p { font-size: .9rem; line-height: 1.55; }
+    .meta-card p {
+      font-size: .9rem;
+      line-height: 1.56;
+      color: var(--ink-soft);
+    }
 
     .hours-list {
       display: grid;
@@ -682,11 +737,40 @@
       padding-bottom: 8px;
       border-bottom: 1px solid rgba(221, 213, 197, .7);
       color: var(--ink-soft);
-      font-size: .88rem;
+      font-size: .87rem;
       font-variant-numeric: tabular-nums;
     }
 
     .hours-list div:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .location-lines {
+      display: grid;
+      gap: 10px;
+    }
+
+    .location-lines div {
+      display: grid;
+      gap: 4px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(221, 213, 197, .7);
+    }
+
+    .location-lines div:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .location-lines b {
+      color: var(--ink);
+      font-size: .88rem;
+      line-height: 1.3;
+    }
+
+    .location-lines small {
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.45;
+    }
 
     .philosophy {
       border-block: 1px solid var(--line);
@@ -1435,9 +1519,9 @@
 
     @media (max-width: 1180px) {
       .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(390px, .72fr); gap: 42px; }
-      .panel-top { padding: 28px 28px 20px; }
-      .panel-bottom { padding: 0 28px 28px; }
-      .quick-row { grid-template-columns: 34px 1fr; }
+      .panel-shell { padding: 16px; }
+      .panel-meta-grid { grid-template-columns: 1fr; }
+      .quick-row { grid-template-columns: 40px 1fr; }
       .quick-row small { display: none; }
     }
 
@@ -1451,7 +1535,6 @@
       .cta-panel {
         grid-template-columns: 1fr;
       }
-      .hero-panel { min-height: unset; }
       .pro-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1471,17 +1554,11 @@
       .service-grid {
         grid-template-columns: 1fr;
       }
-      .hero-panel {
-        min-height: auto;
-        padding-bottom: 28px;
-      }
-      .panel-top { padding: 24px; }
-      .panel-bottom {
-        grid-template-columns: 1fr;
-        padding: 0 24px 24px;
-      }
-      .appointment-card { padding: 22px; }
-      .quick-row { grid-template-columns: 34px 1fr; }
+      .hero-panel { padding: 14px; }
+      .panel-shell { padding: 14px; }
+      .panel-feature { padding: 22px; }
+      .panel-meta-grid { grid-template-columns: 1fr; }
+      .quick-row { grid-template-columns: 40px 1fr; }
       .quick-row small { display: none; }
       .section-head { grid-template-columns: 1fr; gap: 18px; }
       .pillar { min-height: 190px; }
@@ -1507,6 +1584,7 @@
       .hero-trust { margin-top: 34px; }
       .trust-item { min-height: auto; }
       .panel-label { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .panel-feature h2 { max-width: none; }
       .pro-card { grid-template-columns: 52px 1fr; padding: 16px; }
       .avatar { width: 52px; height: 52px; border-radius: 15px; }
     }
@@ -1592,50 +1670,69 @@
         </div>
 
         <aside class="hero-panel reveal" aria-label="Accesos rápidos para pacientes">
-          <div class="panel-top">
+          <div class="panel-shell">
             <div class="panel-label">
               <span>Información para pacientes</span>
               <span class="status-dot">Atención con turno previo</span>
             </div>
 
-            <div class="appointment-card">
+            <div class="panel-feature">
+              <span class="feature-kicker">Acceso claro</span>
               <div>
                 <h2>Todo lo importante, visible desde el primer contacto.</h2>
-                <p>Turnos, horarios, profesionales, ubicación y vías de contacto organizadas para que el paciente no tenga que buscar de más.</p>
+                <p>Turnos, horarios, profesionales, ubicación y vías de contacto organizadas con jerarquía, para que cada paciente encuentre rápido lo que necesita.</p>
               </div>
-
-              <div class="quick-contact">
-                <a class="quick-row" href="https://wa.me/543513199546" target="_blank" rel="noopener">
-                  <span class="quick-icon">W</span>
-                  <span><strong>Escribir por WhatsApp</strong><span>Turnos al 3513199546</span></span>
-                  <small>→</small>
-                </a>
-                <a class="quick-row" href="tel:+543514214225">
-                  <span class="quick-icon">T</span>
-                  <span><strong>Llamar al centro</strong><span>(0351) 4214225</span></span>
-                  <small>→</small>
-                </a>
-                <a class="quick-row" href="#ubicacion">
-                  <span class="quick-icon">U</span>
-                  <span><strong>Cómo llegar</strong><span>27 de abril 1254, Córdoba</span></span>
-                  <small>→</small>
-                </a>
+              <div class="feature-pills" aria-label="Aspectos destacados del centro">
+                <span>Córdoba centro</span>
+                <span>Canales directos</span>
+                <span>Atención coordinada</span>
               </div>
             </div>
-          </div>
 
-          <div class="panel-bottom" aria-label="Resumen de atención">
-            <div class="mini-note">
-              <span>Equipo</span>
-              <strong>Integral</strong>
-              <p>Especialidades conectadas para acompañar mejor cada consulta.</p>
+            <div class="panel-actions-grid" aria-label="Acciones rápidas">
+              <a class="quick-row" href="https://wa.me/543513199546" target="_blank" rel="noopener">
+                <span class="quick-icon">W</span>
+                <span class="quick-content"><strong>Escribir por WhatsApp</strong><span>Turnos al 3513199546</span></span>
+                <small>→</small>
+              </a>
+              <a class="quick-row" href="tel:+543514214225">
+                <span class="quick-icon">T</span>
+                <span class="quick-content"><strong>Llamar al centro</strong><span>(0351) 4214225</span></span>
+                <small>→</small>
+              </a>
+              <a class="quick-row" href="#ubicacion">
+                <span class="quick-icon">U</span>
+                <span class="quick-content"><strong>Cómo llegar</strong><span>27 de abril 1254, Córdoba</span></span>
+                <small>→</small>
+              </a>
             </div>
-            <div class="mini-hours">
-              <span>Horarios</span>
-              <div class="hours-list">
-                <div><strong>Lun a Vie</strong><span>08:00 — 20:00</span></div>
-                <div><strong>Sábados</strong><span>09:00 — 13:00</span></div>
-                <div><strong>Domingos</strong><span>Cerrado</span></div>
+
+            <div class="panel-meta-grid" aria-label="Resumen del centro">
+              <div class="meta-card">
+                <span>Equipo</span>
+                <strong>Integral</strong>
+                <p>Especialidades conectadas para acompañar mejor cada consulta.</p>
+              </div>
+              <div class="meta-card">
+                <span>Horarios</span>
+                <div class="hours-list">
+                  <div><strong>Lun a Vie</strong><span>08:00 — 20:00</span></div>
+                  <div><strong>Sábados</strong><span>09:00 — 13:00</span></div>
+                  <div><strong>Domingos</strong><span>Cerrado</span></div>
+                </div>
+              </div>
+              <div class="meta-card">
+                <span>Ubicación</span>
+                <div class="location-lines">
+                  <div>
+                    <b>27 de abril 1254</b>
+                    <small>Córdoba, Argentina 5000</small>
+                  </div>
+                  <div>
+                    <b>Turnos por teléfono o WhatsApp</b>
+                    <small>Respuesta clara y canales visibles</small>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
