@@ -785,6 +785,247 @@
       line-height: 1.45;
     }
 
+
+    /* ===== Hero premium redesign v6 ===== */
+    .hero-panel {
+      padding: 0;
+      border: 0;
+      border-radius: 32px;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .hero-panel::before,
+    .hero-panel::after {
+      display: none;
+    }
+
+    .hero-premium {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      padding: 26px;
+      border: 1px solid rgba(201, 191, 173, .82);
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(255, 253, 248, .96) 0%, rgba(242, 246, 240, .92) 100%),
+        radial-gradient(circle at 100% 0%, rgba(40, 79, 67, .08), transparent 14rem);
+      box-shadow: 0 28px 56px -42px rgba(23, 34, 29, .34);
+      overflow: hidden;
+    }
+
+    .hero-premium::before {
+      content: "";
+      position: absolute;
+      right: -48px;
+      top: -52px;
+      width: 200px;
+      height: 200px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(216, 226, 217, .62) 0%, rgba(216, 226, 217, .18) 45%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .hero-premium > * {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+    }
+
+    .hero-premium-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(201, 191, 173, .66);
+    }
+
+    .hero-premium-kicker {
+      color: var(--muted);
+      font-size: .8rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .hero-premium-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .hero-premium-copy,
+    .hero-contact-stack,
+    .hero-info-item {
+      min-width: 0;
+    }
+
+    .hero-premium-copy {
+      display: grid;
+      align-content: start;
+      gap: 16px;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 252, 247, .86);
+      border: 1px solid rgba(201, 191, 173, .72);
+    }
+
+    .hero-premium-tag {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 34px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(40, 79, 67, .08);
+      color: var(--green);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .hero-premium-copy h2 {
+      font-size: clamp(1.75rem, 2.2vw, 2.35rem);
+      line-height: 1.02;
+      letter-spacing: -.035em;
+      max-width: 11ch;
+    }
+
+    .hero-premium-copy p {
+      font-size: .98rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 34ch;
+    }
+
+    .hero-premium-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-premium-points span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 253, 248, .96);
+      border: 1px solid rgba(221, 213, 197, .84);
+      color: var(--ink-soft);
+      font-size: .82rem;
+      font-weight: 650;
+    }
+
+    .hero-contact-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-contact-card {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      min-height: 84px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(201, 191, 173, .76);
+      background: rgba(255, 253, 248, .92);
+      box-shadow: var(--shadow-xs);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .hero-contact-card:hover {
+      transform: translateY(-1px);
+      border-color: rgba(40, 79, 67, .3);
+      background: #fffdf8;
+      box-shadow: 0 18px 28px -26px rgba(23, 34, 29, .34);
+    }
+
+    .hero-contact-card.is-primary {
+      background: linear-gradient(180deg, rgba(232, 242, 235, .9), rgba(248, 251, 247, .96));
+    }
+
+    .hero-contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      background: linear-gradient(180deg, #eff5ef, #dfe9df);
+      font-weight: 900;
+      font-size: .88rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.85);
+    }
+
+    .hero-contact-content strong {
+      display: block;
+      color: var(--ink);
+      font-size: .98rem;
+      line-height: 1.24;
+    }
+
+    .hero-contact-content span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-contact-arrow {
+      color: var(--green);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .hero-info-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hero-info-item {
+      display: grid;
+      gap: 8px;
+      min-height: 126px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(201, 191, 173, .72);
+      background: rgba(255, 253, 248, .88);
+    }
+
+    .hero-info-item > span {
+      color: var(--muted);
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 850;
+    }
+
+    .hero-info-item strong {
+      display: block;
+      color: var(--green);
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.45rem;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+    }
+
+    .hero-info-item small {
+      color: var(--ink-soft);
+      font-size: .88rem;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+
     .philosophy {
       border-block: 1px solid var(--line);
       background: var(--paper-2);
@@ -1952,6 +2193,99 @@
       }
     }
 
+
+    @media (max-width: 1180px) {
+      .hero-premium-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-info-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-info-item:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .hero-premium {
+        gap: 14px;
+        padding: 20px;
+        border-radius: 28px;
+      }
+
+      .hero-premium-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero-premium-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-premium-copy {
+        padding: 22px;
+        gap: 14px;
+      }
+
+      .hero-premium-copy h2 {
+        max-width: none;
+        font-size: clamp(1.85rem, 8.2vw, 2.45rem);
+      }
+
+      .hero-premium-copy p {
+        max-width: none;
+      }
+
+      .hero-contact-card {
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 12px;
+        min-height: auto;
+        padding: 14px;
+      }
+
+      .hero-contact-arrow {
+        display: none;
+      }
+
+      .hero-contact-icon {
+        width: 42px;
+        height: 42px;
+      }
+
+      .hero-info-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-info-item,
+      .hero-info-item:last-child {
+        grid-column: auto;
+        min-height: auto;
+        padding: 18px;
+      }
+
+      .hero-info-item strong {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .hero-premium {
+        padding: 16px;
+      }
+
+      .hero-premium-copy,
+      .hero-info-item {
+        padding: 18px;
+      }
+
+      .hero-premium-points span {
+        white-space: normal;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2033,70 +2367,59 @@
           </div>
         </div>
 
-        <aside class="hero-panel reveal" aria-label="Accesos rápidos para pacientes">
-          <div class="panel-shell">
-            <div class="panel-label">
-              <span>Información para pacientes</span>
+        <aside class="hero-panel reveal" aria-label="Turnos y contacto del centro">
+          <div class="hero-premium">
+            <div class="hero-premium-top">
+              <span class="hero-premium-kicker">Turnos y contacto</span>
               <span class="status-dot">Atención con turno previo</span>
             </div>
 
-            <div class="panel-feature">
-              <span class="feature-kicker">Acceso claro</span>
-              <div>
-                <h2>Todo lo importante, visible desde el primer contacto.</h2>
-                <p>Turnos, horarios, profesionales, ubicación y vías de contacto organizadas con jerarquía, para que cada paciente encuentre rápido lo que necesita.</p>
+            <div class="hero-premium-grid">
+              <div class="hero-premium-copy">
+                <span class="hero-premium-tag">Acceso rápido</span>
+                <h2>Información clara, sin vueltas.</h2>
+                <p>WhatsApp, teléfono, horarios y ubicación organizados en un mismo lugar, con una experiencia simple, elegante y confiable para cada paciente.</p>
+                <div class="hero-premium-points" aria-label="Aspectos destacados del centro">
+                  <span>WhatsApp directo</span>
+                  <span>Horarios visibles</span>
+                  <span>Ubicación clara</span>
+                </div>
               </div>
-              <div class="feature-pills" aria-label="Aspectos destacados del centro">
-                <span>Córdoba centro</span>
-                <span>Canales directos</span>
-                <span>Atención coordinada</span>
+
+              <div class="hero-contact-stack" aria-label="Acciones rápidas">
+                <a class="hero-contact-card is-primary" href="https://wa.me/543513199546" target="_blank" rel="noopener">
+                  <span class="hero-contact-icon">W</span>
+                  <span class="hero-contact-content"><strong>Escribir por WhatsApp</strong><span>Turnos al 3513199546</span></span>
+                  <span class="hero-contact-arrow" aria-hidden="true">→</span>
+                </a>
+                <a class="hero-contact-card" href="tel:+543514214225">
+                  <span class="hero-contact-icon">T</span>
+                  <span class="hero-contact-content"><strong>Llamar al centro</strong><span>(0351) 4214225</span></span>
+                  <span class="hero-contact-arrow" aria-hidden="true">→</span>
+                </a>
+                <a class="hero-contact-card" href="#ubicacion">
+                  <span class="hero-contact-icon">U</span>
+                  <span class="hero-contact-content"><strong>Cómo llegar</strong><span>27 de abril 1254, Córdoba</span></span>
+                  <span class="hero-contact-arrow" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
 
-            <div class="panel-actions-grid" aria-label="Acciones rápidas">
-              <a class="quick-row" href="https://wa.me/543513199546" target="_blank" rel="noopener">
-                <span class="quick-icon">W</span>
-                <span class="quick-content"><strong>Escribir por WhatsApp</strong><span>Turnos al 3513199546</span></span>
-                <small>→</small>
-              </a>
-              <a class="quick-row" href="tel:+543514214225">
-                <span class="quick-icon">T</span>
-                <span class="quick-content"><strong>Llamar al centro</strong><span>(0351) 4214225</span></span>
-                <small>→</small>
-              </a>
-              <a class="quick-row" href="#ubicacion">
-                <span class="quick-icon">U</span>
-                <span class="quick-content"><strong>Cómo llegar</strong><span>27 de abril 1254, Córdoba</span></span>
-                <small>→</small>
-              </a>
-            </div>
-
-            <div class="panel-meta-grid" aria-label="Resumen del centro">
-              <div class="meta-card">
-                <span>Equipo</span>
-                <strong>Integral</strong>
-                <p>Especialidades conectadas para acompañar mejor cada consulta.</p>
-              </div>
-              <div class="meta-card">
+            <div class="hero-info-strip" aria-label="Datos destacados del centro">
+              <div class="hero-info-item">
                 <span>Horarios</span>
-                <div class="hours-list">
-                  <div><strong>Lun a Vie</strong><span>08:00 — 20:00</span></div>
-                  <div><strong>Sábados</strong><span>09:00 — 13:00</span></div>
-                  <div><strong>Domingos</strong><span>Cerrado</span></div>
-                </div>
+                <strong>Lun a Vie</strong>
+                <small>08:00 — 20:00 · Sábados 09:00 — 13:00 · Domingos cerrado</small>
               </div>
-              <div class="meta-card meta-card-wide">
+              <div class="hero-info-item">
+                <span>Equipo</span>
+                <strong>Atención integral</strong>
+                <small>Clínica médica, pediatría, ginecología, psicología y nutrición.</small>
+              </div>
+              <div class="hero-info-item">
                 <span>Ubicación</span>
-                <div class="location-lines">
-                  <div>
-                    <b>27 de abril 1254</b>
-                    <small>Córdoba, Argentina 5000</small>
-                  </div>
-                  <div>
-                    <b>Turnos por teléfono o WhatsApp</b>
-                    <small>Respuesta clara y canales visibles</small>
-                  </div>
-                </div>
+                <strong>27 de abril 1254</strong>
+                <small>Córdoba, Argentina 5000 · Coordinación por teléfono o WhatsApp.</small>
               </div>
             </div>
           </div>
