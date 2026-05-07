@@ -1643,6 +1643,315 @@
       .pro-card { grid-template-columns: 52px 1fr; padding: 16px; }
       .avatar { width: 52px; height: 52px; border-radius: 15px; }
     }
+  
+    /* ===== Mobile/tablet hardening v5 ===== */
+    .hero-panel, .panel-shell, .panel-feature, .quick-row, .meta-card { min-width: 0; }
+    .meta-card > strong {
+      display: block;
+      color: var(--green);
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.8rem;
+      line-height: 1;
+      letter-spacing: -.03em;
+      margin-bottom: 8px;
+    }
+    .meta-card .hours-list strong {
+      display: inline;
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink-soft);
+      font-size: .9rem;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+    .meta-card .hours-list span {
+      display: inline;
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: .9rem;
+    }
+
+    @media (min-width: 1081px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(420px, 520px);
+        align-items: center;
+      }
+      .hero-panel {
+        max-width: 520px;
+        justify-self: end;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-copy {
+        max-width: 760px;
+        padding-top: 0;
+      }
+      .hero-panel {
+        max-width: 760px;
+        justify-self: stretch;
+      }
+      .panel-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .meta-card-wide {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 740px) {
+      body {
+        background:
+          radial-gradient(circle at 20% 0%, rgba(223, 233, 223, .48), transparent 22rem),
+          var(--paper);
+      }
+
+      .site-header {
+        min-height: 82px;
+      }
+
+      .nav {
+        min-height: 82px;
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-mark {
+        width: 52px;
+        height: 52px;
+      }
+
+      .brand-name {
+        font-size: clamp(1.2rem, 5vw, 1.55rem);
+      }
+
+      .hero {
+        padding: 34px 0 68px;
+        overflow: visible;
+      }
+
+      .hero::before {
+        width: 320px;
+        height: 320px;
+        transform: translate(30%, -40%);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero-copy {
+        order: 1;
+      }
+
+      .hero-copy h1 {
+        max-width: 10.5ch;
+        font-size: clamp(3.05rem, 15vw, 4.7rem);
+        line-height: .98;
+        letter-spacing: -.045em;
+      }
+
+      .hero-lede {
+        max-width: 32ch;
+        margin-top: 22px;
+        font-size: 1.05rem;
+        line-height: 1.68;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 28px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-trust {
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+        border-radius: 22px;
+      }
+
+      .trust-item {
+        min-height: auto;
+        padding: 18px 20px;
+      }
+
+      .hero-panel {
+        order: 2;
+        width: 100%;
+        max-width: none;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        overflow: visible;
+      }
+
+      .hero-panel::before,
+      .hero-panel::after {
+        display: none;
+      }
+
+      .panel-shell {
+        gap: 14px;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        backdrop-filter: none;
+      }
+
+      .panel-label {
+        display: none;
+      }
+
+      .panel-feature {
+        padding: 24px;
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(255, 253, 248, .98) 0%, rgba(244, 248, 242, .98) 100%);
+        border: 1px solid rgba(201, 191, 173, .86);
+        box-shadow: 0 22px 44px -36px rgba(23, 34, 29, .45);
+      }
+
+      .feature-kicker {
+        min-height: 32px;
+        padding: 7px 11px;
+        font-size: .7rem;
+      }
+
+      .panel-feature h2 {
+        max-width: none;
+        font-size: clamp(1.85rem, 8vw, 2.55rem);
+        line-height: 1.02;
+      }
+
+      .panel-feature p {
+        max-width: none;
+        font-size: 1rem;
+        line-height: 1.62;
+      }
+
+      .feature-pills {
+        gap: 8px;
+      }
+
+      .feature-pills span {
+        min-height: 34px;
+        padding: 8px 11px;
+        font-size: .82rem;
+        white-space: normal;
+      }
+
+      .panel-actions-grid {
+        gap: 10px;
+      }
+
+      .quick-row {
+        grid-template-columns: 42px minmax(0, 1fr) auto;
+        padding: 14px;
+        border-radius: 20px;
+        background: rgba(255, 253, 248, .94);
+      }
+
+      .quick-row small {
+        display: inline;
+      }
+
+      .quick-content strong,
+      .quick-content span {
+        overflow-wrap: anywhere;
+      }
+
+      .panel-meta-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .meta-card,
+      .meta-card-wide {
+        grid-column: auto;
+        min-height: auto;
+        padding: 22px;
+        border-radius: 26px;
+        background: rgba(255, 253, 248, .92);
+      }
+
+      .meta-card > strong {
+        font-size: clamp(1.9rem, 8vw, 2.45rem);
+      }
+
+      .hours-list div {
+        align-items: center;
+        padding: 12px 0;
+      }
+
+      .meta-card .hours-list strong,
+      .meta-card .hours-list span {
+        font-size: .98rem;
+      }
+
+      .location-lines b,
+      .location-lines small {
+        overflow-wrap: anywhere;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .footer-col a,
+      .footer-col li {
+        overflow-wrap: anywhere;
+        word-break: normal;
+      }
+
+      .footer-bottom {
+        display: grid;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .container, .nav {
+        width: min(100% - 28px, var(--maxw));
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.85rem, 14vw, 4.15rem);
+      }
+
+      .panel-feature,
+      .meta-card {
+        padding: 20px;
+      }
+
+      .quick-row {
+        grid-template-columns: 38px minmax(0, 1fr);
+      }
+
+      .quick-row small {
+        display: none;
+      }
+
+      .quick-icon {
+        width: 38px;
+        height: 38px;
+      }
+    }
+
   </style>
 </head>
 <body>
