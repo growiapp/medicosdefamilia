@@ -1086,6 +1086,63 @@
       font-size: .72rem;
     }
 
+
+    .center-photo-card {
+      position: relative;
+      min-height: 520px;
+      margin: 0;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(201, 191, 173, .82);
+      background: var(--paper-3);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .center-photo-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.92) contrast(.98);
+    }
+
+    .center-photo-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 42%, rgba(23, 34, 29, .54) 100%);
+      pointer-events: none;
+    }
+
+    .center-photo-card figcaption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2;
+      display: grid;
+      gap: 4px;
+      padding: 18px;
+      border: 1px solid rgba(255, 253, 248, .28);
+      border-radius: 20px;
+      background: rgba(255, 253, 248, .88);
+      backdrop-filter: blur(14px);
+    }
+
+    .center-photo-card figcaption strong {
+      color: var(--ink);
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.26rem;
+      line-height: 1.1;
+    }
+
+    .center-photo-card figcaption span {
+      color: var(--ink-soft);
+      font-size: .9rem;
+      line-height: 1.45;
+    }
+
     .pillars {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1525,6 +1582,67 @@
       margin-bottom: 14px;
       color: var(--ink-soft);
       font-size: .95rem;
+    }
+
+
+
+    .location-photo-card {
+      position: relative;
+      min-height: 510px;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--paper-3);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .location-photo-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 510px;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.95) contrast(.98);
+    }
+
+    .location-photo-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(23,34,29,.02) 0%, rgba(23,34,29,.44) 100%);
+      pointer-events: none;
+    }
+
+    .location-photo-card figcaption {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      z-index: 4;
+      width: min(390px, calc(100% - 48px));
+      padding: 22px;
+      border: 1px solid rgba(255, 253, 248, .3);
+      border-radius: 22px;
+      background: rgba(255, 253, 248, .9);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .location-photo-card figcaption strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.36rem;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .location-photo-card figcaption span {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--ink-soft);
+      font-size: .95rem;
+      line-height: 1.5;
     }
 
     .location-card {
@@ -2286,6 +2404,86 @@
       }
     }
 
+
+    /* ===== Real imagery responsive layer v7 ===== */
+    @media (max-width: 1080px) {
+      .center-photo-card {
+        min-height: clamp(360px, 62vw, 620px);
+      }
+
+      .center-photo-card img {
+        min-height: clamp(360px, 62vw, 620px);
+      }
+
+      .location-photo-card {
+        min-height: clamp(340px, 58vw, 560px);
+      }
+
+      .location-photo-card img {
+        min-height: clamp(340px, 58vw, 560px);
+      }
+    }
+
+    @media (max-width: 740px) {
+      .center-photo-card {
+        min-height: 430px;
+        border-radius: 28px;
+      }
+
+      .center-photo-card img {
+        min-height: 430px;
+        object-position: center;
+      }
+
+      .center-photo-card figcaption {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        padding: 16px;
+        border-radius: 18px;
+      }
+
+      .location-photo-card {
+        min-height: 380px;
+        border-radius: 28px;
+      }
+
+      .location-photo-card img {
+        min-height: 380px;
+        object-position: center;
+      }
+
+      .location-photo-card figcaption {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        width: auto;
+        padding: 16px;
+        border-radius: 18px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .center-photo-card,
+      .center-photo-card img {
+        min-height: 380px;
+      }
+
+      .location-photo-card,
+      .location-photo-card img {
+        min-height: 330px;
+      }
+
+      .center-photo-card figcaption strong,
+      .location-photo-card figcaption strong {
+        font-size: 1.15rem;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2353,12 +2551,12 @@
 
           <div class="hero-trust" aria-label="Datos destacados del centro">
             <div class="trust-item">
-              <span class="trust-value">15</span>
-              <span class="trust-label">profesionales disponibles en el centro</span>
+              <span class="trust-value">18</span>
+              <span class="trust-label">profesionales y especialistas del centro</span>
             </div>
             <div class="trust-item">
-              <span class="trust-value">6</span>
-              <span class="trust-label">áreas de atención para toda la familia</span>
+              <span class="trust-value">16</span>
+              <span class="trust-label">especialidades y prácticas disponibles</span>
             </div>
             <div class="trust-item">
               <span class="trust-value">08–20</span>
@@ -2437,10 +2635,13 @@
             <p>La propuesta combina especialidades médicas, espacios de acompañamiento psicológico y orientación nutricional para que niños, adultos y adultos mayores puedan encontrar respuestas claras en un entorno confiable.</p>
           </div>
 
-          <aside class="quote-card reveal" aria-label="Principio institucional">
-            <p>Un centro de salud no debería sentirse frío, confuso ni distante. Debería ayudar a que las personas sepan con quién hablar, cuándo consultar y cómo seguir.</p>
-            <small>Médicos de Familia</small>
-          </aside>
+          <figure class="center-photo-card reveal">
+            <img src="./assets/images/centro/centro-fachada-principal.jpg" alt="Ingreso principal de Médicos de Familia en 27 de abril 1254, Córdoba" loading="lazy" />
+            <figcaption>
+              <strong>Consultorios Médicos de Familia</strong>
+              <span>Atención integral en 27 de abril 1254, Córdoba.</span>
+            </figcaption>
+          </figure>
         </div>
 
         <div class="pillars reveal" aria-label="Ejes de trabajo del centro">
@@ -2468,21 +2669,24 @@
         <div class="section-head reveal">
           <div>
             <span class="eyebrow">Profesionales</span>
-            <h2 id="profesionales-title">Un directorio médico claro, moderno y confiable.</h2>
+            <h2 id="profesionales-title">Un equipo médico claro, real y confiable.</h2>
           </div>
-          <p>La información profesional se presenta de forma simple para que cada paciente pueda reconocer especialidad, perfil y vía de contacto sin fricción. Sin fotos falsas. Sin maquillaje innecesario.</p>
+          <p>La cartilla profesional se presenta de forma simple para que cada paciente pueda identificar especialidad y profesional sin fricción. Información real, ordenada y fácil de consultar.</p>
         </div>
 
         <div class="filters reveal" aria-label="Filtrar profesionales por especialidad">
           <button class="filter-btn active" type="button" data-filter="Todos">Todos</button>
-          <button class="filter-btn" type="button" data-filter="Clínica médica">Clínica médica</button>
+          <button class="filter-btn" type="button" data-filter="Clínica">Clínica</button>
           <button class="filter-btn" type="button" data-filter="Pediatría">Pediatría</button>
-          <button class="filter-btn" type="button" data-filter="Psicología">Psicología</button>
+          <button class="filter-btn" type="button" data-filter="Endocrinología">Endocrinología</button>
+          <button class="filter-btn" type="button" data-filter="Dermatología">Dermatología</button>
+          <button class="filter-btn" type="button" data-filter="Salud mental">Salud mental</button>
           <button class="filter-btn" type="button" data-filter="Ginecología">Ginecología</button>
           <button class="filter-btn" type="button" data-filter="Nutrición">Nutrición</button>
+          <button class="filter-btn" type="button" data-filter="Traumatología">Traumatología</button>
         </div>
 
-        <!-- TODO Growi: reemplazar profesionales de ejemplo por nómina real -->
+        <!-- Nómina real relevada de la cartilla del centro. TODO Growi: confirmar vigencia antes de publicar en dominio final -->
         <div class="pro-grid reveal" id="proGrid" aria-live="polite"></div>
       </div>
     </section>
@@ -2497,39 +2701,54 @@
           <p>Una estructura institucional clara ayuda a que el centro comunique mejor lo que ofrece y que los pacientes encuentren antes la consulta correcta.</p>
         </div>
 
-        <!-- TODO Growi: reemplazar especialidades por oferta real del centro -->
+        <!-- Especialidades reales relevadas de la cartilla del centro. TODO Growi: confirmar vigencia antes de publicar en dominio final -->
         <div class="service-grid reveal">
           <article class="service-card">
-            <span class="service-kicker">Consulta</span>
-            <h3>Medicina familiar</h3>
-            <p>Médico de cabecera, controles preventivos y seguimiento clínico para adultos y familias.</p>
+            <span class="service-kicker">Consulta clínica</span>
+            <h3>Clínica médica</h3>
+            <p>Atención clínica general, controles, prevención y seguimiento de adultos y adolescentes.</p>
           </article>
           <article class="service-card">
             <span class="service-kicker">Infancias</span>
             <h3>Pediatría</h3>
-            <p>Controles de crecimiento, orientación a familias, vacunación y seguimiento pediátrico.</p>
+            <p>Controles pediátricos, crecimiento, orientación familiar y seguimiento de niños y adolescentes.</p>
           </article>
           <article class="service-card">
-            <span class="service-kicker">Acompañamiento</span>
-            <h3>Psicología</h3>
-            <p>Atención individual, orientación familiar y espacios terapéuticos para distintas etapas.</p>
+            <span class="service-kicker">Metabolismo</span>
+            <h3>Endocrinología</h3>
+            <p>Atención infanto juvenil, adultos y diabetes con evaluación especializada.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-kicker">Piel</span>
+            <h3>Dermatología</h3>
+            <p>Consultas dermatológicas generales y dermatología estética con profesionales del centro.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-kicker">Salud mental</span>
+            <h3>Psicología y psiquiatría</h3>
+            <p>Espacios de atención psicológica, psiquiatría, psicopedagogía y psicoanálisis.</p>
           </article>
           <article class="service-card">
             <span class="service-kicker">Salud integral</span>
             <h3>Ginecología</h3>
-            <p>Controles periódicos, salud reproductiva y acompañamiento profesional personalizado.</p>
+            <p>Controles ginecológicos y acompañamiento profesional en distintas etapas.</p>
           </article>
           <article class="service-card">
             <span class="service-kicker">Hábitos</span>
             <h3>Nutrición</h3>
-            <p>Planes realistas para mejorar alimentación, energía y hábitos sostenibles en el tiempo.</p>
+            <p>Orientación nutricional y seguimiento para construir hábitos sostenibles.</p>
           </article>
           <article class="service-card">
-            <span class="service-kicker">Continuidad</span>
-            <h3>Acompañamiento integral</h3>
-            <p>Coordinación entre áreas para que la atención no quede fragmentada ni librada al azar.</p>
+            <span class="service-kicker">Movimiento</span>
+            <h3>Fisioterapia y traumatología</h3>
+            <p>Atención orientada a movilidad, recuperación, dolor y seguimiento físico.</p>
           </article>
-        </div>
+          <article class="service-card">
+            <span class="service-kicker">Prácticas</span>
+            <h3>Cardiovasculares y medicina laboral</h3>
+            <p>Prácticas cardiovasculares y consultas de medicina laboral dentro de la oferta del centro.</p>
+          </article>
+        </div>        </div>
       </div>
     </section>
 
@@ -2591,54 +2810,27 @@
 
     <section class="section map-section" id="ubicacion" aria-labelledby="ubicacion-title">
       <div class="container location-grid">
-        <div class="map-wrap reveal" role="img" aria-label="Mapa ilustrativo con la ubicación del centro médico Médicos de Familia">
-          <!-- TODO Growi: reemplazar este mapa visual por iframe real de Google Maps si el cliente lo confirma -->
-          <svg class="map-svg" viewBox="0 0 980 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs>
-              <pattern id="smallGrid" width="42" height="42" patternUnits="userSpaceOnUse">
-                <path d="M42 0H0V42" fill="none" stroke="#cec5b4" stroke-width="1" opacity=".36" />
-              </pattern>
-              <linearGradient id="road" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stop-color="#fffdf8" />
-                <stop offset="1" stop-color="#f5f0e6" />
-              </linearGradient>
-            </defs>
-            <rect width="980" height="620" fill="#e9e3d6" />
-            <rect width="980" height="620" fill="url(#smallGrid)" />
-            <path d="M-40 126 C140 102 270 112 440 86 C620 58 775 66 1030 28" stroke="url(#road)" stroke-width="48" fill="none" />
-            <path d="M-30 408 C180 358 320 392 512 360 C704 328 834 334 1018 284" stroke="url(#road)" stroke-width="64" fill="none" />
-            <path d="M154 -50 C160 130 180 254 172 406 C166 510 154 572 148 680" stroke="url(#road)" stroke-width="46" fill="none" />
-            <path d="M580 -60 C566 124 604 238 590 390 C582 494 552 572 546 680" stroke="url(#road)" stroke-width="60" fill="none" />
-            <path d="M824 -40 C800 126 826 260 806 400 C792 502 770 586 766 680" stroke="url(#road)" stroke-width="38" fill="none" />
-            <rect x="218" y="158" width="204" height="114" rx="14" fill="#d8e2d9" opacity=".95" />
-            <rect x="644" y="150" width="106" height="138" rx="12" fill="#ded7c8" />
-            <rect x="82" y="240" width="88" height="96" rx="12" fill="#ded7c8" />
-            <rect x="276" y="438" width="218" height="96" rx="14" fill="#ded7c8" />
-            <rect x="632" y="420" width="156" height="108" rx="14" fill="#d8e2d9" opacity=".82" />
-            <rect x="862" y="370" width="92" height="130" rx="12" fill="#ded7c8" />
-            <circle cx="524" cy="312" r="118" fill="#dfe9df" opacity=".5" />
-            <circle cx="524" cy="312" r="68" fill="#dfe9df" opacity=".5" />
-          </svg>
-          <span class="map-pin" aria-hidden="true"></span>
-          <div class="map-caption">
-            <h3>Médicos de Familia</h3>
-            <p>27 de abril 1254, Córdoba, Argentina 5000.</p>
+        <figure class="location-photo-card reveal">
+          <img src="./assets/images/centro/centro-fachada-secundaria.jpg" alt="Frente de Médicos de Familia sobre 27 de abril 1254, Córdoba" loading="lazy" />
+          <figcaption>
+            <strong>Médicos de Familia</strong>
+            <span>27 de abril 1254, Córdoba, Argentina 5000.</span>
             <a class="link-arrow" href="https://maps.google.com/?q=27%20de%20abril%201254%20Córdoba%20Argentina%205000" target="_blank" rel="noopener">Abrir indicaciones <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
 
         <aside class="location-card reveal" aria-labelledby="ubicacion-title">
           <div>
             <span class="eyebrow">Ubicación</span>
             <h2 id="ubicacion-title">Llegar al centro también tiene que ser simple.</h2>
-            <p>La ubicación, los horarios y las indicaciones de contacto se presentan con jerarquía para mejorar la experiencia de pacientes nuevos y familias que ya se atienden en el centro.</p>
+            <p>El frente real del centro, la dirección, los horarios y los canales de contacto quedan visibles para que pacientes nuevos y familias frecuentes sepan cómo llegar y cómo coordinar su turno.</p>
           </div>
 
           <dl class="location-facts">
             <!-- Datos reales cargados. TODO Growi: confirmar referencia, email, horarios y dominio final -->
             <div><dt>Dirección</dt><dd>27 de abril 1254, Córdoba</dd></div>
-            <div><dt>Referencia</dt><dd>Zona centro de Córdoba</dd></div>
-            <div><dt>Turnos</dt><dd>Con coordinación previa por teléfono o WhatsApp</dd></div>
+            <div><dt>Teléfono</dt><dd><a href="tel:+543514214225">(0351) 4214225</a></dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/543513199546" target="_blank" rel="noopener">3513199546</a></dd></div>
             <div><dt>Sitio</dt><dd>medicosdefamilia.com.ar</dd></div>
           </dl>
         </aside>
@@ -2773,21 +2965,24 @@
 
     // TODO Growi: reemplazar esta nómina por profesionales reales del centro.
     const professionals = [
-      { name: 'Dra. Ana Martínez', specialty: 'Clínica médica', desc: 'Seguimiento clínico, prevención y controles de salud en adultos.' },
-      { name: 'Dr. Juan Pérez', specialty: 'Pediatría', desc: 'Controles pediátricos, crecimiento y orientación familiar.' },
-      { name: 'Lic. María Rodríguez', specialty: 'Psicología', desc: 'Atención individual y acompañamiento emocional.' },
-      { name: 'Dra. Carolina López', specialty: 'Ginecología', desc: 'Controles ginecológicos y salud integral de la mujer.' },
-      { name: 'Lic. Sofía Fernández', specialty: 'Nutrición', desc: 'Hábitos sostenibles, educación alimentaria y seguimiento.' },
-      { name: 'Dr. Martín Gómez', specialty: 'Clínica médica', desc: 'Evaluación clínica, prevención y orientación diagnóstica.' },
-      { name: 'Dra. Valeria Suárez', specialty: 'Pediatría', desc: 'Atención pediátrica y acompañamiento en primera infancia.' },
-      { name: 'Lic. Tomás Álvarez', specialty: 'Psicología', desc: 'Procesos personales, familiares y vinculares.' },
-      { name: 'Dra. Laura Benítez', specialty: 'Ginecología', desc: 'Consultas periódicas y acompañamiento por etapas.' },
-      { name: 'Dr. Pablo Castro', specialty: 'Clínica médica', desc: 'Atención clínica integral y seguimiento longitudinal.' },
-      { name: 'Lic. Camila Ortiz', specialty: 'Nutrición', desc: 'Planificación nutricional personalizada para familias.' },
-      { name: 'Dra. Lucía Romero', specialty: 'Pediatría', desc: 'Salud infantil, controles y orientación preventiva.' },
-      { name: 'Dr. Federico Díaz', specialty: 'Clínica médica', desc: 'Chequeos, evaluación clínica y cuidado preventivo.' },
-      { name: 'Lic. Gabriela Núñez', specialty: 'Psicología', desc: 'Espacios de escucha y acompañamiento terapéutico.' },
-      { name: 'Dra. Marcela Acosta', specialty: 'Ginecología', desc: 'Salud reproductiva, controles y seguimiento clínico.' }
+      { name: 'Dr. Carlos Presman', specialty: 'Clínica médica', desc: 'Atención clínica general y seguimiento de adultos.' },
+      { name: 'Dr. Guillermo Calvo', specialty: 'Clínica médica', desc: 'Consulta clínica, prevención y orientación diagnóstica.' },
+      { name: 'Dra. Juana Presman', specialty: 'Clínica médica - Adolescentes', desc: 'Seguimiento clínico orientado a adolescentes.' },
+      { name: 'Dr. Luis Ahumada', specialty: 'Pediatría', desc: 'Atención pediátrica y acompañamiento familiar.' },
+      { name: 'Dr. Marcelo Arguello', specialty: 'Pediatría', desc: 'Controles, crecimiento y salud infantil.' },
+      { name: 'Dra. Graciela Testa', specialty: 'Endocrinología infanto juvenil', desc: 'Atención endocrinológica en infancias y adolescencias.' },
+      { name: 'Dra. Valeria Gaón', specialty: 'Endocrinología adultos - Diabetes', desc: 'Seguimiento endocrinológico y diabetes en adultos.' },
+      { name: 'Dra. Ana Corrado', specialty: 'Dermatología', desc: 'Consulta dermatológica y cuidado de la piel.' },
+      { name: 'Dra. Mariela Álvarez', specialty: 'Dermatología estética', desc: 'Atención estética dermatológica.' },
+      { name: 'Dra. Mónica Garrone', specialty: 'Fisioterapia', desc: 'Acompañamiento físico y recuperación funcional.' },
+      { name: 'Dr. Clovis Domínguez', specialty: 'Medicina laboral', desc: 'Consultas vinculadas a salud y ámbito laboral.' },
+      { name: 'Dr. Guillermo Ferrero', specialty: 'Psiquiatría y psicología', desc: 'Atención de salud mental y acompañamiento terapéutico.' },
+      { name: 'Lic. María Inés Salto', specialty: 'Psicopedagogía - Psicoanálisis', desc: 'Procesos psicopedagógicos y psicoanalíticos.' },
+      { name: 'Lic. Adriana Vitelli', specialty: 'Psicología', desc: 'Atención psicológica y espacios de escucha.' },
+      { name: 'Dr. Ariel Gaón', specialty: 'Prácticas cardiovasculares', desc: 'Prácticas y evaluación cardiovascular.' },
+      { name: 'Lic. Julieta Agüero', specialty: 'Nutrición', desc: 'Orientación nutricional y hábitos sostenibles.' },
+      { name: 'Dra. Sara Ochoa', specialty: 'Ginecología', desc: 'Controles ginecológicos y salud integral.' },
+      { name: 'Dra. Graciela Giachero', specialty: 'Traumatología', desc: 'Evaluación traumatológica y seguimiento físico.' }
     ];
 
     const proGrid = document.getElementById('proGrid');
@@ -2798,10 +2993,18 @@
       return `${clean[0]?.charAt(0) || ''}${clean[1]?.charAt(0) || ''}`.toUpperCase();
     };
 
+    const matchesFilter = (pro, filter) => {
+      if (filter === 'Todos') return true;
+      const specialty = pro.specialty.toLowerCase();
+      const normalized = filter.toLowerCase();
+
+      if (normalized === 'clínica') return specialty.includes('clínica');
+      if (normalized === 'salud mental') return specialty.includes('psicología') || specialty.includes('psiquiatría') || specialty.includes('psicopedagogía') || specialty.includes('psicoanálisis');
+      return specialty.includes(normalized);
+    };
+
     const renderProfessionals = (filter = 'Todos') => {
-      const filtered = filter === 'Todos'
-        ? professionals
-        : professionals.filter((pro) => pro.specialty === filter);
+      const filtered = professionals.filter((pro) => matchesFilter(pro, filter));
 
       proGrid.innerHTML = filtered.map((pro) => `
         <article class="pro-card" data-specialty="${pro.specialty}">
