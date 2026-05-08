@@ -2708,300 +2708,6 @@
       }
     }
 
-
-    /* ===== Solicitud de turno online — demo comercial ===== */
-    .appointment-section {
-      overflow: hidden;
-    }
-
-    .appointment-shell {
-      display: grid;
-      grid-template-columns: minmax(0, .95fr) minmax(360px, .78fr);
-      gap: clamp(28px, 5vw, 70px);
-      align-items: start;
-    }
-
-    .appointment-intro {
-      position: sticky;
-      top: calc(var(--header-h) + 28px);
-      align-self: start;
-    }
-
-    .appointment-intro .lead {
-      font-size: clamp(1.02rem, 1.35vw, 1.16rem);
-      line-height: 1.78;
-      max-width: 60ch;
-      margin-bottom: 28px;
-    }
-
-    .appointment-note {
-      display: grid;
-      gap: 12px;
-      padding: 18px;
-      margin-top: 28px;
-      border: 1px solid rgba(185, 120, 85, .24);
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, rgba(255, 253, 248, .82), rgba(251, 250, 245, .62));
-      box-shadow: var(--shadow-xs);
-    }
-
-    .appointment-note strong {
-      color: var(--ink);
-      font-size: .92rem;
-    }
-
-    .appointment-note p {
-      color: var(--ink-soft);
-      font-size: .92rem;
-      line-height: 1.62;
-    }
-
-    .turn-flow {
-      margin-top: 30px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .flow-step {
-      display: grid;
-      grid-template-columns: 38px minmax(0, 1fr);
-      gap: 14px;
-      align-items: start;
-      padding: 15px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .flow-step:first-child { border-top: 1px solid var(--line); }
-
-    .flow-index {
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      color: var(--green);
-      background: var(--green-soft);
-      font-weight: 800;
-      font-size: .82rem;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .flow-step h3 {
-      margin: 0 0 4px;
-      font-family: Inter, system-ui, sans-serif;
-      font-size: .96rem;
-      font-weight: 800;
-      letter-spacing: -.01em;
-    }
-
-    .flow-step p {
-      font-size: .9rem;
-      line-height: 1.56;
-      color: var(--muted);
-    }
-
-    .appointment-card {
-      position: relative;
-      border: 1px solid rgba(201, 191, 173, .78);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 253, 248, .92);
-      box-shadow: var(--shadow-md);
-      padding: clamp(20px, 3vw, 34px);
-      overflow: hidden;
-    }
-
-    .appointment-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 7px;
-      background: linear-gradient(90deg, var(--green), #6c8b78, var(--clay));
-      opacity: .92;
-    }
-
-    .appointment-card-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: flex-start;
-      margin-bottom: 22px;
-      padding-top: 8px;
-    }
-
-    .appointment-card-head h3 {
-      font-size: clamp(1.45rem, 2.4vw, 2.05rem);
-    }
-
-    .appointment-card-head p {
-      margin-top: 8px;
-      font-size: .94rem;
-      line-height: 1.62;
-    }
-
-    .appointment-status {
-      flex: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(40, 79, 67, .18);
-      background: rgba(223, 233, 223, .56);
-      color: var(--green-dark);
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .appointment-status::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: currentColor;
-      box-shadow: 0 0 0 5px rgba(40, 79, 67, .1);
-    }
-
-    .appointment-form {
-      display: grid;
-      gap: 16px;
-    }
-
-    .form-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .form-field {
-      display: grid;
-      gap: 7px;
-    }
-
-    .form-field label,
-    .check-row span:first-child {
-      color: var(--ink);
-      font-size: .82rem;
-      font-weight: 800;
-      letter-spacing: -.005em;
-    }
-
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%;
-      min-height: 48px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 12px 14px;
-      background: rgba(255, 255, 255, .78);
-      color: var(--ink);
-      outline: none;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7);
-      transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
-    }
-
-    .form-field textarea {
-      min-height: 112px;
-      resize: vertical;
-      line-height: 1.55;
-    }
-
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      border-color: rgba(40, 79, 67, .58);
-      background: var(--white);
-      box-shadow: 0 0 0 4px rgba(40, 79, 67, .11);
-    }
-
-    .form-field input::placeholder,
-    .form-field textarea::placeholder { color: #9b9a90; }
-
-    .check-row {
-      display: grid;
-      grid-template-columns: 20px minmax(0, 1fr);
-      gap: 12px;
-      align-items: start;
-      padding: 14px;
-      border: 1px solid rgba(40, 79, 67, .18);
-      background: rgba(223, 233, 223, .36);
-      border-radius: 18px;
-    }
-
-    .check-row input {
-      width: 18px;
-      height: 18px;
-      margin-top: 2px;
-      accent-color: var(--green);
-    }
-
-    .check-row small {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: .78rem;
-      line-height: 1.45;
-    }
-
-    .form-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 4px;
-    }
-
-    .form-helper {
-      max-width: 32ch;
-      font-size: .8rem;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .demo-submit-message {
-      display: none;
-      margin-top: 14px;
-      padding: 15px 16px;
-      border: 1px solid rgba(40, 79, 67, .22);
-      background: rgba(223, 233, 223, .5);
-      border-radius: 18px;
-      color: var(--green-dark);
-      font-weight: 700;
-      font-size: .92rem;
-      line-height: 1.5;
-    }
-
-    .demo-submit-message.show {
-      display: block;
-      animation: softAppear .22s ease-out both;
-    }
-
-    @keyframes softAppear {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .backend-comment {
-      display: none;
-    }
-
-    @media (max-width: 1040px) {
-      .appointment-shell { grid-template-columns: 1fr; }
-      .appointment-intro { position: static; }
-    }
-
-    @media (max-width: 720px) {
-      .appointment-card-head { flex-direction: column; }
-      .appointment-status { width: fit-content; }
-      .form-grid-2 { grid-template-columns: 1fr; }
-      .form-actions { align-items: stretch; flex-direction: column; }
-      .form-actions .btn { width: 100%; }
-      .form-helper { max-width: none; }
-    }
-
   </style>
 </head>
 <body>
@@ -3022,14 +2728,13 @@
         <li><a href="#profesionales">Profesionales</a></li>
         <li><a href="#especialidades">Especialidades</a></li>
         <li><a href="#horarios">Horarios</a></li>
-        <li><a href="#turnos">Turnos</a></li>
         <li><a href="#ubicacion">Ubicación</a></li>
       </ul>
 
       <div class="nav-actions">
         <!-- WhatsApp real: 3513199546 -->
         <a class="btn btn-light" href="https://wa.me/543513199546" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn btn-primary" href="#turnos">Pedir turno</a>
+        <a class="btn btn-primary" href="https://wa.me/543513199546" target="_blank" rel="noopener">Escribir por WhatsApp</a>
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-controls="mobileDrawer" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
             <path d="M4 7h16M4 12h16M4 17h16" />
@@ -3045,13 +2750,12 @@
           <li><a href="#profesionales">Profesionales</a></li>
           <li><a href="#especialidades">Especialidades</a></li>
           <li><a href="#horarios">Horarios</a></li>
-          <li><a href="#turnos">Turnos</a></li>
           <li><a href="#ubicacion">Ubicación</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
         <div class="mobile-actions">
           <a class="btn btn-whatsapp" href="https://wa.me/543513199546" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-          <a class="btn btn-primary" href="#turnos">Pedir turno</a>
+          <a class="btn btn-primary" href="https://wa.me/543513199546" target="_blank" rel="noopener">Escribir por WhatsApp</a>
         </div>
       </div>
     </div>
@@ -3063,9 +2767,9 @@
         <div class="hero-copy reveal">
           <span class="eyebrow">Centro médico · Córdoba</span>
           <h1 id="hero-title">Una atención médica más cercana para cada etapa de la familia.</h1>
-          <p class="hero-lede">Médicos de Familia reúne atención clínica, pediátrica, ginecológica, psicológica y nutricional en Córdoba, con una mirada humana, continuidad profesional y canales de turno claros.</p>
+          <p class="hero-lede">Médicos de Familia reúne atención clínica, pediátrica, ginecológica, psicológica y nutricional en Córdoba, con una mirada humana, continuidad profesional y contacto directo por WhatsApp.</p>
           <div class="hero-actions" aria-label="Acciones principales">
-            <a class="btn btn-primary" href="#turnos">Pedir turno</a>
+            <a class="btn btn-primary" href="https://wa.me/543513199546" target="_blank" rel="noopener">Escribir por WhatsApp</a>
             <a class="btn btn-light" href="#profesionales">Ver profesionales</a>
           </div>
 
@@ -3085,10 +2789,10 @@
           </div>
         </div>
 
-        <aside class="hero-panel reveal" aria-label="Turnos y contacto del centro">
+        <aside class="hero-panel reveal" aria-label="Contacto directo del centro">
           <div class="hero-premium">
             <div class="hero-premium-top">
-              <span class="hero-premium-kicker">Turnos y contacto</span>
+              <span class="hero-premium-kicker">Contacto directo</span>
               <span class="status-dot">Atención con turno previo</span>
             </div>
 
@@ -3112,7 +2816,7 @@
               <div class="hero-contact-stack" aria-label="Acciones rápidas">
                 <a class="hero-contact-card is-primary" href="https://wa.me/543513199546" target="_blank" rel="noopener">
                   <span class="hero-contact-icon">W</span>
-                  <span class="hero-contact-content"><strong>Escribir por WhatsApp</strong><span>Turnos al 3513199546</span></span>
+                  <span class="hero-contact-content"><strong>Escribir por WhatsApp</strong><span>Consultas y turnos al 3513199546</span></span>
                   <span class="hero-contact-arrow" aria-hidden="true">→</span>
                 </a>
                 <a class="hero-contact-card" href="tel:+543514214225">
@@ -3308,7 +3012,7 @@
             </div>
             <div class="help-box">
               <span class="help-box-icon" aria-hidden="true">i</span>
-              <p>La atención se realiza con turno previo. Para consultas administrativas, cambios de turno o indicaciones para llegar, recomendamos escribir por WhatsApp.</p>
+              <p>La atención se realiza con turno previo. Para consultas administrativas, coordinación de turnos o indicaciones para llegar, recomendamos escribir por WhatsApp. El sitio prioriza este canal para no sumar complejidad a la gestión diaria del centro.</p>
             </div>
           </section>
 
@@ -3343,130 +3047,6 @@
       </div>
     </section>
 
-
-    <section class="section appointment-section" id="turnos" aria-labelledby="turnos-title">
-      <div class="container appointment-shell">
-        <div class="appointment-intro reveal">
-          <span class="eyebrow">Solicitud de turno online</span>
-          <h2 id="turnos-title">Un primer paso simple para coordinar la atención.</h2>
-          <p class="lead">La solicitud de turno online permite que cada paciente deje sus datos, indique la especialidad que necesita y proponga una franja horaria. El centro recibe la consulta y confirma disponibilidad por el canal acordado.</p>
-          <div class="appointment-note" role="note" aria-label="Aclaración sobre solicitud de turno">
-            <strong>Esto no confirma automáticamente el turno.</strong>
-            <p>Es una solicitud inicial para ordenar la entrada de consultas. La confirmación final siempre queda a cargo del equipo del centro.</p>
-          </div>
-
-          <div class="turn-flow" aria-label="Cómo funciona la solicitud de turno">
-            <article class="flow-step">
-              <span class="flow-index">01</span>
-              <div><h3>El paciente completa la solicitud</h3><p>Deja sus datos de contacto, especialidad y preferencia horaria.</p></div>
-            </article>
-            <article class="flow-step">
-              <span class="flow-index">02</span>
-              <div><h3>El centro recibe la consulta</h3><p>La solicitud puede llegar por email o quedar registrada en una planilla.</p></div>
-            </article>
-            <article class="flow-step">
-              <span class="flow-index">03</span>
-              <div><h3>El equipo revisa disponibilidad</h3><p>La administración valida profesional, horario y próximos pasos.</p></div>
-            </article>
-            <article class="flow-step">
-              <span class="flow-index">04</span>
-              <div><h3>El paciente recibe la respuesta</h3><p>El centro se comunica por teléfono, email o WhatsApp para coordinar.</p></div>
-            </article>
-          </div>
-        </div>
-
-        <div class="appointment-card reveal" aria-label="Formulario demo de solicitud de turno">
-          <div class="appointment-card-head">
-            <div>
-              <h3>Solicitá tu turno</h3>
-              <p>Completá tus datos y el centro se comunicará para coordinar disponibilidad.</p>
-            </div>
-            <span class="appointment-status">Demo</span>
-          </div>
-
-          <!-- TODO Growi versión final: conectar este formulario con Formspree, Google Sheets, Apps Script o backend real según alcance contratado. -->
-          <!-- TODO Growi: reemplazar especialidades, profesionales, email destino y política de privacidad por información real del centro. -->
-          <form class="appointment-form" id="appointmentForm" novalidate>
-            <div class="form-grid-2">
-              <div class="form-field">
-                <label for="patientName">Nombre y apellido</label>
-                <input id="patientName" name="nombre" type="text" autocomplete="name" placeholder="Ej. Laura Fernández" required />
-              </div>
-              <div class="form-field">
-                <label for="patientPhone">Teléfono / WhatsApp</label>
-                <input id="patientPhone" name="telefono" type="tel" autocomplete="tel" placeholder="Ej. 351 000 0000" required />
-              </div>
-            </div>
-
-            <div class="form-grid-2">
-              <div class="form-field">
-                <label for="patientEmail">Email</label>
-                <input id="patientEmail" name="email" type="email" autocomplete="email" placeholder="tuemail@ejemplo.com" required />
-              </div>
-              <div class="form-field">
-                <label for="specialty">Especialidad</label>
-                <select id="specialty" name="especialidad" required>
-                  <option value="">Seleccionar especialidad</option>
-                  <option>Clínica médica</option>
-                  <option>Pediatría</option>
-                  <option>Psicología</option>
-                  <option>Ginecología</option>
-                  <option>Dermatología</option>
-                  <option>Nutrición</option>
-                  <option>Otra consulta</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-grid-2">
-              <div class="form-field">
-                <label for="preferredProfessional">Profesional preferido <span aria-hidden="true">(opcional)</span></label>
-                <select id="preferredProfessional" name="profesional">
-                  <option value="">Sin preferencia</option>
-                  <option>Dr. Carlos Presman</option>
-                  <option>Dr. Guillermo Calvo</option>
-                  <option>Dra. Juana Presman</option>
-                  <option>Dr. Luis Ahumada</option>
-                  <option>Dra. Valeria Gaón</option>
-                  <option>Lic. Adriana Vitelli</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label for="preferredTime">Franja horaria preferida</label>
-                <select id="preferredTime" name="franja" required>
-                  <option value="">Seleccionar franja</option>
-                  <option>Mañana</option>
-                  <option>Mediodía</option>
-                  <option>Tarde</option>
-                  <option>Sin preferencia</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label for="message">Mensaje</label>
-              <textarea id="message" name="mensaje" placeholder="Contanos brevemente qué tipo de consulta querés coordinar. No incluyas estudios, diagnósticos ni información médica sensible."></textarea>
-            </div>
-
-            <label class="check-row" for="appointmentConsent">
-              <input id="appointmentConsent" name="consentimiento" type="checkbox" required />
-              <span>
-                Entiendo que esta solicitud no confirma el turno. El centro se comunicará para coordinar disponibilidad.
-                <small>Este formulario no debe utilizarse para urgencias, envío de estudios, diagnósticos ni información médica sensible.</small>
-              </span>
-            </label>
-
-            <div class="form-actions">
-              <button class="btn btn-primary" type="submit">Preparar solicitud</button>
-              <p class="form-helper">Demo sin envío real. En la versión final puede enviarse por email o registrarse en una planilla.</p>
-            </div>
-
-            <p class="demo-submit-message" id="appointmentMessage" role="status" aria-live="polite">Solicitud preparada. En la versión final, el centro recibirá esta consulta por email o planilla.</p>
-          </form>
-        </div>
-      </div>
-    </section>
-
     <section class="section map-section" id="ubicacion" aria-labelledby="ubicacion-title">
       <div class="container location-grid">
         <figure class="location-photo-card reveal">
@@ -3482,7 +3062,7 @@
           <div>
             <span class="eyebrow">Ubicación</span>
             <h2 id="ubicacion-title">Llegar al centro también tiene que ser simple.</h2>
-            <p>El frente real del centro, la dirección, los horarios y los canales de contacto quedan visibles para que pacientes nuevos y familias frecuentes sepan cómo llegar y cómo coordinar su turno.</p>
+            <p>El frente real del centro, la dirección, los horarios y los canales de contacto quedan visibles para que pacientes nuevos y familias frecuentes sepan cómo llegar y cómo coordinar la atención.</p>
           </div>
 
           <dl class="location-facts">
@@ -3502,10 +3082,10 @@
           <div>
             <span class="eyebrow">Atención familiar</span>
             <h2 id="cierre-title">Un centro pensado para acompañar a tu familia en cada etapa.</h2>
-            <p>Información clara, profesionales visibles, contacto directo y una experiencia digital alineada con lo que el centro quiere transmitir: cercanía, criterio y confianza.</p>
+            <p>Información clara, profesionales visibles, contacto por WhatsApp y una experiencia digital alineada con lo que el centro quiere transmitir: cercanía, criterio y confianza.</p>
           </div>
           <div class="cta-actions">
-            <a class="btn btn-light" href="#turnos">Pedir turno</a>
+            <a class="btn btn-light" href="https://wa.me/543513199546" target="_blank" rel="noopener">Escribir por WhatsApp</a>
             <a class="btn btn-whatsapp" href="https://wa.me/543513199546" target="_blank" rel="noopener">WhatsApp</a>
           </div>
         </div>
@@ -3546,7 +3126,6 @@
             <li><a href="#profesionales">Profesionales</a></li>
             <li><a href="#especialidades">Especialidades</a></li>
             <li><a href="#horarios">Horarios</a></li>
-            <li><a href="#turnos">Turnos</a></li>
             <li><a href="#ubicacion">Ubicación</a></li>
           </ul>
         </div>
@@ -3687,24 +3266,6 @@
     });
 
     renderProfessionals();
-
-
-    const appointmentForm = document.getElementById('appointmentForm');
-    const appointmentMessage = document.getElementById('appointmentMessage');
-
-    if (appointmentForm && appointmentMessage) {
-      appointmentForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        if (!appointmentForm.checkValidity()) {
-          appointmentForm.reportValidity();
-          return;
-        }
-
-        appointmentMessage.classList.add('show');
-        appointmentMessage.focus?.();
-      });
-    }
 
     const revealElements = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
