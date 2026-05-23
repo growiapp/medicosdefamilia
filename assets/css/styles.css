@@ -1858,6 +1858,33 @@ p {
   font-size: .82rem;
 }
 
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.growi-credit {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 6px;
+  border-radius: 999px;
+  transition: transform .18s ease, background .18s ease;
+}
+
+.growi-credit:hover {
+  transform: translateY(-1px);
+  background: rgba(40, 79, 67, .06);
+}
+
+.growi-credit img {
+  width: auto;
+  height: 18px;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -2115,6 +2142,10 @@ p {
   .footer-bottom {
     display: grid;
     gap: 8px;
+  }
+
+  .footer-credit {
+    justify-content: flex-start;
   }
 }
 
