@@ -1869,9 +1869,12 @@ p {
 .growi-credit {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
-  padding: 3px 6px;
+  flex: 0 0 auto;
+  width: 74px;
+  height: 20px;
+  padding: 0;
   border-radius: 999px;
+  overflow: hidden;
   transition: transform .18s ease, background .18s ease;
 }
 
@@ -1880,9 +1883,14 @@ p {
   background: rgba(40, 79, 67, .06);
 }
 
-.growi-credit img {
-  width: auto;
+.growi-credit-logo {
+  display: block;
+  width: 74px;
+  max-width: 74px;
   height: 18px;
+  max-height: 18px;
+  object-fit: contain;
+  opacity: .88;
 }
 
 .reveal {
