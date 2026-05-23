@@ -9,6 +9,9 @@ const menuToggle = document.getElementById('menuToggle');
 const mobileDrawer = document.getElementById('mobileDrawer');
 const closeDemo = document.getElementById('closeDemo');
 const demoBadge = document.getElementById('demoBadge');
+const professionalDialog = document.getElementById('professionalDialog');
+const professionalDialogContent = document.getElementById('professionalDialogContent');
+let lastProfessionalTrigger = null;
 
 const setMenu = (open) => {
   if (!mobileDrawer || !menuToggle) return;
@@ -120,16 +123,27 @@ const renderProfessionals = (filter = 'Todos') => {
       : escapeHTML(getInitials(pro.name));
 
     return `
-      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card${pro.isPending ? ' is-pending' : ''}" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" itemscope itemtype="https://schema.org/Person">
+      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card${pro.isPending ? ' is-pending' : ''}" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}" itemscope itemtype="https://schema.org/Person">
         <div class="avatar" aria-hidden="true">${avatar}</div>
         <div class="pro-content">
           <h3 itemprop="name">${escapeHTML(pro.name)}</h3>
           <span class="pro-spec" itemprop="jobTitle">${escapeHTML(pro.specialty)}</span>
           <p class="pro-desc" itemprop="description">${escapeHTML(pro.description)}</p>
+          <span class="pro-more" aria-hidden="true">Ver información <span>→</span></span>
         </div>
       </article>
     `;
   }).join('');
+
+  proGrid.querySelectorAll('.pro-card').forEach((card) => {
+    card.addEventListener('click', () => openProfessionalDialog(card.dataset.slug, card));
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openProfessionalDialog(card.dataset.slug, card);
+      }
+    });
+  });
 };
 
 filterButtons.forEach((button) => {
@@ -177,6 +191,144 @@ const injectProfessionalsSchema = () => {
   script.textContent = JSON.stringify(schema);
   document.head.appendChild(script);
 };
+
+const getProfessionalBySlug = (slug) => professionals.find((pro) => pro.slug === slug);
+
+const getContactUrl = (pro) => pro?.whatsapp || CONTACT.whatsappUrl;
+
+const renderKeywordList = (keywords) => {
+  if (!keywords?.length) return '';
+
+  return `
+    <div class="keyword-list">
+      ${keywords.map((keyword) => `<span>${escapeHTML(keyword)}</span>`).join('')}
+    </div>
+  `;
+};
+
+const renderProfessionalDialog = (pro) => {
+  const hasCurricularInfo = Boolean(pro.license || pro.phone || pro.whatsapp);
+  const contactUrl = getContactUrl(pro);
+
+  professionalDialogContent.innerHTML = `
+    <div class="professional-hero">
+      <div class="professional-avatar" aria-hidden="true">${escapeHTML(getInitials(pro.name))}</div>
+      <div>
+        <span class="professional-kicker">${pro.isPending ? 'Pendiente' : 'Profesional del centro'}</span>
+        <h2 id="professionalDialogTitle">${escapeHTML(pro.name)}</h2>
+      </div>
+      <span class="professional-specialty">${escapeHTML(pro.specialty)}</span>
+      <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.description)}</p>
+    </div>
+
+    <dl class="professional-meta">
+      <div class="professional-meta-row">
+        <dt>Área</dt>
+        <dd>${escapeHTML(pro.specialty)}</dd>
+      </div>
+      ${pro.license ? `
+        <div class="professional-meta-row">
+          <dt>Matrícula</dt>
+          <dd>${escapeHTML(pro.license)}</dd>
+        </div>
+      ` : ''}
+      ${pro.phone ? `
+        <div class="professional-meta-row">
+          <dt>Teléfono</dt>
+          <dd><a href="${escapeHTML(pro.phone)}">Contacto individual</a></dd>
+        </div>
+      ` : ''}
+      ${pro.keywords?.length ? `
+        <div class="professional-meta-row">
+          <dt>Temas</dt>
+          <dd>${renderKeywordList(pro.keywords)}</dd>
+        </div>
+      ` : ''}
+    </dl>
+
+    ${hasCurricularInfo ? '' : '<p class="professional-note">Información profesional pendiente de validación final.</p>'}
+
+    <div class="professional-actions">
+      <a class="btn btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar turno por WhatsApp</a>
+      <a class="btn btn-light" href="tel:+543514214225">Llamar al centro</a>
+    </div>
+  `;
+};
+
+const setProfessionalTriggersExpanded = (expanded, trigger = null) => {
+  document.querySelectorAll('.pro-card[aria-expanded="true"]').forEach((card) => {
+    card.setAttribute('aria-expanded', 'false');
+  });
+
+  if (trigger && expanded) {
+    trigger.setAttribute('aria-expanded', 'true');
+  }
+};
+
+const getDialogFocusable = () => professionalDialog
+  ? [...professionalDialog.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+  : [];
+
+const openProfessionalDialog = (slug, trigger) => {
+  const pro = getProfessionalBySlug(slug);
+  if (!pro || !professionalDialog || !professionalDialogContent) return;
+
+  lastProfessionalTrigger = trigger;
+  renderProfessionalDialog(pro);
+  professionalDialog.hidden = false;
+  professionalDialog.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('professional-open');
+  setProfessionalTriggersExpanded(true, trigger);
+
+  const closeButton = professionalDialog.querySelector('.professional-close');
+  requestAnimationFrame(() => closeButton?.focus());
+};
+
+const closeProfessionalDialog = () => {
+  if (!professionalDialog || professionalDialog.hidden) return;
+
+  professionalDialog.hidden = true;
+  professionalDialog.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('professional-open');
+  setProfessionalTriggersExpanded(false);
+
+  if (lastProfessionalTrigger?.isConnected) {
+    lastProfessionalTrigger.focus();
+  }
+  lastProfessionalTrigger = null;
+};
+
+if (professionalDialog) {
+  professionalDialog.addEventListener('click', (event) => {
+    if (event.target.closest('[data-dialog-close]')) closeProfessionalDialog();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (professionalDialog.hidden) return;
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeProfessionalDialog();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const focusable = getDialogFocusable();
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+}
 
 renderProfessionals();
 injectProfessionalsSchema();
