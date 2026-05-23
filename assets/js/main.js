@@ -7,8 +7,6 @@ const CONTACT = Object.freeze({
 const siteHeader = document.getElementById('header');
 const menuToggle = document.getElementById('menuToggle');
 const mobileDrawer = document.getElementById('mobileDrawer');
-const closeDemo = document.getElementById('closeDemo');
-const demoBadge = document.getElementById('demoBadge');
 const professionalDialog = document.getElementById('professionalDialog');
 const professionalDialogContent = document.getElementById('professionalDialogContent');
 let lastProfessionalTrigger = null;
@@ -42,10 +40,6 @@ const updateHeader = () => {
 };
 window.addEventListener('scroll', updateHeader, { passive: true });
 updateHeader();
-
-if (closeDemo && demoBadge) {
-  closeDemo.addEventListener('click', () => demoBadge.remove());
-}
 
 // TODO Growi: validar con el cliente la nómina, especialidades, matrículas, minicurrículums y WhatsApp individuales antes de publicación final.
 const professionals = [
