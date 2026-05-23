@@ -1385,6 +1385,16 @@ p {
   background: rgba(255, 253, 248, .54);
 }
 
+.pro-empty {
+  grid-column: 1 / -1;
+  padding: 22px;
+  border: 1px dashed rgba(40, 79, 67, .28);
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 248, .72);
+  color: var(--muted);
+  font-weight: 650;
+}
+
 .avatar {
   width: 62px;
   height: 62px;

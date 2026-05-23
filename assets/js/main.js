@@ -105,6 +105,15 @@ const renderProfessionals = (filter = 'Todos') => {
 
   const filtered = professionals.filter((pro) => matchesFilter(pro, filter));
 
+  if (!filtered.length) {
+    proGrid.innerHTML = `
+      <div class="pro-empty" role="status">
+        No hay profesionales cargados para este filtro por ahora.
+      </div>
+    `;
+    return;
+  }
+
   proGrid.innerHTML = filtered.map((pro) => {
     const avatar = pro.photo
       ? `<img src="${escapeHTML(pro.photo)}" alt="Foto de ${escapeHTML(pro.name)}" loading="lazy" decoding="async" />`
