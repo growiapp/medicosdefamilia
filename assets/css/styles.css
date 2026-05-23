@@ -419,7 +419,7 @@ p {
 
 .hero {
   position: relative;
-  padding: clamp(46px, 7vw, 98px) 0 clamp(74px, 9vw, 132px);
+  padding: clamp(34px, 5.8vw, 72px) 0 clamp(72px, 8vw, 118px);
   overflow: hidden;
 }
 
@@ -437,8 +437,8 @@ p {
 .hero-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.04fr) minmax(0, .88fr);
-  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: minmax(0, 1.05fr) minmax(420px, .82fr);
+  gap: clamp(34px, 5vw, 72px);
   align-items: start;
 }
 
@@ -446,7 +446,7 @@ p {
 
 .hero-copy {
   max-width: 720px;
-  padding-top: 18px;
+  padding-top: clamp(8px, 1.8vw, 24px);
 }
 
 .hero-copy .eyebrow { margin-bottom: 22px; }
@@ -470,7 +470,7 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
-  margin-top: 48px;
+  margin-top: 42px;
   overflow: hidden;
   border: 1px solid rgba(201, 191, 173, .76);
   border-radius: var(--radius-md);
@@ -479,8 +479,8 @@ p {
 }
 
 .trust-item {
-  min-height: 122px;
-  padding: 22px;
+  min-height: 104px;
+  padding: 18px 20px;
   background: rgba(255, 253, 248, .72);
 }
 
@@ -816,14 +816,14 @@ p {
 .hero-premium {
   position: relative;
   display: grid;
-  gap: 18px;
-  padding: 26px;
-  border: 1px solid rgba(201, 191, 173, .82);
-  border-radius: 32px;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid rgba(201, 191, 173, .72);
+  border-radius: 30px;
   background:
-    linear-gradient(180deg, rgba(255, 253, 248, .96) 0%, rgba(242, 246, 240, .92) 100%),
+    linear-gradient(180deg, rgba(255, 253, 248, .72) 0%, rgba(242, 246, 240, .58) 100%),
     radial-gradient(circle at 100% 0%, rgba(40, 79, 67, .08), transparent 14rem);
-  box-shadow: 0 28px 56px -42px rgba(23, 34, 29, .34);
+  box-shadow: 0 28px 60px -50px rgba(23, 34, 29, .32);
   overflow: hidden;
 }
 
@@ -850,8 +850,8 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(201, 191, 173, .66);
+  padding: 2px 4px 0;
+  border-bottom: 0;
 }
 
 .hero-premium-kicker {
@@ -935,17 +935,18 @@ p {
 
 .hero-contact-stack {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
 }
 
 .hero-contact-card {
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) auto;
+  grid-template-columns: 38px minmax(0, 1fr);
   align-items: center;
-  gap: 14px;
-  min-height: 84px;
-  padding: 16px 18px;
-  border-radius: 22px;
+  gap: 10px;
+  min-height: 70px;
+  padding: 12px;
+  border-radius: 18px;
   border: 1px solid rgba(201, 191, 173, .76);
   background: rgba(255, 253, 248, .92);
   box-shadow: var(--shadow-xs);
@@ -964,8 +965,8 @@ p {
 }
 
 .hero-contact-icon {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 999px;
   display: grid;
   place-items: center;
@@ -979,7 +980,7 @@ p {
 .hero-contact-content strong {
   display: block;
   color: var(--ink);
-  font-size: .98rem;
+  font-size: .9rem;
   line-height: 1.24;
 }
 
@@ -987,15 +988,28 @@ p {
   display: block;
   margin-top: 4px;
   color: var(--muted);
-  font-size: .84rem;
+  font-size: .74rem;
   line-height: 1.45;
   overflow-wrap: anywhere;
 }
 
 .hero-contact-arrow {
+  display: none;
   color: var(--green);
   font-size: 1rem;
   font-weight: 800;
+}
+
+.hero-hours-note {
+  padding: 0 4px 2px;
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.55;
+}
+
+.hero-hours-note strong {
+  color: var(--green);
+  font-weight: 850;
 }
 
 .hero-info-strip {
@@ -1041,7 +1055,7 @@ p {
 
 .hero-human-card {
   position: relative;
-  min-height: 260px;
+  min-height: clamp(360px, 35vw, 480px);
   margin: 0;
   overflow: hidden;
   border-radius: 26px;
@@ -1053,7 +1067,7 @@ p {
 .hero-human-card img {
   width: 100%;
   height: 100%;
-  min-height: 260px;
+  min-height: clamp(360px, 35vw, 480px);
   object-fit: cover;
   object-position: 52% 44%;
   filter: saturate(.94) contrast(.98) brightness(1.01);
@@ -2408,11 +2422,11 @@ p {
 
 @media (min-width: 1081px) {
   .hero-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(420px, 520px);
-    align-items: center;
+    grid-template-columns: minmax(0, 1.08fr) minmax(420px, 540px);
+    align-items: start;
   }
   .hero-panel {
-    max-width: 520px;
+    max-width: 540px;
     justify-self: end;
   }
 }
@@ -2511,8 +2525,8 @@ p {
   }
 
   .hero-copy h1 {
-    max-width: 10.5ch;
-    font-size: clamp(3.05rem, 15vw, 4.7rem);
+    max-width: 12.25ch;
+    font-size: clamp(2.75rem, 13vw, 4rem);
     line-height: .98;
     letter-spacing: -.045em;
   }
@@ -2535,14 +2549,23 @@ p {
   }
 
   .hero-trust {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     margin-top: 30px;
-    border-radius: 22px;
+    border-radius: 20px;
   }
 
   .trust-item {
     min-height: auto;
-    padding: 18px 20px;
+    padding: 14px 12px;
+  }
+
+  .trust-value {
+    font-size: clamp(1.38rem, 8vw, 1.85rem);
+  }
+
+  .trust-label {
+    font-size: .78rem;
+    line-height: 1.32;
   }
 
   .hero-panel {
@@ -2689,7 +2712,7 @@ p {
   }
 
   .hero-copy h1 {
-    font-size: clamp(2.85rem, 14vw, 4.15rem);
+    font-size: clamp(2.68rem, 12.2vw, 3.55rem);
   }
 
   .panel-feature,
@@ -2755,6 +2778,14 @@ p {
 
   .hero-premium-copy p {
     max-width: none;
+  }
+
+  .hero-contact-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-hours-note {
+    display: none;
   }
 
   .hero-contact-card {
