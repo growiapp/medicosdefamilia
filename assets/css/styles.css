@@ -108,7 +108,7 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 
-h1 { font-size: clamp(2.7rem, 5vw, 4.95rem); }
+h1 { font-size: clamp(2.55rem, 4.7vw, 4.65rem); }
 h2 { font-size: clamp(2rem, 3.8vw, 3.65rem); }
 h3 { font-size: clamp(1.28rem, 2vw, 1.72rem); }
 
@@ -419,7 +419,7 @@ p {
 
 .hero {
   position: relative;
-  padding: clamp(34px, 5.8vw, 72px) 0 clamp(72px, 8vw, 118px);
+  padding: clamp(34px, 5vw, 64px) 0 clamp(64px, 7vw, 104px);
   overflow: hidden;
 }
 
@@ -452,8 +452,8 @@ p {
 .hero-copy .eyebrow { margin-bottom: 22px; }
 
 .hero-lede {
-  max-width: 56ch;
-  margin-top: 24px;
+  max-width: 54ch;
+  margin-top: 22px;
   font-size: clamp(1.08rem, 1.45vw, 1.26rem);
   line-height: 1.78;
   color: var(--ink-soft);
@@ -470,7 +470,7 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
-  margin-top: 42px;
+  margin-top: 36px;
   overflow: hidden;
   border: 1px solid rgba(201, 191, 173, .76);
   border-radius: var(--radius-md);
@@ -479,8 +479,8 @@ p {
 }
 
 .trust-item {
-  min-height: 104px;
-  padding: 18px 20px;
+  min-height: 96px;
+  padding: 17px 18px;
   background: rgba(255, 253, 248, .72);
 }
 
@@ -543,7 +543,7 @@ p {
 .hero-premium {
   position: relative;
   display: grid;
-  gap: 14px;
+  gap: 12px;
   padding: 16px;
   border: 1px solid rgba(201, 191, 173, .72);
   border-radius: 30px;
@@ -601,8 +601,8 @@ p {
   grid-template-columns: 38px minmax(0, 1fr);
   align-items: center;
   gap: 10px;
-  min-height: 70px;
-  padding: 12px;
+  min-height: 66px;
+  padding: 11px;
   border-radius: 18px;
   border: 1px solid rgba(201, 191, 173, .76);
   background: rgba(255, 253, 248, .92);
@@ -671,7 +671,7 @@ p {
 
 .hero-human-card {
   position: relative;
-  min-height: clamp(360px, 35vw, 480px);
+  min-height: clamp(330px, 32vw, 440px);
   margin: 0;
   overflow: hidden;
   border-radius: 26px;
@@ -683,7 +683,7 @@ p {
 .hero-human-card img {
   width: 100%;
   height: 100%;
-  min-height: clamp(360px, 35vw, 480px);
+  min-height: clamp(330px, 32vw, 440px);
   object-fit: cover;
   object-position: 52% 44%;
   filter: saturate(.94) contrast(.98) brightness(1.01);
@@ -970,7 +970,7 @@ p {
   color: var(--ink-soft);
   border-radius: 999px;
   padding: 9px 14px;
-  font-size: .86rem;
+  font-size: .84rem;
   font-weight: 750;
   cursor: pointer;
   transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
@@ -999,8 +999,8 @@ p {
   grid-template-columns: 62px 1fr;
   gap: 16px;
   min-width: 0;
-  min-height: 156px;
-  padding: 20px;
+  min-height: 150px;
+  padding: 18px;
   border: 1px solid rgba(221, 213, 197, .86);
   border-radius: var(--radius-md);
   background: rgba(255, 253, 248, .74);
@@ -1024,7 +1024,7 @@ p {
   pointer-events: none;
 }
 
-.pro-card:hover {
+.pro-card:not(.is-pending):hover {
   transform: translateY(-3px);
   border-color: rgba(40, 79, 67, .3);
   background: var(--paper-2);
@@ -1037,11 +1037,13 @@ p {
   border-color: rgba(40, 79, 67, .42);
 }
 
-.pro-card:hover::after { opacity: 1; }
+.pro-card:not(.is-pending):hover::after { opacity: 1; }
 
 .pro-card.is-pending {
   border-style: dashed;
   background: rgba(255, 253, 248, .54);
+  cursor: default;
+  box-shadow: none;
 }
 
 .pro-empty {
@@ -1312,7 +1314,7 @@ p {
 
 .service-card {
   position: relative;
-  min-height: 278px;
+  min-height: 246px;
   padding: clamp(24px, 3vw, 34px);
   background: var(--paper-2);
   transition: background .18s ease;
@@ -1325,21 +1327,12 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 58px;
+  margin-bottom: 38px;
   color: var(--muted);
   font-size: .74rem;
   font-weight: 850;
   letter-spacing: .1em;
   text-transform: uppercase;
-}
-
-.service-kicker::after {
-  content: "";
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(40, 79, 67, .2);
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, rgba(40, 79, 67, .18) 0 2px, transparent 3px);
 }
 
 .service-card h3 {
@@ -1453,7 +1446,7 @@ p {
   align-items: center;
   padding: 14px;
   border: 1px solid rgba(221, 213, 197, .8);
-  border-radius: 18px;
+  border-radius: 16px;
   background: rgba(247, 244, 237, .54);
 }
 
@@ -1788,7 +1781,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 22px;
+  margin-top: 18px;
 }
 
 .social-link {
@@ -1943,8 +1936,8 @@ p {
   .brand-subtitle { display: none; }
   .nav-actions .btn { display: none; }
   .mobile-drawer .mobile-actions { grid-template-columns: 1fr; }
-  .hero { padding-top: 36px; }
-  .hero-copy h1 { max-width: 9.5ch; }
+  .hero { padding-top: 30px; }
+  .hero-copy h1 { max-width: 13ch; }
   .hero-trust,
   .pillars,
   .pro-grid,
@@ -1953,8 +1946,8 @@ p {
   }
   .section-head { grid-template-columns: 1fr; gap: 18px; }
   .pillar { min-height: 190px; }
-  .service-card { min-height: 238px; }
-  .service-kicker { margin-bottom: 36px; }
+  .service-card { min-height: auto; }
+  .service-kicker { margin-bottom: 28px; }
   .schedule-row { grid-template-columns: 1fr; gap: 4px; }
   .contact-actions { display: grid; }
   .map-wrap { min-height: 470px; }
@@ -1999,6 +1992,27 @@ p {
   .hero-panel {
     max-width: 760px;
     justify-self: stretch;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1080px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, .95fr) minmax(380px, .78fr);
+    align-items: start;
+  }
+
+  .hero-copy {
+    max-width: none;
+  }
+
+  .hero-panel {
+    order: initial;
+    max-width: none;
+    justify-self: end;
+  }
+
+  .hero-contact-stack {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2050,7 +2064,7 @@ p {
   }
 
       .hero {
-        padding: 34px 0 68px;
+        padding: 30px 0 56px;
         overflow: hidden;
       }
 
@@ -2068,7 +2082,7 @@ p {
   .hero-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 24px;
   }
 
   .hero-copy {
@@ -2076,23 +2090,23 @@ p {
   }
 
   .hero-copy h1 {
-    max-width: 12.25ch;
-    font-size: clamp(2.75rem, 13vw, 4rem);
-    line-height: .98;
-    letter-spacing: -.045em;
+    max-width: 13.5ch;
+    font-size: clamp(2.35rem, 10.8vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -.035em;
   }
 
   .hero-lede {
-    max-width: 32ch;
-    margin-top: 22px;
-    font-size: 1.05rem;
-    line-height: 1.68;
+    max-width: 34ch;
+    margin-top: 18px;
+    font-size: 1rem;
+    line-height: 1.62;
   }
 
   .hero-actions {
     display: grid;
     grid-template-columns: 1fr;
-    margin-top: 28px;
+    margin-top: 24px;
   }
 
   .hero-actions .btn {
@@ -2101,21 +2115,21 @@ p {
 
   .hero-trust {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: 30px;
+    margin-top: 24px;
     border-radius: 20px;
   }
 
   .trust-item {
     min-height: auto;
-    padding: 14px 12px;
+    padding: 12px 10px;
   }
 
   .trust-value {
-    font-size: clamp(1.38rem, 8vw, 1.85rem);
+    font-size: clamp(1.25rem, 7vw, 1.7rem);
   }
 
   .trust-label {
-    font-size: .78rem;
+    font-size: .74rem;
     line-height: 1.32;
   }
 
@@ -2163,7 +2177,7 @@ p {
   }
 
   .hero-copy h1 {
-    font-size: clamp(2.68rem, 12.2vw, 3.55rem);
+    font-size: clamp(2.35rem, 10.5vw, 3.1rem);
   }
 }
 
@@ -2171,8 +2185,8 @@ p {
 @media (max-width: 740px) {
   .hero-premium {
     gap: 14px;
-    padding: 20px;
-    border-radius: 28px;
+    padding: 16px;
+    border-radius: 24px;
   }
 
   .hero-premium-top {
@@ -2304,7 +2318,7 @@ p {
 @media (max-width: 1080px) {
   .hero-human-card,
   .hero-human-card img {
-    min-height: clamp(320px, 56vw, 520px);
+    min-height: clamp(280px, 38vw, 380px);
   }
 
   .hero-human-card img {
@@ -2318,12 +2332,12 @@ p {
 
 @media (max-width: 740px) {
   .hero-human-card {
-    border-radius: 28px;
+    border-radius: 22px;
   }
 
   .hero-human-card,
   .hero-human-card img {
-    min-height: 390px;
+    min-height: 280px;
   }
 
   .hero-human-card img {
@@ -2357,7 +2371,7 @@ p {
 @media (max-width: 430px) {
   .hero-human-card,
   .hero-human-card img {
-    min-height: 340px;
+    min-height: 250px;
   }
 
   .hero-human-card figcaption {

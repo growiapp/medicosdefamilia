@@ -10,15 +10,34 @@ const mobileDrawer = document.getElementById('mobileDrawer');
 const professionalDialog = document.getElementById('professionalDialog');
 const professionalDialogContent = document.getElementById('professionalDialogContent');
 let lastProfessionalTrigger = null;
+let lastMenuTrigger = null;
+
+const pageChrome = [...document.querySelectorAll('body > header, body > main, body > footer')];
+
+if (mobileDrawer) {
+  mobileDrawer.inert = true;
+}
 
 const setMenu = (open) => {
   if (!mobileDrawer || !menuToggle) return;
 
+  if (open) {
+    lastMenuTrigger = document.activeElement === menuToggle ? menuToggle : null;
+  }
+
   mobileDrawer.classList.toggle('open', open);
   mobileDrawer.setAttribute('aria-hidden', String(!open));
+  mobileDrawer.inert = !open;
   menuToggle.setAttribute('aria-expanded', String(open));
   menuToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
   document.body.classList.toggle('menu-open', open);
+
+  if (open) {
+    requestAnimationFrame(() => mobileDrawer.querySelector('a')?.focus());
+  } else if (lastMenuTrigger?.isConnected) {
+    lastMenuTrigger.focus();
+    lastMenuTrigger = null;
+  }
 };
 
 if (menuToggle && mobileDrawer) {
@@ -41,7 +60,7 @@ const updateHeader = () => {
 window.addEventListener('scroll', updateHeader, { passive: true });
 updateHeader();
 
-// TODO Growi: validar con el cliente la nómina, especialidades, matrículas, minicurrículums y WhatsApp individuales antes de publicación final.
+// TODO Growi: validar con el cliente la nómina, especialidades, matrículas y minicurrículums antes de publicación final.
 const professionals = [
   { name: 'Dr. Carlos Presman', treatment: 'Dr.', specialty: 'Clínica médica', description: 'Atención clínica general y seguimiento de adultos.', keywords: ['Carlos Presman', 'clínica médica Córdoba'], phone: null, whatsapp: null, license: null, slug: 'carlos-presman', photo: null },
   { name: 'Dr. Guillermo Calvo', treatment: 'Dr.', specialty: 'Clínica médica', description: 'Consulta clínica, prevención y orientación diagnóstica.', keywords: ['Guillermo Calvo', 'clínica médica Córdoba'], phone: null, whatsapp: null, license: null, slug: 'guillermo-calvo', photo: null },
@@ -116,20 +135,34 @@ const renderProfessionals = (filter = 'Todos') => {
       ? `<img src="${escapeHTML(pro.photo)}" alt="Foto de ${escapeHTML(pro.name)}" loading="lazy" decoding="async" />`
       : escapeHTML(getInitials(pro.name));
 
+    if (pro.isPending) {
+      return `
+        <article class="pro-card is-pending" data-specialty="${escapeHTML(pro.specialty)}">
+          <div class="avatar" aria-hidden="true">${avatar}</div>
+          <div class="pro-content">
+            <h3>${escapeHTML(pro.name)}</h3>
+            <span class="pro-spec">${escapeHTML(pro.specialty)}</span>
+            <p class="pro-desc">${escapeHTML(pro.description)}</p>
+            <span class="pro-more">Pendiente de validación</span>
+          </div>
+        </article>
+      `;
+    }
+
     return `
-      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card${pro.isPending ? ' is-pending' : ''}" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}" itemscope itemtype="https://schema.org/Person">
+      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}">
         <div class="avatar" aria-hidden="true">${avatar}</div>
         <div class="pro-content">
-          <h3 itemprop="name">${escapeHTML(pro.name)}</h3>
-          <span class="pro-spec" itemprop="jobTitle">${escapeHTML(pro.specialty)}</span>
-          <p class="pro-desc" itemprop="description">${escapeHTML(pro.description)}</p>
+          <h3>${escapeHTML(pro.name)}</h3>
+          <span class="pro-spec">${escapeHTML(pro.specialty)}</span>
+          <p class="pro-desc">${escapeHTML(pro.description)}</p>
           <span class="pro-more" aria-hidden="true">Ver información <span>→</span></span>
         </div>
       </article>
     `;
   }).join('');
 
-  proGrid.querySelectorAll('.pro-card').forEach((card) => {
+  proGrid.querySelectorAll('.pro-card:not(.is-pending)').forEach((card) => {
     card.addEventListener('click', () => openProfessionalDialog(card.dataset.slug, card));
     card.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
@@ -152,39 +185,6 @@ filterButtons.forEach((button) => {
     renderProfessionals(button.dataset.filter);
   });
 });
-
-const injectProfessionalsSchema = () => {
-  const publicProfessionals = professionals.filter((pro) => !pro.isPending);
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'Profesionales de Médicos de Familia',
-    itemListElement: publicProfessionals.map((pro, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': 'Person',
-        name: pro.name,
-        jobTitle: pro.specialty,
-        description: pro.description,
-        worksFor: {
-          '@type': 'MedicalClinic',
-          name: 'Médicos de Familia',
-          telephone: CONTACT.phoneUrl.replace('tel:', ''),
-          hasMap: CONTACT.mapsUrl,
-          sameAs: [CONTACT.whatsappUrl]
-        },
-        url: `#profesional-${pro.slug}`,
-        knowsAbout: pro.keywords
-      }
-    }))
-  };
-
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.textContent = JSON.stringify(schema);
-  document.head.appendChild(script);
-};
 
 const getProfessionalBySlug = (slug) => professionals.find((pro) => pro.slug === slug);
 
@@ -240,7 +240,7 @@ const renderProfessionalDialog = (pro) => {
       ` : ''}
     </dl>
 
-    ${hasCurricularInfo ? '' : '<p class="professional-note">Información profesional pendiente de validación final.</p>'}
+    ${hasCurricularInfo ? '' : '<p class="professional-note">Matrícula y minicurrículum se incorporarán cuando el centro valide la información final.</p>'}
 
     <div class="professional-actions">
       <a class="btn btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar turno por WhatsApp</a>
@@ -272,6 +272,9 @@ const openProfessionalDialog = (slug, trigger) => {
   professionalDialog.hidden = false;
   professionalDialog.setAttribute('aria-hidden', 'false');
   document.body.classList.add('professional-open');
+  pageChrome.forEach((element) => {
+    element.inert = true;
+  });
   setProfessionalTriggersExpanded(true, trigger);
 
   const closeButton = professionalDialog.querySelector('.professional-close');
@@ -284,6 +287,9 @@ const closeProfessionalDialog = () => {
   professionalDialog.hidden = true;
   professionalDialog.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('professional-open');
+  pageChrome.forEach((element) => {
+    element.inert = false;
+  });
   setProfessionalTriggersExpanded(false);
 
   if (lastProfessionalTrigger?.isConnected) {
@@ -325,7 +331,6 @@ if (professionalDialog) {
 }
 
 renderProfessionals();
-injectProfessionalsSchema();
 
 const revealElements = document.querySelectorAll('.reveal');
 
