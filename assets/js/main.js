@@ -12,9 +12,10 @@ const professionalDialogContent = document.getElementById('professionalDialogCon
 let lastProfessionalTrigger = null;
 let lastMenuTrigger = null;
 let closeDialogTimer = null;
+let filterTimer = null;
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const dialogMotionMs = prefersReducedMotion ? 0 : 340;
+const dialogMotionMs = prefersReducedMotion ? 0 : 420;
 
 const pageChrome = [...document.querySelectorAll('body > header, body > main, body > footer')];
 
@@ -134,14 +135,14 @@ const renderProfessionals = (filter = 'Todos') => {
     return;
   }
 
-  proGrid.innerHTML = filtered.map((pro) => {
+  proGrid.innerHTML = filtered.map((pro, index) => {
     const avatar = pro.photo
       ? `<img src="${escapeHTML(pro.photo)}" alt="Foto de ${escapeHTML(pro.name)}" loading="lazy" decoding="async" />`
       : escapeHTML(getInitials(pro.name));
 
     if (pro.isPending) {
       return `
-        <article class="pro-card is-pending" data-specialty="${escapeHTML(pro.specialty)}">
+        <article class="pro-card is-pending" data-specialty="${escapeHTML(pro.specialty)}" style="--stagger-index: ${index}">
           <div class="avatar" aria-hidden="true">${avatar}</div>
           <div class="pro-content">
             <h3>${escapeHTML(pro.name)}</h3>
@@ -154,7 +155,7 @@ const renderProfessionals = (filter = 'Todos') => {
     }
 
     return `
-      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}">
+      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}" style="--stagger-index: ${index}">
         <div class="avatar" aria-hidden="true">${avatar}</div>
         <div class="pro-content">
           <h3>${escapeHTML(pro.name)}</h3>
@@ -192,11 +193,12 @@ filterButtons.forEach((button) => {
       return;
     }
 
+    window.clearTimeout(filterTimer);
     proGrid.classList.add('is-filtering');
-    window.setTimeout(() => {
+    filterTimer = window.setTimeout(() => {
       renderProfessionals(button.dataset.filter);
       requestAnimationFrame(() => proGrid.classList.remove('is-filtering'));
-    }, 120);
+    }, 170);
   });
 });
 
