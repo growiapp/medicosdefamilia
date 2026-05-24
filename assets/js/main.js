@@ -11,6 +11,10 @@ const professionalDialog = document.getElementById('professionalDialog');
 const professionalDialogContent = document.getElementById('professionalDialogContent');
 let lastProfessionalTrigger = null;
 let lastMenuTrigger = null;
+let closeDialogTimer = null;
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const dialogMotionMs = prefersReducedMotion ? 0 : 340;
 
 const pageChrome = [...document.querySelectorAll('body > header, body > main, body > footer')];
 
@@ -182,7 +186,17 @@ filterButtons.forEach((button) => {
 
     button.classList.add('active');
     button.setAttribute('aria-pressed', 'true');
-    renderProfessionals(button.dataset.filter);
+
+    if (prefersReducedMotion || !proGrid) {
+      renderProfessionals(button.dataset.filter);
+      return;
+    }
+
+    proGrid.classList.add('is-filtering');
+    window.setTimeout(() => {
+      renderProfessionals(button.dataset.filter);
+      requestAnimationFrame(() => proGrid.classList.remove('is-filtering'));
+    }, 120);
   });
 });
 
@@ -267,8 +281,10 @@ const openProfessionalDialog = (slug, trigger) => {
   const pro = getProfessionalBySlug(slug);
   if (!pro || !professionalDialog || !professionalDialogContent) return;
 
+  window.clearTimeout(closeDialogTimer);
   lastProfessionalTrigger = trigger;
   renderProfessionalDialog(pro);
+  professionalDialog.classList.remove('is-closing');
   professionalDialog.hidden = false;
   professionalDialog.setAttribute('aria-hidden', 'false');
   document.body.classList.add('professional-open');
@@ -278,24 +294,33 @@ const openProfessionalDialog = (slug, trigger) => {
   setProfessionalTriggersExpanded(true, trigger);
 
   const closeButton = professionalDialog.querySelector('.professional-close');
-  requestAnimationFrame(() => closeButton?.focus());
+  requestAnimationFrame(() => {
+    professionalDialog.classList.add('is-open');
+    closeButton?.focus();
+  });
 };
 
 const closeProfessionalDialog = () => {
   if (!professionalDialog || professionalDialog.hidden) return;
 
-  professionalDialog.hidden = true;
-  professionalDialog.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('professional-open');
-  pageChrome.forEach((element) => {
-    element.inert = false;
-  });
+  professionalDialog.classList.remove('is-open');
+  professionalDialog.classList.add('is-closing');
   setProfessionalTriggersExpanded(false);
 
-  if (lastProfessionalTrigger?.isConnected) {
-    lastProfessionalTrigger.focus();
-  }
-  lastProfessionalTrigger = null;
+  closeDialogTimer = window.setTimeout(() => {
+    professionalDialog.hidden = true;
+    professionalDialog.setAttribute('aria-hidden', 'true');
+    professionalDialog.classList.remove('is-closing');
+    document.body.classList.remove('professional-open');
+    pageChrome.forEach((element) => {
+      element.inert = false;
+    });
+
+    if (lastProfessionalTrigger?.isConnected) {
+      lastProfessionalTrigger.focus();
+    }
+    lastProfessionalTrigger = null;
+  }, dialogMotionMs);
 };
 
 if (professionalDialog) {
@@ -334,7 +359,9 @@ renderProfessionals();
 
 const revealElements = document.querySelectorAll('.reveal');
 
-if ('IntersectionObserver' in window) {
+if (prefersReducedMotion) {
+  revealElements.forEach((element) => element.classList.add('visible'));
+} else if ('IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
