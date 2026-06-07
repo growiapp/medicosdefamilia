@@ -1,5 +1,5 @@
 const CONTACT = Object.freeze({
-  whatsappUrl: 'https://wa.me/543513199546',
+  whatsappUrl: 'https://wa.me/543513199546?text=Hola%20M%C3%A9dicos%20de%20Familia%2C%20quiero%20hacer%20una%20consulta%20o%20coordinar%20un%20turno.',
   phoneUrl: 'tel:+543514214225',
   mapsUrl: 'https://www.google.com/maps?q=27+de+abril+1254+C%C3%B3rdoba+Argentina+5000'
 });
@@ -67,25 +67,37 @@ updateHeader();
 
 // TODO Growi: validar con el cliente la nómina, especialidades, matrículas y minicurrículums antes de publicación final.
 const professionals = [
-  { name: 'Dr. Carlos Presman', treatment: 'Dr.', specialty: 'Clínica médica', description: 'Atención clínica general y seguimiento de adultos.', keywords: ['Carlos Presman', 'clínica médica Córdoba'], phone: null, whatsapp: null, license: null, slug: 'carlos-presman', photo: null },
-  { name: 'Dr. Guillermo Calvo', treatment: 'Dr.', specialty: 'Clínica médica', description: 'Consulta clínica, prevención y orientación diagnóstica.', keywords: ['Guillermo Calvo', 'clínica médica Córdoba'], phone: null, whatsapp: null, license: null, slug: 'guillermo-calvo', photo: null },
-  { name: 'Dra. Juana Presman', treatment: 'Dra.', specialty: 'Clínica médica - Adolescentes', description: 'Seguimiento clínico orientado a adolescentes.', keywords: ['Juana Presman', 'adolescentes Córdoba'], phone: null, whatsapp: null, license: null, slug: 'juana-presman', photo: null },
-  { name: 'Dr. Luis Ahumada', treatment: 'Dr.', specialty: 'Pediatría', description: 'Atención pediátrica y acompañamiento familiar.', keywords: ['Luis Ahumada', 'pediatría Córdoba'], phone: null, whatsapp: null, license: null, slug: 'luis-ahumada', photo: null },
-  { name: 'Dr. Marcelo Arguello', treatment: 'Dr.', specialty: 'Pediatría', description: 'Controles, crecimiento y salud infantil.', keywords: ['Marcelo Arguello', 'pediatría Córdoba'], phone: null, whatsapp: null, license: null, slug: 'marcelo-arguello', photo: null },
-  { name: 'Dra. Graciela Testa', treatment: 'Dra.', specialty: 'Endocrinología infanto juvenil', description: 'Atención endocrinológica en infancias y adolescencias.', keywords: ['Graciela Testa', 'endocrinología infanto juvenil Córdoba'], phone: null, whatsapp: null, license: null, slug: 'graciela-testa', photo: null },
-  { name: 'Dra. Valeria Gaón', treatment: 'Dra.', specialty: 'Endocrinología adultos - Diabetes', description: 'Seguimiento endocrinológico y diabetes en adultos.', keywords: ['Valeria Gaón', 'diabetes Córdoba'], phone: null, whatsapp: null, license: null, slug: 'valeria-gaon', photo: null },
-  { name: 'Dra. Ana Corrado', treatment: 'Dra.', specialty: 'Dermatología', description: 'Consulta dermatológica y cuidado de la piel.', keywords: ['Ana Corrado', 'dermatología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'ana-corrado', photo: null },
-  { name: 'Dra. Mariela Álvarez', treatment: 'Dra.', specialty: 'Dermatología estética', description: 'Atención estética dermatológica.', keywords: ['Mariela Álvarez', 'dermatología estética Córdoba'], phone: null, whatsapp: null, license: null, slug: 'mariela-alvarez', photo: null },
-  { name: 'Dra. Mónica Garrone', treatment: 'Dra.', specialty: 'Fisioterapia', description: 'Acompañamiento físico y recuperación funcional.', keywords: ['Mónica Garrone', 'fisioterapia Córdoba'], phone: null, whatsapp: null, license: null, slug: 'monica-garrone', photo: null },
-  { name: 'Dr. Clovis Domínguez', treatment: 'Dr.', specialty: 'Medicina laboral', description: 'Consultas vinculadas a salud y ámbito laboral.', keywords: ['Clovis Domínguez', 'medicina laboral Córdoba'], phone: null, whatsapp: null, license: null, slug: 'clovis-dominguez', photo: null },
-  { name: 'Dr. Guillermo Ferrero', treatment: 'Dr.', specialty: 'Psiquiatría y psicología', description: 'Atención de salud mental y acompañamiento terapéutico.', keywords: ['Guillermo Ferrero', 'psiquiatría Córdoba', 'psicología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'guillermo-ferrero', photo: null },
-  { name: 'Lic. María Inés Salto', treatment: 'Lic.', specialty: 'Psicopedagogía - Psicoanálisis', description: 'Procesos psicopedagógicos y psicoanalíticos.', keywords: ['María Inés Salto', 'psicopedagogía Córdoba'], phone: null, whatsapp: null, license: null, slug: 'maria-ines-salto', photo: null },
-  { name: 'Lic. Adriana Vitelli', treatment: 'Lic.', specialty: 'Psicología', description: 'Atención psicológica y espacios de escucha.', keywords: ['Adriana Vitelli', 'psicología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'adriana-vitelli', photo: null },
-  { name: 'Dr. Ariel Gaón', treatment: 'Dr.', specialty: 'Prácticas cardiovasculares', description: 'Prácticas y evaluación cardiovascular.', keywords: ['Ariel Gaón', 'prácticas cardiovasculares Córdoba'], phone: null, whatsapp: null, license: null, slug: 'ariel-gaon', photo: null },
-  { name: 'Lic. Julieta Agüero', treatment: 'Lic.', specialty: 'Nutrición', description: 'Orientación nutricional y hábitos sostenibles.', keywords: ['Julieta Agüero', 'nutrición Córdoba'], phone: null, whatsapp: null, license: null, slug: 'julieta-aguero', photo: null },
-  { name: 'Dra. Sara Ochoa', treatment: 'Dra.', specialty: 'Ginecología', description: 'Controles ginecológicos y salud integral.', keywords: ['Sara Ochoa', 'ginecología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'sara-ochoa', photo: null },
-  { name: 'Dra. Graciela Giachero', treatment: 'Dra.', specialty: 'Traumatología', description: 'Evaluación traumatológica y seguimiento físico.', keywords: ['Graciela Giachero', 'traumatología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'graciela-giachero', photo: null },
-  { name: 'Profesional pendiente de validación', treatment: null, specialty: 'Especialidad pendiente', description: 'Espacio reservado para completar la nómina final de 19 profesionales con datos validados por el cliente.', keywords: [], phone: null, whatsapp: null, license: null, slug: 'profesional-pendiente-validacion', photo: null, isPending: true }
+  { type: 'professional', name: 'Dr. Carlos Presman', treatment: 'Dr.', specialty: 'Clínica médica', description: 'Atención clínica general y seguimiento de adultos.', keywords: ['Carlos Presman', 'clínica médica Córdoba'], phone: null, whatsapp: null, license: null, slug: 'carlos-presman', photo: null },
+  { type: 'professional', name: 'Dr. Guillermo Calvo', treatment: 'Dr.', specialty: 'Clínica médica', description: 'Consulta clínica, prevención y orientación diagnóstica.', keywords: ['Guillermo Calvo', 'clínica médica Córdoba'], phone: null, whatsapp: null, license: null, slug: 'guillermo-calvo', photo: null },
+  { type: 'professional', name: 'Dra. Juana Presman', treatment: 'Dra.', specialty: 'Clínica médica - Adolescentes', description: 'Seguimiento clínico orientado a adolescentes.', keywords: ['Juana Presman', 'adolescentes Córdoba'], phone: null, whatsapp: null, license: null, slug: 'juana-presman', photo: null },
+  { type: 'professional', name: 'Dr. Luis Ahumada', treatment: 'Dr.', specialty: 'Pediatría', description: 'Atención pediátrica y acompañamiento familiar.', keywords: ['Luis Ahumada', 'pediatría Córdoba'], phone: null, whatsapp: null, license: null, slug: 'luis-ahumada', photo: null },
+  { type: 'professional', name: 'Dr. Marcelo Arguello', treatment: 'Dr.', specialty: 'Pediatría', description: 'Controles, crecimiento y salud infantil.', keywords: ['Marcelo Arguello', 'pediatría Córdoba'], phone: null, whatsapp: null, license: null, slug: 'marcelo-arguello', photo: null },
+  { type: 'professional', name: 'Dra. Graciela Testa', treatment: 'Dra.', specialty: 'Endocrinología infanto juvenil', description: 'Atención endocrinológica en infancias y adolescencias.', keywords: ['Graciela Testa', 'endocrinología infanto juvenil Córdoba'], phone: null, whatsapp: null, license: null, slug: 'graciela-testa', photo: null },
+  { type: 'professional', name: 'Dra. Valeria Gaón', treatment: 'Dra.', specialty: 'Endocrinología adultos - Diabetes', description: 'Seguimiento endocrinológico y diabetes en adultos.', keywords: ['Valeria Gaón', 'diabetes Córdoba'], phone: null, whatsapp: null, license: null, slug: 'valeria-gaon', photo: null },
+  { type: 'professional', name: 'Dra. Ana Corrado', treatment: 'Dra.', specialty: 'Dermatología', description: 'Consulta dermatológica y cuidado de la piel.', keywords: ['Ana Corrado', 'dermatología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'ana-corrado', photo: null },
+  { type: 'professional', name: 'Dra. Mariela Álvarez', treatment: 'Dra.', specialty: 'Dermatología estética', description: 'Atención estética dermatológica.', keywords: ['Mariela Álvarez', 'dermatología estética Córdoba'], phone: null, whatsapp: null, license: null, slug: 'mariela-alvarez', photo: null },
+  { type: 'professional', name: 'Dra. Mónica Garrone', treatment: 'Dra.', specialty: 'Fisioterapia', description: 'Acompañamiento físico y recuperación funcional.', keywords: ['Mónica Garrone', 'fisioterapia Córdoba'], phone: null, whatsapp: null, license: null, slug: 'monica-garrone', photo: null },
+  { type: 'professional', name: 'Dr. Clovis Domínguez', treatment: 'Dr.', specialty: 'Medicina laboral', description: 'Consultas vinculadas a salud y ámbito laboral.', keywords: ['Clovis Domínguez', 'medicina laboral Córdoba'], phone: null, whatsapp: null, license: null, slug: 'clovis-dominguez', photo: null },
+  { type: 'professional', name: 'Dr. Guillermo Ferrero', treatment: 'Dr.', specialty: 'Psiquiatría y psicología', description: 'Atención de salud mental y acompañamiento terapéutico.', keywords: ['Guillermo Ferrero', 'psiquiatría Córdoba', 'psicología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'guillermo-ferrero', photo: null },
+  { type: 'professional', name: 'Lic. María Inés Salto', treatment: 'Lic.', specialty: 'Psicopedagogía - Psicoanálisis', description: 'Procesos psicopedagógicos y psicoanalíticos.', keywords: ['María Inés Salto', 'psicopedagogía Córdoba'], phone: null, whatsapp: null, license: null, slug: 'maria-ines-salto', photo: null },
+  { type: 'professional', name: 'Lic. Adriana Vitelli', treatment: 'Lic.', specialty: 'Psicología', description: 'Atención psicológica y espacios de escucha.', keywords: ['Adriana Vitelli', 'psicología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'adriana-vitelli', photo: null },
+  { type: 'professional', name: 'Dr. Ariel Gaón', treatment: 'Dr.', specialty: 'Prácticas cardiovasculares', description: 'Prácticas y evaluación cardiovascular.', keywords: ['Ariel Gaón', 'prácticas cardiovasculares Córdoba'], phone: null, whatsapp: null, license: null, slug: 'ariel-gaon', photo: null },
+  { type: 'professional', name: 'Lic. Julieta Agüero', treatment: 'Lic.', specialty: 'Nutrición', description: 'Orientación nutricional y hábitos sostenibles.', keywords: ['Julieta Agüero', 'nutrición Córdoba'], phone: null, whatsapp: null, license: null, slug: 'julieta-aguero', photo: null },
+  { type: 'professional', name: 'Dra. Sara Ochoa', treatment: 'Dra.', specialty: 'Ginecología', description: 'Controles ginecológicos y salud integral.', keywords: ['Sara Ochoa', 'ginecología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'sara-ochoa', photo: null },
+  { type: 'professional', name: 'Dra. Graciela Giachero', treatment: 'Dra.', specialty: 'Traumatología', description: 'Evaluación traumatológica y seguimiento físico.', keywords: ['Graciela Giachero', 'traumatología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'graciela-giachero', photo: null },
+  { type: 'professional', name: 'Profesional pendiente de validación', treatment: null, specialty: 'Especialidad pendiente', description: 'Espacio reservado para completar la nómina final de 19 profesionales con datos validados por el cliente.', keywords: [], phone: null, whatsapp: null, license: null, slug: 'profesional-pendiente-validacion', photo: null, isPending: true },
+  // TODO Growi: completar datos de Red Mayor cuando sean validados por el cliente (logo, miembros, descripción definitiva).
+  {
+    type: 'space',
+    name: 'Red Mayor',
+    subtitle: 'Espacio de Gerontología',
+    description: 'Espacio especializado en gerontología dentro de Médicos de Familia, orientado al cuidado integral y acompañamiento de adultos mayores.',
+    logo: './assets/images/logos/red-mayor-logo.png',
+    members: [], // TODO Growi: incorporar miembros del equipo cuando sea validado
+    whatsapp: null, // TODO Growi: agregar WhatsApp propio si el centro lo confirma
+    slug: 'red-mayor',
+    isPending: true
+  }
 ];
 
 const proGrid = document.getElementById('proGrid');
@@ -108,6 +120,7 @@ const getInitials = (name) => {
 
 const matchesFilter = (pro, filter) => {
   if (filter === 'Todos') return true;
+  if (pro.type === 'space') return false;
   if (pro.isPending) return false;
 
   const specialty = pro.specialty.toLowerCase();
@@ -136,6 +149,24 @@ const renderProfessionals = (filter = 'Todos') => {
   }
 
   proGrid.innerHTML = filtered.map((pro, index) => {
+    if (pro.type === 'space') {
+      const logoImg = pro.logo
+        ? `<img src="${escapeHTML(pro.logo)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.dataset.fallback='true'" />`
+        : '';
+
+      return `
+        <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card is-space" data-specialty="Gerontología" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-haspopup="dialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}" style="--stagger-index: ${index}">
+          <div class="space-avatar" aria-hidden="true" data-initials="RM">${logoImg}</div>
+          <div class="pro-content">
+            <h3>${escapeHTML(pro.name)}</h3>
+            <span class="pro-spec">${escapeHTML(pro.subtitle || 'Espacio especializado')}</span>
+            <p class="pro-desc">${escapeHTML(pro.description)}</p>
+            <span class="pro-more" aria-hidden="true">Ver información <span>→</span></span>
+          </div>
+        </article>
+      `;
+    }
+
     const avatar = pro.photo
       ? `<img src="${escapeHTML(pro.photo)}" alt="Foto de ${escapeHTML(pro.name)}" loading="lazy" decoding="async" />`
       : escapeHTML(getInitials(pro.name));
@@ -155,7 +186,7 @@ const renderProfessionals = (filter = 'Todos') => {
     }
 
     return `
-      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}" style="--stagger-index: ${index}">
+      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-haspopup="dialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}" style="--stagger-index: ${index}">
         <div class="avatar" aria-hidden="true">${avatar}</div>
         <div class="pro-content">
           <h3>${escapeHTML(pro.name)}</h3>
@@ -204,7 +235,13 @@ filterButtons.forEach((button) => {
 
 const getProfessionalBySlug = (slug) => professionals.find((pro) => pro.slug === slug);
 
-const getContactUrl = (pro) => pro?.whatsapp || CONTACT.whatsappUrl;
+const getContactUrl = (pro) => {
+  if (pro?.whatsapp) return pro.whatsapp;
+  if (pro?.type === 'space' && pro?.slug === 'red-mayor') {
+    return 'https://wa.me/543513199546?text=Hola%20M%C3%A9dicos%20de%20Familia%2C%20quisiera%20consultar%20por%20Red%20Mayor.';
+  }
+  return CONTACT.whatsappUrl;
+};
 
 const renderKeywordList = (keywords) => {
   if (!keywords?.length) return '';
@@ -217,8 +254,48 @@ const renderKeywordList = (keywords) => {
 };
 
 const renderProfessionalDialog = (pro) => {
-  const hasCurricularInfo = Boolean(pro.license || pro.phone || pro.whatsapp);
   const contactUrl = getContactUrl(pro);
+
+  if (pro.type === 'space') {
+    const logoImg = pro.logo
+      ? `<img src="${escapeHTML(pro.logo)}" alt="Logo ${escapeHTML(pro.name)}" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.dataset.fallback='true'" />`
+      : '';
+
+    professionalDialogContent.innerHTML = `
+      <div class="professional-hero space-hero">
+        <div class="space-dialog-logo" aria-hidden="true" data-initials="RM">${logoImg}</div>
+        <div>
+          <span class="professional-kicker">Espacio de atención especializada</span>
+          <h2 id="professionalDialogTitle">${escapeHTML(pro.name)}</h2>
+        </div>
+        <span class="professional-specialty">${escapeHTML(pro.subtitle || '')}</span>
+        <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.description)}</p>
+      </div>
+
+      ${pro.members?.length ? `
+        <dl class="professional-meta">
+          <div class="professional-meta-row">
+            <dt>Equipo</dt>
+            <dd>${pro.members.map((m) => escapeHTML(m)).join(', ')}</dd>
+          </div>
+        </dl>
+      ` : ''}
+
+      ${pro.isPending ? `
+        <p class="professional-note">
+          Información del espacio en proceso de validación final. Los datos definitivos del equipo se incorporarán próximamente.
+        </p>
+      ` : ''}
+
+      <div class="professional-actions">
+        <a class="btn btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <a class="btn btn-light" href="tel:+543514214225">Llamar al centro</a>
+      </div>
+    `;
+    return;
+  }
+
+  const hasCurricularInfo = Boolean(pro.license || pro.phone || pro.whatsapp);
 
   professionalDialogContent.innerHTML = `
     <div class="professional-hero">

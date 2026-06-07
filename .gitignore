@@ -1,0 +1,13 @@
+# Claude Code local config
+.claude/
+# Claude Code auto-generated skills (not part of the project)
+.github/skills/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo
