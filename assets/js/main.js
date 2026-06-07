@@ -65,38 +65,176 @@ const updateHeader = () => {
 window.addEventListener('scroll', updateHeader, { passive: true });
 updateHeader();
 
-// TODO Growi: validar con el cliente la nómina, especialidades, matrículas y minicurrículums antes de publicación final.
 const professionals = [
-  { type: 'professional', name: 'Dr. Carlos Presman', treatment: 'Dr.', specialty: 'Clínica médica', description: 'Atención clínica general y seguimiento de adultos.', keywords: ['Carlos Presman', 'clínica médica Córdoba'], phone: null, whatsapp: null, license: null, slug: 'carlos-presman', photo: null },
-  { type: 'professional', name: 'Dr. Guillermo Calvo', treatment: 'Dr.', specialty: 'Clínica médica', description: 'Consulta clínica, prevención y orientación diagnóstica.', keywords: ['Guillermo Calvo', 'clínica médica Córdoba'], phone: null, whatsapp: null, license: null, slug: 'guillermo-calvo', photo: null },
-  { type: 'professional', name: 'Dra. Juana Presman', treatment: 'Dra.', specialty: 'Clínica médica - Adolescentes', description: 'Seguimiento clínico orientado a adolescentes.', keywords: ['Juana Presman', 'adolescentes Córdoba'], phone: null, whatsapp: null, license: null, slug: 'juana-presman', photo: null },
-  { type: 'professional', name: 'Dr. Luis Ahumada', treatment: 'Dr.', specialty: 'Pediatría', description: 'Atención pediátrica y acompañamiento familiar.', keywords: ['Luis Ahumada', 'pediatría Córdoba'], phone: null, whatsapp: null, license: null, slug: 'luis-ahumada', photo: null },
-  { type: 'professional', name: 'Dr. Marcelo Arguello', treatment: 'Dr.', specialty: 'Pediatría', description: 'Controles, crecimiento y salud infantil.', keywords: ['Marcelo Arguello', 'pediatría Córdoba'], phone: null, whatsapp: null, license: null, slug: 'marcelo-arguello', photo: null },
-  { type: 'professional', name: 'Dra. Graciela Testa', treatment: 'Dra.', specialty: 'Endocrinología infanto juvenil', description: 'Atención endocrinológica en infancias y adolescencias.', keywords: ['Graciela Testa', 'endocrinología infanto juvenil Córdoba'], phone: null, whatsapp: null, license: null, slug: 'graciela-testa', photo: null },
-  { type: 'professional', name: 'Dra. Valeria Gaón', treatment: 'Dra.', specialty: 'Endocrinología adultos - Diabetes', description: 'Seguimiento endocrinológico y diabetes en adultos.', keywords: ['Valeria Gaón', 'diabetes Córdoba'], phone: null, whatsapp: null, license: null, slug: 'valeria-gaon', photo: null },
-  { type: 'professional', name: 'Dra. Ana Corrado', treatment: 'Dra.', specialty: 'Dermatología', description: 'Consulta dermatológica y cuidado de la piel.', keywords: ['Ana Corrado', 'dermatología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'ana-corrado', photo: null },
-  { type: 'professional', name: 'Dra. Mariela Álvarez', treatment: 'Dra.', specialty: 'Dermatología estética', description: 'Atención estética dermatológica.', keywords: ['Mariela Álvarez', 'dermatología estética Córdoba'], phone: null, whatsapp: null, license: null, slug: 'mariela-alvarez', photo: null },
-  { type: 'professional', name: 'Dra. Mónica Garrone', treatment: 'Dra.', specialty: 'Fisioterapia', description: 'Acompañamiento físico y recuperación funcional.', keywords: ['Mónica Garrone', 'fisioterapia Córdoba'], phone: null, whatsapp: null, license: null, slug: 'monica-garrone', photo: null },
-  { type: 'professional', name: 'Dr. Clovis Domínguez', treatment: 'Dr.', specialty: 'Medicina laboral', description: 'Consultas vinculadas a salud y ámbito laboral.', keywords: ['Clovis Domínguez', 'medicina laboral Córdoba'], phone: null, whatsapp: null, license: null, slug: 'clovis-dominguez', photo: null },
-  { type: 'professional', name: 'Dr. Guillermo Ferrero', treatment: 'Dr.', specialty: 'Psiquiatría y psicología', description: 'Atención de salud mental y acompañamiento terapéutico.', keywords: ['Guillermo Ferrero', 'psiquiatría Córdoba', 'psicología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'guillermo-ferrero', photo: null },
-  { type: 'professional', name: 'Lic. María Inés Salto', treatment: 'Lic.', specialty: 'Psicopedagogía - Psicoanálisis', description: 'Procesos psicopedagógicos y psicoanalíticos.', keywords: ['María Inés Salto', 'psicopedagogía Córdoba'], phone: null, whatsapp: null, license: null, slug: 'maria-ines-salto', photo: null },
-  { type: 'professional', name: 'Lic. Adriana Vitelli', treatment: 'Lic.', specialty: 'Psicología', description: 'Atención psicológica y espacios de escucha.', keywords: ['Adriana Vitelli', 'psicología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'adriana-vitelli', photo: null },
-  { type: 'professional', name: 'Dr. Ariel Gaón', treatment: 'Dr.', specialty: 'Prácticas cardiovasculares', description: 'Prácticas y evaluación cardiovascular.', keywords: ['Ariel Gaón', 'prácticas cardiovasculares Córdoba'], phone: null, whatsapp: null, license: null, slug: 'ariel-gaon', photo: null },
-  { type: 'professional', name: 'Lic. Julieta Agüero', treatment: 'Lic.', specialty: 'Nutrición', description: 'Orientación nutricional y hábitos sostenibles.', keywords: ['Julieta Agüero', 'nutrición Córdoba'], phone: null, whatsapp: null, license: null, slug: 'julieta-aguero', photo: null },
-  { type: 'professional', name: 'Dra. Sara Ochoa', treatment: 'Dra.', specialty: 'Ginecología', description: 'Controles ginecológicos y salud integral.', keywords: ['Sara Ochoa', 'ginecología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'sara-ochoa', photo: null },
-  { type: 'professional', name: 'Dra. Graciela Giachero', treatment: 'Dra.', specialty: 'Traumatología', description: 'Evaluación traumatológica y seguimiento físico.', keywords: ['Graciela Giachero', 'traumatología Córdoba'], phone: null, whatsapp: null, license: null, slug: 'graciela-giachero', photo: null },
-  { type: 'professional', name: 'Profesional pendiente de validación', treatment: null, specialty: 'Especialidad pendiente', description: 'Espacio reservado para completar la nómina final de 19 profesionales con datos validados por el cliente.', keywords: [], phone: null, whatsapp: null, license: null, slug: 'profesional-pendiente-validacion', photo: null, isPending: true },
-  // TODO Growi: completar datos de Red Mayor cuando sean validados por el cliente (logo, miembros, descripción definitiva).
+  // ── Clínica Médica / Medicina Interna ──────────────────────────────────────
+  {
+    type: 'professional', name: 'Dr. Carlos Presman', treatment: 'Dr.',
+    specialty: 'Clínica Médica · Terapia Intensiva',
+    description: 'Médico clínico de adultos y adultos mayores. Especialista en Medicina Interna y Terapia Intensiva.',
+    keywords: ['clínica médica', 'medicina interna', 'terapia intensiva', 'adultos mayores'],
+    phone: null, whatsapp: null, license: 'MP 17871 · MP 5130 · MP 9125',
+    slug: 'carlos-presman', photo: null
+  },
+  {
+    type: 'professional', name: 'Dr. Guillermo Calvo Hidalgo', treatment: 'Dr.',
+    specialty: 'Cardiología · Clínica Médica',
+    description: 'Especialista en Cardiología y Clínica Médica.',
+    keywords: ['cardiología', 'clínica médica', 'adultos'],
+    phone: null, whatsapp: null, license: 'MP 24172 · CE 8341 · CE 13122',
+    slug: 'guillermo-calvo-hidalgo', photo: null
+  },
+  {
+    type: 'professional', name: 'Dra. Juana A. Presman', treatment: 'Dra.',
+    specialty: 'Medicina Interna · Adolescencia',
+    description: 'Medicina interna con enfoque en adolescentes. Atención especializada de desórdenes alimentarios.',
+    keywords: ['medicina interna', 'adolescentes', 'desórdenes alimentarios'],
+    phone: null, whatsapp: null, license: 'MP 13353 · ME 4328',
+    slug: 'juana-presman', photo: null
+  },
+  {
+    type: 'professional', name: 'Julio César Guerini', treatment: null,
+    specialty: 'Medicina Interna · Medicina del Trabajo · Medicina Legal',
+    description: 'Especialista en Medicina Interna, Medicina Legal y Medicina del Trabajo.',
+    keywords: ['medicina interna', 'medicina laboral', 'medicina legal'],
+    phone: null, whatsapp: null, license: 'MP 36.996 · MN 157187 · CE 18.660 · CE 19.577 · CE 22.157',
+    slug: 'julio-guerini', photo: null
+  },
+  // ── Pediatría ──────────────────────────────────────────────────────────────
+  {
+    type: 'professional', name: 'Dr. Marcelo H. Argüello', treatment: 'Dr.',
+    specialty: 'Pediatría · Emergentología Pediátrica',
+    description: 'Pediatra y emergentologo pediátrico. Atención integral y urgencias pediátricas.',
+    keywords: ['pediatría', 'emergentología', 'urgencias pediátricas', 'niños'],
+    phone: null, whatsapp: null, license: 'MP 20281 · MN 121953 · ME 6827 · ME 14369',
+    slug: 'marcelo-arguello', photo: null
+  },
+  {
+    type: 'professional', name: 'Dra. Graciela Testa', treatment: 'Dra.',
+    specialty: 'Pediatría · Endocrinología Pediátrica',
+    description: 'Pediatra y especialista en endocrinología infanto-juvenil.',
+    keywords: ['pediatría', 'endocrinología pediátrica', 'niños', 'adolescentes'],
+    phone: null, whatsapp: null, license: 'MP 17870 · ME 5056 · ME 12384',
+    slug: 'graciela-testa', photo: null
+  },
+  {
+    type: 'professional', name: 'Dra. Malvina Signorino', treatment: 'Dra.',
+    specialty: 'Pediatría · Endocrinología Pediátrica',
+    description: 'Pediatra y especialista en endocrinología pediátrica.',
+    keywords: ['pediatría', 'endocrinología pediátrica', 'niños'],
+    phone: null, whatsapp: null, license: 'MP 28446 · ME 15124 · ME 17798',
+    slug: 'malvina-signorino', photo: null
+  },
+  // ── Endocrinología ─────────────────────────────────────────────────────────
+  {
+    type: 'professional', name: 'Dra. Valeria Gaon', treatment: 'Dra.',
+    specialty: 'Endocrinología',
+    description: 'Especialista en endocrinología de adultos. Consultas presenciales y virtuales.',
+    keywords: ['endocrinología', 'diabetes', 'adultos'],
+    phone: null, whatsapp: null, license: 'MP 22947 · ME 8774',
+    slug: 'valeria-gaon', photo: null
+  },
+  // ── Dermatología ───────────────────────────────────────────────────────────
+  {
+    type: 'professional', name: 'Dra. Natalia Paredes', treatment: 'Dra.',
+    specialty: 'Dermatología y Estética Médica',
+    description: 'Dermatología integral para adultos y niños. Dermatoscopia y control de lunares. Tratamientos estéticos: botox, ácido hialurónico y bioestimuladores.',
+    keywords: ['dermatología', 'estética médica', 'lunares', 'dermatoscopia'],
+    phone: null, whatsapp: null, license: 'MP 28710 · MP 15917',
+    slug: 'natalia-paredes', photo: null
+  },
+  {
+    type: 'professional', name: 'Dra. Ana Virginia Corrado', treatment: 'Dra.',
+    specialty: 'Dermatología',
+    description: 'Médica dermatóloga. Diplomada en dermatología oncológica. Docente de la UCC.',
+    keywords: ['dermatología', 'oncología cutánea', 'piel'],
+    phone: null, whatsapp: null, license: 'MP 28234/3 · ME 14464',
+    slug: 'ana-virginia-corrado', photo: null
+  },
+  // ── Ginecología ────────────────────────────────────────────────────────────
+  {
+    type: 'professional', name: 'Dra. Sara Ochoa', treatment: 'Dra.',
+    specialty: 'Tocoginecología · Menopausia',
+    description: 'Especialista en tocoginecología y atención en adolescencia. Experta en menopausia.',
+    keywords: ['ginecología', 'tocoginecología', 'menopausia', 'adolescentes'],
+    phone: null, whatsapp: null, license: 'MP 9529 · ME 3247',
+    slug: 'sara-ochoa', photo: null
+  },
+  // ── Nutrición ──────────────────────────────────────────────────────────────
+  {
+    type: 'professional', name: 'Lic. Julieta Agüero', treatment: 'Lic.',
+    specialty: 'Nutrición',
+    description: 'Nutricionista. Especialista en obesidad, diabetes, alimentación vegetariana y vegana, nutrición antiinflamatoria y microbiota. Atención de niños y adultos.',
+    keywords: ['nutrición', 'obesidad', 'diabetes', 'alimentación vegetariana', 'microbiota'],
+    phone: null, whatsapp: null, license: 'MP 3132',
+    slug: 'julieta-aguero', photo: null
+  },
+  // ── Kinesiología ───────────────────────────────────────────────────────────
+  {
+    type: 'professional', name: 'Lic. Mónica Inés Garrone', treatment: 'Lic.',
+    specialty: 'Kinesiología y Fisioterapia',
+    description: 'Kinesióloga. Rehabilitación postural global, gimnasia postural y correctiva.',
+    keywords: ['kinesiología', 'fisioterapia', 'rehabilitación', 'postura'],
+    phone: null, whatsapp: null, license: 'MP 1379',
+    slug: 'monica-garrone', photo: null
+  },
+  // ── Salud Mental ───────────────────────────────────────────────────────────
+  {
+    type: 'professional', name: 'Dr. Guillermo Ferrero', treatment: 'Dr.',
+    specialty: 'Psiquiatría',
+    description: 'Médico y psicólogo. Especialista en psiquiatría. Atención integral de adolescentes, jóvenes y adultos.',
+    keywords: ['psiquiatría', 'salud mental', 'adolescentes', 'adultos'],
+    phone: null, whatsapp: null, license: 'MP 18099 · MP 1119 · CE 6238',
+    slug: 'guillermo-ferrero', photo: null
+  },
+  {
+    type: 'professional', name: 'Dra. Ana E. Ponzo Florimonte', treatment: 'Dra.',
+    specialty: 'Psiquiatría · Geriatría',
+    description: 'Especialista en psiquiatría y geriatría. Consultas presenciales y virtuales.',
+    keywords: ['psiquiatría', 'geriatría', 'salud mental', 'adultos mayores'],
+    phone: null, whatsapp: null, license: 'MP 34911 · ME 21390 · ME 17554',
+    slug: 'ana-ponzo-florimonte', photo: null
+  },
+  {
+    type: 'professional', name: 'Lic. Adriana Leticia Vitelli', treatment: 'Lic.',
+    specialty: 'Psicología Clínica',
+    description: 'Psicoterapia y psicoanálisis. Atención de adolescentes, jóvenes y adultos. Certificados de Apto Psicológico. Presencial y online.',
+    keywords: ['psicología', 'psicoterapia', 'psicoanálisis', 'adolescentes', 'adultos'],
+    phone: null, whatsapp: 'https://wa.me/5493515487365', license: 'MP 1093 · ME 553',
+    slug: 'adriana-vitelli', photo: null
+  },
+  {
+    type: 'professional', name: 'Lic. María Inés Salto', treatment: 'Lic.',
+    specialty: 'Psicopedagogía · Psicoanálisis',
+    description: 'Psicopedagogía y psicoanálisis. Atención de adolescentes, jóvenes y adultos.',
+    keywords: ['psicopedagogía', 'psicoanálisis', 'adolescentes', 'adultos'],
+    phone: null, whatsapp: 'https://wa.me/5493515584625', license: 'MP 13-1129',
+    slug: 'maria-ines-salto', photo: null
+  },
+  // ── Pediatría (pendiente de confirmación de nombre) ────────────────────────
+  {
+    type: 'professional', name: 'Profesional en incorporación', treatment: 'Dra.',
+    specialty: 'Pediatría',
+    description: 'Atención a niño sano y enfermo. Crecimiento y desarrollo. Patologías crónicas pediátricas, nutrición infantil y puericultura.',
+    keywords: ['pediatría', 'niños', 'puericultura'],
+    phone: null, whatsapp: null, license: 'MP 36789',
+    slug: 'pediatra-incorporacion', photo: null, isPending: true
+  },
+  // ── Gerontología (Espacio) ─────────────────────────────────────────────────
   {
     type: 'space',
     name: 'Red Mayor',
     subtitle: 'Espacio de Gerontología',
-    description: 'Espacio especializado en gerontología dentro de Médicos de Familia, orientado al cuidado integral y acompañamiento de adultos mayores.',
+    description: 'Profesionales con formación y experiencia en la atención de personas mayores. Brindamos atención psicológica, orientación familiar, acompañamiento terapéutico, talleres sociorecreativos y capacitaciones.',
     logo: './assets/images/logos/red-mayor-logo.png',
-    members: [], // TODO Growi: incorporar miembros del equipo cuando sea validado
-    whatsapp: null, // TODO Growi: agregar WhatsApp propio si el centro lo confirma
+    members: [
+      'Natalia Franco — MP 9219 · Lic. en Psicología',
+      'María José Trigo — MP 8512 · Lic. en Psicología',
+      'Natalia Ledesma — MP 13898 · Lic. en Psicología',
+      'Carina Quinteros — MP 2/2023 · Lic. en Acompañamiento Terapéutico'
+    ],
+    whatsapp: null,
     slug: 'red-mayor',
-    isPending: true
+    isPending: false
   }
 ];
 
@@ -112,7 +250,7 @@ const escapeHTML = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => 
 }[char]));
 
 const getInitials = (name) => {
-  if (name.toLowerCase().includes('pendiente')) return 'PV';
+  if (name.toLowerCase().includes('pendiente') || name.toLowerCase().includes('incorporación')) return 'PV';
 
   const clean = name.replace(/^(Dr\.|Dra\.|Lic\.|Mg\.)\s+/i, '').trim().split(/\s+/);
   return `${clean[0]?.charAt(0) || ''}${clean[1]?.charAt(0) || ''}`.toUpperCase();
@@ -126,9 +264,14 @@ const matchesFilter = (pro, filter) => {
   const specialty = pro.specialty.toLowerCase();
   const normalized = filter.toLowerCase();
 
-  if (normalized === 'clínica') return specialty.includes('clínica');
+  if (normalized === 'clínica') {
+    return ['clínica', 'medicina interna', 'cardiología'].some((t) => specialty.includes(t));
+  }
   if (normalized === 'salud mental') {
-    return ['psicología', 'psiquiatría', 'psicopedagogía', 'psicoanálisis'].some((term) => specialty.includes(term));
+    return ['psicología', 'psiquiatría', 'psicopedagogía', 'psicoanálisis'].some((t) => specialty.includes(t));
+  }
+  if (normalized === 'ginecología') {
+    return ['ginecología', 'tocoginecología'].some((t) => specialty.includes(t));
   }
 
   return specialty.includes(normalized);
