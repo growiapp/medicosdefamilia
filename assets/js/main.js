@@ -216,13 +216,20 @@ const professionals = [
     type: 'space',
     name: 'Red Mayor',
     subtitle: 'Espacio de Gerontología',
-    description: 'Profesionales con formación y experiencia en la atención de personas mayores. Brindamos atención psicológica, orientación familiar, acompañamiento terapéutico, talleres sociorecreativos y capacitaciones.',
+    description: 'Espacio orientado a la atención y acompañamiento de personas mayores, familias e instituciones.',
     logo: './assets/images/logos/red-mayor-logo.png',
+    services: [
+      'Atención psicológica',
+      'Orientación familiar',
+      'Acompañamiento terapéutico',
+      'Talleres sociorecreativos',
+      'Capacitaciones'
+    ],
     members: [
-      'Natalia Franco — MP 9219 · Lic. en Psicología',
-      'María José Trigo — MP 8512 · Lic. en Psicología',
-      'Natalia Ledesma — MP 13898 · Lic. en Psicología',
-      'Carina Quinteros — MP 2/2023 · Lic. en Acompañamiento Terapéutico'
+      { name: 'Natalia Franco', role: 'Lic. en Psicología', license: 'MP 9219' },
+      { name: 'María José Trigo', role: 'Lic. en Psicología', license: 'MP 8512' },
+      { name: 'Natalia Ledesma', role: 'Lic. en Psicología', license: 'MP 13898' },
+      { name: 'Carina Quinteros', role: 'Lic. en Acompañamiento Terapéutico', license: 'MP 2/2023' }
     ],
     whatsapp: null,
     slug: 'red-mayor',
@@ -443,6 +450,38 @@ const renderKeywordList = (keywords) => {
   `;
 };
 
+const renderSpaceServices = (services) => {
+  if (!services?.length) return '';
+
+  return `
+    <section class="space-section" aria-labelledby="space-services-title">
+      <h3 id="space-services-title">Áreas de acompañamiento</h3>
+      <div class="space-services">
+        ${services.map((service) => `<span class="space-service-chip">${escapeHTML(service)}</span>`).join('')}
+      </div>
+    </section>
+  `;
+};
+
+const renderSpaceMembers = (members) => {
+  if (!members?.length) return '';
+
+  return `
+    <section class="space-section" aria-labelledby="space-members-title">
+      <h3 id="space-members-title">Equipo</h3>
+      <div class="space-members">
+        ${members.map((member) => `
+          <article class="space-member-card">
+            <strong class="space-member-name">${escapeHTML(member.name)}</strong>
+            <span class="space-member-role">${escapeHTML(member.role)}</span>
+            <span class="space-member-license">${escapeHTML(member.license)}</span>
+          </article>
+        `).join('')}
+      </div>
+    </section>
+  `;
+};
+
 const renderProfessionalDialog = (pro) => {
   const contactUrl = getProfessionalWhatsappUrl(pro);
 
@@ -462,18 +501,15 @@ const renderProfessionalDialog = (pro) => {
         <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.description)}</p>
       </div>
 
-      ${pro.members?.length ? `
-        <dl class="professional-meta">
-          <div class="professional-meta-row">
-            <dt>Equipo</dt>
-            <dd>${pro.members.map((m) => escapeHTML(m)).join(', ')}</dd>
-          </div>
-          <div class="professional-meta-row">
-            <dt>Ubicación</dt>
-            <dd>Médicos de Familia, Córdoba capital</dd>
-          </div>
-        </dl>
-      ` : ''}
+      ${renderSpaceServices(pro.services)}
+      ${renderSpaceMembers(pro.members)}
+
+      <dl class="professional-meta space-location-meta">
+        <div class="professional-meta-row">
+          <dt>Ubicación</dt>
+          <dd>Médicos de Familia · Córdoba capital</dd>
+        </div>
+      </dl>
 
       ${pro.isPending ? `
         <p class="professional-note">
