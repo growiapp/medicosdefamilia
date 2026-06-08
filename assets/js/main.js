@@ -257,9 +257,9 @@ const getInitials = (name) => {
 };
 
 const matchesFilter = (pro, filter) => {
+  if (pro.isPending) return false;
   if (filter === 'Todos') return true;
   if (pro.type === 'space') return false;
-  if (pro.isPending) return false;
 
   const specialty = pro.specialty.toLowerCase();
   const normalized = filter.toLowerCase();
