@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://maps.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="./assets/css/styles.css?v=20260612" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=20260613" />
 </head>
 <body>
   <svg class="icon-sprite" aria-hidden="true" focusable="false">
@@ -230,6 +230,8 @@
           <p>Filtrá por especialidad y abrí cada card para ver área de atención, matrícula cuando está disponible y pedir turno por WhatsApp con un mensaje ya preparado.</p>
         </div>
 
+        <div class="red-mayor-feature reveal" id="redMayorFeature" aria-live="polite"></div>
+
         <div class="filters reveal" aria-label="Filtrar profesionales por especialidad">
           <button class="filter-btn active" type="button" data-filter="Todos" aria-pressed="true">Todos</button>
           <button class="filter-btn" type="button" data-filter="Clínica" aria-pressed="false">Clínica</button>
@@ -367,6 +369,11 @@
           <p>El centro está en Córdoba capital. Abrí el mapa para llegar con indicaciones y usá la foto del frente como referencia antes de venir.</p>
         </div>
 
+        <div class="location-route reveal" aria-label="Dirección y acceso a indicaciones">
+          <span><strong>27 de abril 1254</strong>, Córdoba, Argentina 5000</span>
+          <a class="btn btn-secondary btn-compact" href="https://maps.app.goo.gl/eV1vY4MmGpJ5j6Mh9" target="_blank" rel="noopener">Abrir en Google Maps</a>
+        </div>
+
         <div class="location-layout">
           <div class="map-embed-card reveal" aria-label="Mapa interactivo de Consultorios Médicos de Familia, 27 de abril 1254, Córdoba">
             <div class="map-embed-wrap">
@@ -378,10 +385,6 @@
                 referrerpolicy="no-referrer-when-downgrade"
                 style="border:0;"
               ></iframe>
-            </div>
-            <div class="map-card-footer">
-              <span><strong>27 de abril 1254</strong>, Córdoba, Argentina 5000</span>
-              <a class="btn btn-secondary" href="https://maps.app.goo.gl/eV1vY4MmGpJ5j6Mh9" target="_blank" rel="noopener">Abrir en Google Maps</a>
             </div>
           </div>
 
@@ -485,7 +488,7 @@
     </aside>
   </div>
 
-  <script src="./assets/js/main.js?v=20260612" defer></script>
+  <script src="./assets/js/main.js?v=20260613" defer></script>
 
   <script type="application/ld+json">
     {

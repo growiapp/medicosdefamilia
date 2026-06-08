@@ -231,6 +231,7 @@ const professionals = [
 ];
 
 const proGrid = document.getElementById('proGrid');
+const redMayorFeature = document.getElementById('redMayorFeature');
 const filterButtons = document.querySelectorAll('.filter-btn');
 
 const escapeHTML = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -248,8 +249,8 @@ const getInitials = (name) => {
 
 const matchesFilter = (pro, filter) => {
   if (pro.isPending) return false;
-  if (filter === 'Todos') return true;
   if (pro.type === 'space') return false;
+  if (filter === 'Todos') return true;
 
   const specialty = pro.specialty.toLowerCase();
   const normalized = filter.toLowerCase();
@@ -265,6 +266,48 @@ const matchesFilter = (pro, filter) => {
   }
 
   return specialty.includes(normalized);
+};
+
+const bindProfessionalCards = (scope = document) => {
+  scope.querySelectorAll('.pro-card:not(.is-pending), .red-mayor-card').forEach((card) => {
+    card.addEventListener('click', () => openProfessionalDialog(card.dataset.slug, card));
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openProfessionalDialog(card.dataset.slug, card);
+      }
+    });
+  });
+};
+
+const renderRedMayorFeature = () => {
+  if (!redMayorFeature) return;
+
+  const item = professionals.find((pro) => pro.type === 'space' && pro.slug === 'red-mayor');
+  if (!item) {
+    redMayorFeature.hidden = true;
+    return;
+  }
+
+  const logoImg = item.logo
+    ? `<img src="${escapeHTML(item.logo)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.dataset.fallback='true'" />`
+    : '';
+
+  redMayorFeature.hidden = false;
+  redMayorFeature.innerHTML = `
+    <article id="profesional-${escapeHTML(item.slug)}" class="red-mayor-card" data-slug="${escapeHTML(item.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-haspopup="dialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(item.name)}, ${escapeHTML(item.subtitle || 'Espacio de gerontología')} en Córdoba">
+      <div class="red-mayor-logo" aria-hidden="true" data-initials="RM">${logoImg}</div>
+      <div class="red-mayor-copy">
+        <span class="red-mayor-kicker">Espacio de gerontología</span>
+        <h3>${escapeHTML(item.name)}</h3>
+        <p>${escapeHTML(item.description)}</p>
+        ${item.members?.length ? `<span class="red-mayor-team">${item.members.length} integrantes del equipo</span>` : ''}
+      </div>
+      <span class="red-mayor-action" aria-hidden="true">Consultar por Red Mayor <span>→</span></span>
+    </article>
+  `;
+
+  bindProfessionalCards(redMayorFeature);
 };
 
 const renderProfessionals = (filter = 'Todos') => {
@@ -332,15 +375,7 @@ const renderProfessionals = (filter = 'Todos') => {
     `;
   }).join('');
 
-  proGrid.querySelectorAll('.pro-card:not(.is-pending)').forEach((card) => {
-    card.addEventListener('click', () => openProfessionalDialog(card.dataset.slug, card));
-    card.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        openProfessionalDialog(card.dataset.slug, card);
-      }
-    });
-  });
+  bindProfessionalCards(proGrid);
 };
 
 filterButtons.forEach((button) => {
@@ -447,14 +482,12 @@ const renderProfessionalDialog = (pro) => {
       ` : ''}
 
       <div class="professional-actions">
-        <a class="btn btn-primary btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <a class="btn btn-primary btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar por Red Mayor</a>
         <a class="btn btn-secondary" href="tel:+543514214225">Llamar al centro</a>
       </div>
     `;
     return;
   }
-
-  const hasCurricularInfo = Boolean(pro.license || pro.phone || pro.whatsapp);
 
   professionalDialogContent.innerHTML = `
     <div class="professional-hero">
@@ -490,23 +523,23 @@ const renderProfessionalDialog = (pro) => {
       ` : ''}
       ${pro.keywords?.length ? `
         <div class="professional-meta-row">
-          <dt>Temas</dt>
+          <dt>Atiende consultas de</dt>
           <dd>${renderKeywordList(pro.keywords)}</dd>
         </div>
       ` : ''}
     </dl>
 
-    ${hasCurricularInfo ? '' : '<p class="professional-note">Matrícula y minicurrículum se incorporarán cuando el centro valide la información final.</p>'}
+    <p class="professional-note">El botón de WhatsApp abre un mensaje con el nombre del profesional y la especialidad para que puedas pedir turno sin escribir todo de cero.</p>
 
     <div class="professional-actions">
-      <a class="btn btn-primary btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar turno por WhatsApp</a>
+      <a class="btn btn-primary btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Pedir turno por WhatsApp</a>
       <a class="btn btn-secondary" href="tel:+543514214225">Llamar al centro</a>
     </div>
   `;
 };
 
 const setProfessionalTriggersExpanded = (expanded, trigger = null) => {
-  document.querySelectorAll('.pro-card[aria-expanded="true"]').forEach((card) => {
+  document.querySelectorAll('.pro-card[aria-expanded="true"], .red-mayor-card[aria-expanded="true"]').forEach((card) => {
     card.setAttribute('aria-expanded', 'false');
   });
 
@@ -597,6 +630,7 @@ if (professionalDialog) {
   });
 }
 
+renderRedMayorFeature();
 renderProfessionals();
 
 const revealElements = document.querySelectorAll('.reveal');
