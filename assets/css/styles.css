@@ -651,7 +651,7 @@ p {
 
 .hero-trust {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
   margin-top: 36px;
   overflow: hidden;
@@ -1925,6 +1925,15 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.contact-actions .btn-whatsapp {
+  width: 100%;
+}
+
+.contact-actions .btn-light {
+  flex: 1;
+  min-width: 0;
 }
 
 .map-section { padding-top: 0; }
