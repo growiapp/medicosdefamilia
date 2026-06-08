@@ -1,7 +1,7 @@
 const CONTACT = Object.freeze({
   whatsappUrl: 'https://wa.me/543513199546?text=Hola%20M%C3%A9dicos%20de%20Familia%2C%20quiero%20hacer%20una%20consulta%20o%20coordinar%20un%20turno.',
   phoneUrl: 'tel:+543514214225',
-  mapsUrl: 'https://www.google.com/maps?q=27+de+abril+1254+C%C3%B3rdoba+Argentina+5000'
+  mapsUrl: 'https://maps.app.goo.gl/eV1vY4MmGpJ5j6Mh9'
 });
 
 const siteHeader = document.getElementById('header');
