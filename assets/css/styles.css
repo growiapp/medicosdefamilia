@@ -573,8 +573,7 @@ p {
 .hero-panel .hero-premium-top,
 .hero-panel .hero-human-card,
 .hero-panel .hero-contact-stack,
-.hero-panel .hero-contact-card,
-.hero-panel .hero-hours-note {
+.hero-panel .hero-contact-card {
   opacity: 0;
   transform: translateY(24px);
 }
@@ -588,8 +587,7 @@ p {
 .hero-copy.visible .trust-item,
 .hero-panel.visible .hero-premium-top,
 .hero-panel.visible .hero-contact-stack,
-.hero-panel.visible .hero-contact-card,
-.hero-panel.visible .hero-hours-note {
+.hero-panel.visible .hero-contact-card {
   animation: heroEntry 900ms var(--ease-premium) forwards;
 }
 
@@ -611,8 +609,6 @@ p {
 .hero-panel.visible .hero-contact-stack { animation-delay: 540ms; }
 .hero-panel.visible .hero-contact-card:nth-child(1) { animation-delay: 620ms; }
 .hero-panel.visible .hero-contact-card:nth-child(2) { animation-delay: 720ms; }
-.hero-panel.visible .hero-contact-card:nth-child(3) { animation-delay: 820ms; }
-.hero-panel.visible .hero-hours-note { animation-delay: 920ms; }
 
 @keyframes heroEntry {
   from {
@@ -809,9 +805,6 @@ p {
   box-shadow: var(--shadow-hover);
 }
 
-.hero-contact-card.is-primary {
-  background: linear-gradient(180deg, rgba(232, 242, 235, .9), rgba(248, 251, 247, .96));
-}
 
 .hero-contact-icon {
   width: 38px;
@@ -859,17 +852,6 @@ p {
   font-weight: 800;
 }
 
-.hero-hours-note {
-  padding: 0 4px 2px;
-  color: var(--muted);
-  font-size: .86rem;
-  line-height: 1.55;
-}
-
-.hero-hours-note strong {
-  color: var(--green);
-  font-weight: 850;
-}
 
 .hero-human-card {
   position: relative;
@@ -1019,7 +1001,7 @@ p {
   display: grid;
   grid-template-columns: minmax(0, .88fr) minmax(340px, .72fr);
   gap: clamp(34px, 7vw, 96px);
-  align-items: start;
+  align-items: center;
 }
 
 .editorial-text {
@@ -2310,7 +2292,7 @@ p {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(28px) scale(.984);
   transition:
     opacity var(--duration-slow) var(--ease-soft),
     transform var(--duration-slow) var(--ease-premium);
@@ -2320,7 +2302,7 @@ p {
 .reveal.visible,
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .reveal .pillar,
@@ -2406,7 +2388,7 @@ p {
 @keyframes revealChild {
   from {
     opacity: 0;
-    transform: translateY(24px) scale(var(--reveal-scale, 1));
+    transform: translateY(22px) scale(var(--reveal-scale, .97));
   }
   to {
     opacity: 1;
@@ -2744,9 +2726,7 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .hero-hours-note {
-    display: none;
-  }
+
 
   .hero-contact-card {
     grid-template-columns: 42px minmax(0, 1fr);
