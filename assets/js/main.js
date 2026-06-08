@@ -1,4 +1,5 @@
 const CONTACT = Object.freeze({
+  whatsappBase: 'https://wa.me/543513199546',
   whatsappUrl: 'https://wa.me/543513199546?text=Hola%20M%C3%A9dicos%20de%20Familia%2C%20quiero%20hacer%20una%20consulta%20o%20coordinar%20un%20turno.',
   phoneUrl: 'tel:+543514214225',
   mapsUrl: 'https://maps.app.goo.gl/eV1vY4MmGpJ5j6Mh9'
@@ -210,15 +211,6 @@ const professionals = [
     phone: null, whatsapp: 'https://wa.me/5493515584625', license: 'MP 13-1129',
     slug: 'maria-ines-salto', photo: null
   },
-  // ── Pediatría (pendiente de confirmación de nombre) ────────────────────────
-  {
-    type: 'professional', name: 'Profesional en incorporación', treatment: 'Dra.',
-    specialty: 'Pediatría',
-    description: 'Atención a niño sano y enfermo. Crecimiento y desarrollo. Patologías crónicas pediátricas, nutrición infantil y puericultura.',
-    keywords: ['pediatría', 'niños', 'puericultura'],
-    phone: null, whatsapp: null, license: 'MP 36789',
-    slug: 'pediatra-incorporacion', photo: null, isPending: true
-  },
   // ── Gerontología (Espacio) ─────────────────────────────────────────────────
   {
     type: 'space',
@@ -250,8 +242,6 @@ const escapeHTML = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => 
 }[char]));
 
 const getInitials = (name) => {
-  if (name.toLowerCase().includes('pendiente') || name.toLowerCase().includes('incorporación')) return 'PV';
-
   const clean = name.replace(/^(Dr\.|Dra\.|Lic\.|Mg\.)\s+/i, '').trim().split(/\s+/);
   return `${clean[0]?.charAt(0) || ''}${clean[1]?.charAt(0) || ''}`.toUpperCase();
 };
@@ -298,13 +288,13 @@ const renderProfessionals = (filter = 'Todos') => {
         : '';
 
       return `
-        <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card is-space" data-specialty="Gerontología" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-haspopup="dialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}" style="--stagger-index: ${index}">
+        <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card is-space" data-specialty="Gerontología" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-haspopup="dialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}, ${escapeHTML(pro.subtitle || 'Espacio de gerontología')} en Córdoba" style="--stagger-index: ${index}">
           <div class="space-avatar" aria-hidden="true" data-initials="RM">${logoImg}</div>
           <div class="pro-content">
             <h3>${escapeHTML(pro.name)}</h3>
             <span class="pro-spec">${escapeHTML(pro.subtitle || 'Espacio especializado')}</span>
             <p class="pro-desc">${escapeHTML(pro.description)}</p>
-            <span class="pro-more" aria-hidden="true">Ver información <span>→</span></span>
+            <span class="pro-more" aria-hidden="true">Ver detalle y consultar <span>→</span></span>
           </div>
         </article>
       `;
@@ -329,13 +319,14 @@ const renderProfessionals = (filter = 'Todos') => {
     }
 
     return `
-      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-haspopup="dialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}" style="--stagger-index: ${index}">
+      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-haspopup="dialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}, ${escapeHTML(pro.specialty)} en Córdoba" style="--stagger-index: ${index}">
         <div class="avatar" aria-hidden="true">${avatar}</div>
         <div class="pro-content">
           <h3>${escapeHTML(pro.name)}</h3>
           <span class="pro-spec">${escapeHTML(pro.specialty)}</span>
+          ${pro.license ? `<span class="pro-license">${escapeHTML(pro.license)}</span>` : ''}
           <p class="pro-desc">${escapeHTML(pro.description)}</p>
-          <span class="pro-more" aria-hidden="true">Ver información <span>→</span></span>
+          <span class="pro-more" aria-hidden="true">Ver detalle y pedir turno <span>→</span></span>
         </div>
       </article>
     `;
@@ -378,12 +369,33 @@ filterButtons.forEach((button) => {
 
 const getProfessionalBySlug = (slug) => professionals.find((pro) => pro.slug === slug);
 
-const getContactUrl = (pro) => {
-  if (pro?.whatsapp) return pro.whatsapp;
+const buildWhatsappUrl = (baseUrl, message) => {
+  const separator = baseUrl.includes('?') ? '&' : '?';
+  return `${baseUrl}${separator}text=${encodeURIComponent(message)}`;
+};
+
+const getPrimarySpecialty = (specialty = '') => specialty
+  .split('·')[0]
+  .trim()
+  .toLocaleLowerCase('es-AR');
+
+const getProfessionalMessageName = (pro) => {
+  if (!pro?.treatment) return pro?.name || '';
+  const article = pro.treatment === 'Dr.' ? 'el' : 'la';
+  return `${article} ${pro.name}`;
+};
+
+const getProfessionalWhatsappUrl = (pro) => {
   if (pro?.type === 'space' && pro?.slug === 'red-mayor') {
-    return 'https://wa.me/543513199546?text=Hola%20M%C3%A9dicos%20de%20Familia%2C%20quisiera%20consultar%20por%20Red%20Mayor.';
+    return buildWhatsappUrl(
+      pro.whatsapp || CONTACT.whatsappBase,
+      'Hola Médicos de Familia, quiero consultar por Red Mayor - Espacio de Gerontología.'
+    );
   }
-  return CONTACT.whatsappUrl;
+
+  const specialty = getPrimarySpecialty(pro?.specialty);
+  const message = `Hola Médicos de Familia, quiero solicitar un turno con ${getProfessionalMessageName(pro)} por ${specialty}.`;
+  return buildWhatsappUrl(pro?.whatsapp || CONTACT.whatsappBase, message);
 };
 
 const renderKeywordList = (keywords) => {
@@ -397,7 +409,7 @@ const renderKeywordList = (keywords) => {
 };
 
 const renderProfessionalDialog = (pro) => {
-  const contactUrl = getContactUrl(pro);
+  const contactUrl = getProfessionalWhatsappUrl(pro);
 
   if (pro.type === 'space') {
     const logoImg = pro.logo
@@ -420,6 +432,10 @@ const renderProfessionalDialog = (pro) => {
           <div class="professional-meta-row">
             <dt>Equipo</dt>
             <dd>${pro.members.map((m) => escapeHTML(m)).join(', ')}</dd>
+          </div>
+          <div class="professional-meta-row">
+            <dt>Ubicación</dt>
+            <dd>Médicos de Familia, Córdoba capital</dd>
           </div>
         </dl>
       ` : ''}
@@ -462,6 +478,10 @@ const renderProfessionalDialog = (pro) => {
           <dd>${escapeHTML(pro.license)}</dd>
         </div>
       ` : ''}
+      <div class="professional-meta-row">
+        <dt>Ubicación</dt>
+        <dd>Médicos de Familia, Córdoba capital</dd>
+      </div>
       ${pro.phone ? `
         <div class="professional-meta-row">
           <dt>Teléfono</dt>

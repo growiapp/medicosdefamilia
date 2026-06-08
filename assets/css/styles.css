@@ -1338,6 +1338,16 @@ p {
   overflow-wrap: anywhere;
 }
 
+.pro-license {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 750;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
 .pro-desc {
   margin-top: 14px;
   color: var(--muted);
@@ -2662,15 +2672,16 @@ p {
   .hero-actions {
     display: grid;
     grid-template-columns: 1fr;
+    justify-items: start;
     margin-top: 24px;
   }
 
   .hero-actions .btn {
-    width: 100%;
+    width: min(100%, 320px);
   }
 
   .hero-trust {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 24px;
     border-radius: 20px;
   }
@@ -2739,6 +2750,22 @@ p {
 
 
 @media (max-width: 740px) {
+  .filters {
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-inline: -14px;
+    padding: 0 14px 10px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    scroll-snap-type: x proximity;
+  }
+
+  .filter-btn {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
   .hero-premium {
     gap: 14px;
     padding: 16px;
@@ -2833,12 +2860,12 @@ p {
   }
 
   .location-photo-card {
-    min-height: 300px;
+    min-height: 220px;
     border-radius: 28px;
   }
 
   .location-photo-card img {
-    min-height: 300px;
+    min-height: 220px;
     object-position: center;
   }
 
@@ -2851,10 +2878,14 @@ p {
     border-radius: 18px;
   }
 
-  .map-embed-card,
+  .map-embed-card {
+    min-height: 0;
+    border-radius: 28px;
+  }
+
   .map-embed-wrap,
   .map-embed-wrap iframe {
-    min-height: 300px;
+    min-height: 250px;
     border-radius: 28px;
   }
 
@@ -2881,7 +2912,7 @@ p {
 
   .location-photo-card,
   .location-photo-card img {
-    min-height: 260px;
+    min-height: 200px;
   }
 
   .center-photo-card figcaption strong,
