@@ -103,7 +103,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dr. Marcelo H. Argüello', treatment: 'Dr.',
     specialty: 'Pediatría · Emergentología Pediátrica',
-    description: 'Pediatra y emergentologo pediátrico. Atención integral y urgencias pediátricas.',
+    description: 'Pediatra y emergentólogo pediátrico. Controles de salud, consultas pediátricas y urgencias.',
     keywords: ['pediatría', 'emergentología', 'urgencias pediátricas', 'niños'],
     phone: null, whatsapp: null, license: 'MP 20281 · MN 121953 · ME 6827 · ME 14369',
     slug: 'marcelo-arguello', photo: null
@@ -137,7 +137,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Natalia Paredes', treatment: 'Dra.',
     specialty: 'Dermatología y Estética Médica',
-    description: 'Dermatología integral para adultos y niños. Dermatoscopia y control de lunares. Tratamientos estéticos: botox, ácido hialurónico y bioestimuladores.',
+    description: 'Dermatología para adultos y niños. Dermatoscopia y control de lunares. Tratamientos estéticos: botox, ácido hialurónico y bioestimuladores.',
     keywords: ['dermatología', 'estética médica', 'lunares', 'dermatoscopia'],
     phone: null, whatsapp: null, license: 'MP 28710 · MP 15917',
     slug: 'natalia-paredes', photo: null
@@ -181,7 +181,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dr. Guillermo Ferrero', treatment: 'Dr.',
     specialty: 'Psiquiatría',
-    description: 'Médico y psicólogo. Especialista en psiquiatría. Atención integral de adolescentes, jóvenes y adultos.',
+    description: 'Médico y psicólogo. Especialista en psiquiatría. Atención de adolescentes, jóvenes y adultos.',
     keywords: ['psiquiatría', 'salud mental', 'adolescentes', 'adultos'],
     phone: null, whatsapp: null, license: 'MP 18099 · MP 1119 · CE 6238',
     slug: 'guillermo-ferrero', photo: null
@@ -431,8 +431,8 @@ const renderProfessionalDialog = (pro) => {
       ` : ''}
 
       <div class="professional-actions">
-        <a class="btn btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
-        <a class="btn btn-light" href="tel:+543514214225">Llamar al centro</a>
+        <a class="btn btn-primary btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <a class="btn btn-secondary" href="tel:+543514214225">Llamar al centro</a>
       </div>
     `;
     return;
@@ -479,8 +479,8 @@ const renderProfessionalDialog = (pro) => {
     ${hasCurricularInfo ? '' : '<p class="professional-note">Matrícula y minicurrículum se incorporarán cuando el centro valide la información final.</p>'}
 
     <div class="professional-actions">
-      <a class="btn btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar turno por WhatsApp</a>
-      <a class="btn btn-light" href="tel:+543514214225">Llamar al centro</a>
+      <a class="btn btn-primary btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar turno por WhatsApp</a>
+      <a class="btn btn-secondary" href="tel:+543514214225">Llamar al centro</a>
     </div>
   `;
 };
