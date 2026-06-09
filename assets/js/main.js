@@ -586,7 +586,7 @@ const renderProfessionalDialog = (pro) => {
       ` : ''}
     </dl>
 
-    <p class="professional-note">El botón de WhatsApp abre un mensaje con el nombre del profesional y la especialidad para que puedas pedir turno sin escribir todo de cero.</p>
+    <p class="professional-note">Al escribir por WhatsApp, el mensaje ya incluye el profesional y la especialidad para que el equipo pueda orientar el turno.</p>
 
     <div class="professional-actions">
       <a class="btn btn-primary btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Pedir turno por WhatsApp</a>
