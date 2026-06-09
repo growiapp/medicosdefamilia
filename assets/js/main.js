@@ -71,7 +71,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dr. Carlos Presman', treatment: 'Dr.',
     specialty: 'Clínica Médica · Terapia Intensiva',
-    description: 'Médico clínico de adultos y adultos mayores. Especialista en Medicina Interna y Terapia Intensiva.',
+    description: 'Atiende adultos y personas mayores desde clínica médica, medicina interna y terapia intensiva.',
     keywords: ['clínica médica', 'medicina interna', 'terapia intensiva', 'adultos mayores'],
     phone: null, whatsapp: null, license: 'MP 17871 · MP 5130 · MP 9125',
     slug: 'carlos-presman', photo: null
@@ -79,7 +79,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dr. Guillermo Calvo Hidalgo', treatment: 'Dr.',
     specialty: 'Cardiología · Clínica Médica',
-    description: 'Especialista en Cardiología y Clínica Médica.',
+    description: 'Atiende consultas de cardiología y clínica médica para adultos.',
     keywords: ['cardiología', 'clínica médica', 'adultos'],
     phone: null, whatsapp: null, license: 'MP 24172 · CE 8341 · CE 13122',
     slug: 'guillermo-calvo-hidalgo', photo: null
@@ -87,7 +87,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Juana A. Presman', treatment: 'Dra.',
     specialty: 'Medicina Interna · Adolescencia',
-    description: 'Medicina interna con enfoque en adolescentes. Atención especializada de desórdenes alimentarios.',
+    description: 'Atiende adolescentes desde medicina interna, con experiencia en desórdenes alimentarios.',
     keywords: ['medicina interna', 'adolescentes', 'desórdenes alimentarios'],
     phone: null, whatsapp: null, license: 'MP 13353 · ME 4328',
     slug: 'juana-presman', photo: null
@@ -95,7 +95,7 @@ const professionals = [
   {
     type: 'professional', name: 'Julio César Guerini', treatment: null,
     specialty: 'Medicina Interna · Medicina del Trabajo · Medicina Legal',
-    description: 'Especialista en Medicina Interna, Medicina Legal y Medicina del Trabajo.',
+    description: 'Atiende consultas de medicina interna, medicina laboral y medicina legal.',
     keywords: ['medicina interna', 'medicina laboral', 'medicina legal'],
     phone: null, whatsapp: null, license: 'MP 36.996 · MN 157187 · CE 18.660 · CE 19.577 · CE 22.157',
     slug: 'julio-guerini', photo: null
@@ -104,7 +104,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dr. Marcelo H. Argüello', treatment: 'Dr.',
     specialty: 'Pediatría · Emergentología Pediátrica',
-    description: 'Pediatra y emergentólogo pediátrico. Controles de salud, consultas pediátricas y urgencias.',
+    description: 'Atiende controles pediátricos, consultas de salud infantil y urgencias pediátricas.',
     keywords: ['pediatría', 'emergentología', 'urgencias pediátricas', 'niños'],
     phone: null, whatsapp: null, license: 'MP 20281 · MN 121953 · ME 6827 · ME 14369',
     slug: 'marcelo-arguello', photo: null
@@ -112,7 +112,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Graciela Testa', treatment: 'Dra.',
     specialty: 'Pediatría · Endocrinología Pediátrica',
-    description: 'Pediatra y especialista en endocrinología infanto-juvenil.',
+    description: 'Atiende pediatría y endocrinología infanto-juvenil para niñas, niños y adolescentes.',
     keywords: ['pediatría', 'endocrinología pediátrica', 'niños', 'adolescentes'],
     phone: null, whatsapp: null, license: 'MP 17870 · ME 5056 · ME 12384',
     slug: 'graciela-testa', photo: null
@@ -120,7 +120,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Malvina Signorino', treatment: 'Dra.',
     specialty: 'Pediatría · Endocrinología Pediátrica',
-    description: 'Pediatra y especialista en endocrinología pediátrica.',
+    description: 'Atiende consultas pediátricas y endocrinología pediátrica.',
     keywords: ['pediatría', 'endocrinología pediátrica', 'niños'],
     phone: null, whatsapp: null, license: 'MP 28446 · ME 15124 · ME 17798',
     slug: 'malvina-signorino', photo: null
@@ -129,7 +129,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Valeria Gaon', treatment: 'Dra.',
     specialty: 'Endocrinología',
-    description: 'Especialista en endocrinología de adultos. Consultas presenciales y virtuales.',
+    description: 'Atiende endocrinología de adultos, con consultas presenciales y virtuales.',
     keywords: ['endocrinología', 'diabetes', 'adultos'],
     phone: null, whatsapp: null, license: 'MP 22947 · ME 8774',
     slug: 'valeria-gaon', photo: null
@@ -138,7 +138,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Natalia Paredes', treatment: 'Dra.',
     specialty: 'Dermatología y Estética Médica',
-    description: 'Dermatología para adultos y niños. Dermatoscopia y control de lunares. Tratamientos estéticos: botox, ácido hialurónico y bioestimuladores.',
+    description: 'Atiende dermatología de adultos y niños, dermatoscopia, control de lunares y estética médica.',
     keywords: ['dermatología', 'estética médica', 'lunares', 'dermatoscopia'],
     phone: null, whatsapp: null, license: 'MP 28710 · MP 15917',
     slug: 'natalia-paredes', photo: null
@@ -146,7 +146,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Ana Virginia Corrado', treatment: 'Dra.',
     specialty: 'Dermatología',
-    description: 'Médica dermatóloga. Diplomada en dermatología oncológica. Docente de la UCC.',
+    description: 'Atiende dermatología clínica y consultas vinculadas a dermatología oncológica.',
     keywords: ['dermatología', 'oncología cutánea', 'piel'],
     phone: null, whatsapp: null, license: 'MP 28234/3 · ME 14464',
     slug: 'ana-virginia-corrado', photo: null
@@ -155,7 +155,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Sara Ochoa', treatment: 'Dra.',
     specialty: 'Tocoginecología · Menopausia',
-    description: 'Especialista en tocoginecología y atención en adolescencia. Experta en menopausia.',
+    description: 'Atiende tocoginecología en adolescencia, adultez y menopausia.',
     keywords: ['ginecología', 'tocoginecología', 'menopausia', 'adolescentes'],
     phone: null, whatsapp: null, license: 'MP 9529 · ME 3247',
     slug: 'sara-ochoa', photo: null
@@ -164,7 +164,7 @@ const professionals = [
   {
     type: 'professional', name: 'Lic. Julieta Agüero', treatment: 'Lic.',
     specialty: 'Nutrición',
-    description: 'Nutricionista. Especialista en obesidad, diabetes, alimentación vegetariana y vegana, nutrición antiinflamatoria y microbiota. Atención de niños y adultos.',
+    description: 'Atiende nutrición de niños y adultos: obesidad, diabetes, alimentación vegetariana, microbiota y nutrición antiinflamatoria.',
     keywords: ['nutrición', 'obesidad', 'diabetes', 'alimentación vegetariana', 'microbiota'],
     phone: null, whatsapp: null, license: 'MP 3132',
     slug: 'julieta-aguero', photo: null
@@ -173,7 +173,7 @@ const professionals = [
   {
     type: 'professional', name: 'Lic. Mónica Inés Garrone', treatment: 'Lic.',
     specialty: 'Kinesiología y Fisioterapia',
-    description: 'Kinesióloga. Rehabilitación postural global, gimnasia postural y correctiva.',
+    description: 'Atiende kinesiología, fisioterapia, rehabilitación postural global y gimnasia correctiva.',
     keywords: ['kinesiología', 'fisioterapia', 'rehabilitación', 'postura'],
     phone: null, whatsapp: null, license: 'MP 1379',
     slug: 'monica-garrone', photo: null
@@ -182,7 +182,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dr. Guillermo Ferrero', treatment: 'Dr.',
     specialty: 'Psiquiatría',
-    description: 'Médico y psicólogo. Especialista en psiquiatría. Atención de adolescentes, jóvenes y adultos.',
+    description: 'Atiende psiquiatría y salud mental para adolescentes, jóvenes y adultos.',
     keywords: ['psiquiatría', 'salud mental', 'adolescentes', 'adultos'],
     phone: null, whatsapp: null, license: 'MP 18099 · MP 1119 · CE 6238',
     slug: 'guillermo-ferrero', photo: null
@@ -190,7 +190,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Ana E. Ponzo Florimonte', treatment: 'Dra.',
     specialty: 'Psiquiatría · Geriatría',
-    description: 'Especialista en psiquiatría y geriatría. Consultas presenciales y virtuales.',
+    description: 'Atiende psiquiatría y geriatría, con consultas presenciales y virtuales.',
     keywords: ['psiquiatría', 'geriatría', 'salud mental', 'adultos mayores'],
     phone: null, whatsapp: null, license: 'MP 34911 · ME 21390 · ME 17554',
     slug: 'ana-ponzo-florimonte', photo: null
@@ -198,7 +198,7 @@ const professionals = [
   {
     type: 'professional', name: 'Lic. Adriana Leticia Vitelli', treatment: 'Lic.',
     specialty: 'Psicología Clínica',
-    description: 'Psicoterapia y psicoanálisis. Atención de adolescentes, jóvenes y adultos. Certificados de Apto Psicológico. Presencial y online.',
+    description: 'Atiende psicoterapia y psicoanálisis para adolescentes, jóvenes y adultos. Presencial y online.',
     keywords: ['psicología', 'psicoterapia', 'psicoanálisis', 'adolescentes', 'adultos'],
     phone: null, whatsapp: 'https://wa.me/5493515487365', license: 'MP 1093 · ME 553',
     slug: 'adriana-vitelli', photo: null
@@ -206,7 +206,7 @@ const professionals = [
   {
     type: 'professional', name: 'Lic. María Inés Salto', treatment: 'Lic.',
     specialty: 'Psicopedagogía · Psicoanálisis',
-    description: 'Psicopedagogía y psicoanálisis. Atención de adolescentes, jóvenes y adultos.',
+    description: 'Atiende psicopedagogía y psicoanálisis para adolescentes, jóvenes y adultos.',
     keywords: ['psicopedagogía', 'psicoanálisis', 'adolescentes', 'adultos'],
     phone: null, whatsapp: 'https://wa.me/5493515584625', license: 'MP 13-1129',
     slug: 'maria-ines-salto', photo: null
@@ -216,7 +216,7 @@ const professionals = [
     type: 'space',
     name: 'Red Mayor',
     subtitle: 'Espacio de Gerontología',
-    description: 'Espacio orientado a la atención y acompañamiento de personas mayores, familias e instituciones.',
+    description: 'Espacio de gerontología para personas mayores, familias e instituciones, con orientación psicológica, acompañamiento terapéutico, talleres y capacitaciones.',
     logo: './assets/images/logos/red-mayor-logo.png',
     services: [
       'Atención psicológica',
@@ -287,6 +287,15 @@ const bindProfessionalCards = (scope = document) => {
   });
 };
 
+const renderCardKeywords = (keywords) => {
+  if (!keywords?.length) return '';
+  return `
+    <div class="pro-keywords" aria-label="Consultas que atiende">
+      ${keywords.slice(0, 3).map((keyword) => `<span>${escapeHTML(keyword)}</span>`).join('')}
+    </div>
+  `;
+};
+
 const renderRedMayorFeature = () => {
   if (!redMayorFeature) return;
 
@@ -303,13 +312,24 @@ const renderRedMayorFeature = () => {
   redMayorFeature.hidden = false;
   redMayorFeature.innerHTML = `
     <article id="profesional-${escapeHTML(item.slug)}" class="red-mayor-card" data-slug="${escapeHTML(item.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-haspopup="dialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(item.name)}, ${escapeHTML(item.subtitle || 'Espacio de gerontología')} en Córdoba">
-      <div class="red-mayor-logo" aria-hidden="true" data-initials="RM">${logoImg}</div>
-      <div class="red-mayor-copy">
-        <span class="red-mayor-kicker">Espacio de gerontología</span>
-        <h3>${escapeHTML(item.name)}</h3>
-        <p>${escapeHTML(item.description)}</p>
-        ${item.members?.length ? `<span class="red-mayor-team">${item.members.length} integrantes del equipo</span>` : ''}
+      <div class="red-mayor-main">
+        <div class="red-mayor-logo" aria-hidden="true" data-initials="RM">${logoImg}</div>
+        <div class="red-mayor-copy">
+          <span class="red-mayor-kicker">Espacio de gerontología en Córdoba</span>
+          <h3>${escapeHTML(item.name)}</h3>
+          <p>${escapeHTML(item.description)}</p>
+          <div class="red-mayor-services" aria-label="Áreas de acompañamiento de Red Mayor">
+            ${item.services?.slice(0, 5).map((service) => `<span>${escapeHTML(service)}</span>`).join('') || ''}
+          </div>
+        </div>
       </div>
+      ${item.members?.length ? `
+        <div class="red-mayor-team-list" aria-label="Equipo de Red Mayor">
+          ${item.members.map((member) => `
+            <span><strong>${escapeHTML(member.name)}</strong> ${escapeHTML(member.role)} · ${escapeHTML(member.license)}</span>
+          `).join('')}
+        </div>
+      ` : ''}
       <span class="red-mayor-action" aria-hidden="true">Consultar por Red Mayor <span>→</span></span>
     </article>
   `;
@@ -376,6 +396,7 @@ const renderProfessionals = (filter = 'Todos') => {
           <span class="pro-spec">${escapeHTML(pro.specialty)}</span>
           ${pro.license ? `<span class="pro-license">${escapeHTML(pro.license)}</span>` : ''}
           <p class="pro-desc">${escapeHTML(pro.description)}</p>
+          ${renderCardKeywords(pro.keywords)}
           <span class="pro-more" aria-hidden="true">Ver detalle y pedir turno <span>→</span></span>
         </div>
       </article>
@@ -422,9 +443,9 @@ const getPrimarySpecialty = (specialty = '') => specialty
   .toLocaleLowerCase('es-AR');
 
 const getProfessionalMessageName = (pro) => {
-  if (!pro?.treatment) return pro?.name || '';
-  const article = pro.treatment === 'Dr.' ? 'el' : 'la';
-  return `${article} ${pro.name}`;
+  if (!pro?.name) return '';
+  if (/^(Dr\.|Dra\.|Lic\.|Mg\.)\s+/i.test(pro.name)) return pro.name;
+  return pro.treatment ? `${pro.treatment} ${pro.name}` : pro.name;
 };
 
 const getProfessionalWhatsappUrl = (pro) => {
