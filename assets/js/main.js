@@ -75,7 +75,7 @@ const professionals = [
     keywords: ['clínica médica', 'medicina interna', 'terapia intensiva', 'adultos mayores'],
     consultationAreas: ['Clínica médica', 'Medicina interna', 'Adultos', 'Personas mayores', 'Terapia intensiva'],
     phone: null, whatsapp: null, license: 'MP 17871 · MP 5130 · MP 9125',
-    slug: 'carlos-presman', photo: './assets/images/profesionales/carlos-presman.webp'
+    slug: 'carlos-presman', photo: './assets/images/profesionales/carlos-presman.webp', photoPosition: 'center 38%'
   },
   {
     type: 'professional', name: 'Dr. Guillermo Calvo Hidalgo', treatment: 'Dr.',
@@ -95,7 +95,7 @@ const professionals = [
     keywords: ['medicina interna', 'adolescencia', 'desórdenes alimentarios'],
     consultationAreas: ['Medicina interna', 'Adolescencia', 'Desórdenes alimentarios', 'Seguimiento clínico'],
     phone: null, whatsapp: null, license: 'MP 13353 · ME 4328',
-    slug: 'juana-presman', photo: './assets/images/profesionales/juana-presman.webp'
+    slug: 'juana-presman', photo: './assets/images/profesionales/juana-presman.webp', photoPosition: 'center 36%'
   },
   {
     type: 'professional', name: 'Julio César Guerini', treatment: null,
@@ -156,7 +156,7 @@ const professionals = [
     consultationAreas: ['Endocrinología de adultos', 'Trastornos hormonales', 'Seguimiento metabólico'],
     modalities: ['Presencial', 'Virtual'],
     phone: null, whatsapp: null, license: 'MP 22947 · ME 8774',
-    slug: 'valeria-gaon', photo: './assets/images/profesionales/valeria-gaon.webp'
+    slug: 'valeria-gaon', photo: './assets/images/profesionales/valeria-gaon.webp', photoPosition: 'center 40%'
   },
   {
     type: 'professional', name: 'Dra. Mariela Alvarez', treatment: 'Dra.',
@@ -238,7 +238,7 @@ const professionals = [
     consultationAreas: ['Psicología clínica', 'Psicoterapia', 'Psicoanálisis', 'Adolescentes', 'Jóvenes', 'Adultos', 'Apto psicológico'],
     modalities: ['Presencial', 'Online'],
     phone: null, whatsapp: 'https://wa.me/5493515487365', license: 'MP 1093 · ME 553',
-    slug: 'adriana-vitelli', photo: './assets/images/profesionales/adriana-vitelli.webp'
+    slug: 'adriana-vitelli', photo: './assets/images/profesionales/adriana-vitelli.webp', photoPosition: 'center 36%'
   },
   {
     type: 'professional', name: 'Lic. María Inés Salto', treatment: 'Lic.',
@@ -360,7 +360,7 @@ const renderRedMayorFeature = () => {
           <small>Psicología y acompañamiento terapéutico</small>
         </div>
       ` : ''}
-      <span class="red-mayor-action" aria-hidden="true">Consultar por Red Mayor <span>→</span></span>
+      <span class="red-mayor-action" aria-hidden="true">Consultar por Red Mayor</span>
     </article>
   `;
 
@@ -394,7 +394,7 @@ const renderProfessionals = (filter = 'Todos') => {
             <h3>${escapeHTML(pro.name)}</h3>
             <span class="pro-spec">${escapeHTML(pro.subtitle || 'Espacio especializado')}</span>
             <p class="pro-desc">${escapeHTML(pro.description)}</p>
-            <span class="pro-more" aria-hidden="true">Ver detalle y consultar <span>→</span></span>
+            <span class="pro-more" aria-hidden="true">Ver detalle y consultar</span>
           </div>
         </article>
       `;
@@ -427,7 +427,7 @@ const renderProfessionals = (filter = 'Todos') => {
           <span class="pro-spec">${escapeHTML(getDisplaySpecialty(pro.specialty))}</span>
           ${pro.license ? `<span class="pro-license">${escapeHTML(getCompactLicense(pro.license))}</span>` : ''}
           <p class="pro-desc">${escapeHTML(pro.description)}</p>
-          <span class="pro-more" aria-hidden="true">Ver detalle y pedir turno <span>→</span></span>
+          <span class="pro-more" aria-hidden="true">Ver detalle y pedir turno</span>
         </div>
       </article>
     `;
@@ -479,7 +479,7 @@ const getDisplaySpecialty = (specialty = '') => specialty
 const getCompactLicense = (license = '') => {
   const licenses = license.split('·').map((item) => item.trim()).filter(Boolean);
   if (!licenses.length) return '';
-  return licenses.length > 1 ? `${licenses[0]} + ${licenses.length - 1}` : licenses[0];
+  return licenses.length > 1 ? 'Matrículas profesionales' : 'Matrícula profesional';
 };
 
 const getProfessionalMessageName = (pro) => {
