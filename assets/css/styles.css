@@ -1275,8 +1275,7 @@ p {
   line-height: 1.62;
 }
 
-.red-mayor-services,
-.pro-keywords {
+.red-mayor-services {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
@@ -1286,8 +1285,7 @@ p {
   margin-top: 14px;
 }
 
-.red-mayor-services span,
-.pro-keywords span {
+.red-mayor-services span {
   display: inline-flex;
   align-items: center;
   width: fit-content;
@@ -1305,11 +1303,11 @@ p {
   padding: 7px 10px;
 }
 
-.red-mayor-team-list {
+.red-mayor-team-summary {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 9px;
+  gap: 4px;
   min-width: min(100%, 260px);
   padding: 0;
   border: 0;
@@ -1317,19 +1315,20 @@ p {
   background: transparent;
 }
 
-.red-mayor-team-list span {
+.red-mayor-team-summary span {
   color: var(--ink-soft);
   font-size: .84rem;
   line-height: 1.32;
 }
 
-.red-mayor-team-list strong {
+.red-mayor-team-summary strong {
   display: block;
   color: var(--ink);
-  font-size: .86rem;
+  font-size: .98rem;
+  line-height: 1.25;
 }
 
-.red-mayor-team-list small {
+.red-mayor-team-summary small {
   display: block;
   color: var(--muted);
   font-size: .78rem;
@@ -1573,17 +1572,6 @@ p {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.pro-keywords {
-  margin-top: 10px;
-}
-
-.pro-keywords span {
-  padding: 6px 8px;
-  background: rgba(247, 244, 237, .76);
-  color: var(--ink-soft);
-  font-size: .7rem;
 }
 
 .pro-more {
@@ -2359,9 +2347,9 @@ p {
 
 .location-intro {
   display: grid;
-  grid-template-columns: minmax(0, .86fr) auto;
+  grid-template-columns: 1fr;
   gap: clamp(22px, 5vw, 70px);
-  align-items: end;
+  align-items: start;
   padding-bottom: clamp(22px, 3.6vw, 38px);
   border-bottom: 1px solid var(--line);
   min-width: 0;
@@ -2384,23 +2372,6 @@ p {
   color: var(--ink-soft);
   font-size: clamp(1rem, 1.2vw, 1.12rem);
   line-height: 1.72;
-}
-
-.location-actions {
-  display: grid;
-  justify-items: end;
-  gap: 0;
-  min-width: 0;
-}
-
-.location-actions address {
-  margin: 0;
-  color: var(--ink);
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 1.42;
-  overflow-wrap: anywhere;
 }
 
 .location-layout {
@@ -2852,7 +2823,7 @@ p {
     grid-template-columns: 76px minmax(0, 1fr);
   }
 
-  .red-mayor-team-list {
+  .red-mayor-team-summary {
     max-width: 100%;
   }
 
@@ -2905,8 +2876,7 @@ p {
     height: 78px;
     border-radius: 22px;
   }
-  .red-mayor-services,
-  .pro-keywords { gap: 6px; }
+  .red-mayor-services { gap: 6px; }
 }
 
 @media (max-width: 430px) {
@@ -3255,7 +3225,7 @@ p {
     line-height: 1.55;
   }
 
-  .red-mayor-team-list,
+  .red-mayor-team-summary,
   .red-mayor-action {
     grid-column: 1 / -1;
   }
@@ -3421,10 +3391,6 @@ p {
   .location-intro p {
     font-size: .98rem;
     line-height: 1.62;
-  }
-
-  .location-actions .btn {
-    width: fit-content;
   }
 
   .service-grid {

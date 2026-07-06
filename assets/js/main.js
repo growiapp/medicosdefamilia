@@ -70,162 +70,183 @@ const professionals = [
   {
     type: 'professional', name: 'Dr. Carlos Presman', treatment: 'Dr.',
     specialty: 'Clínica Médica · Medicina Interna',
-    description: 'Atiende adultos y personas mayores desde clínica médica, medicina interna y terapia intensiva.',
-    detail: 'Médico clínico de adultos y adultos mayores. Especialista en medicina interna y terapia intensiva.',
+    description: 'Acompaña consultas clínicas de adultos y personas mayores, con mirada de medicina interna.',
+    detail: 'Médico clínico de adultos y adultos mayores, especialista en medicina interna y terapia intensiva. Su perfil permite orientar controles, seguimiento clínico y evaluación integral de pacientes adultos.',
     keywords: ['clínica médica', 'medicina interna', 'terapia intensiva', 'adultos mayores'],
+    consultationAreas: ['Clínica médica', 'Medicina interna', 'Adultos', 'Personas mayores', 'Terapia intensiva'],
     phone: null, whatsapp: null, license: 'MP 17871 · MP 5130 · MP 9125',
     slug: 'carlos-presman', photo: './assets/images/profesionales/carlos-presman.webp'
   },
   {
     type: 'professional', name: 'Dr. Guillermo Calvo Hidalgo', treatment: 'Dr.',
     specialty: 'Clínica Médica · Cardiología',
-    description: 'Atiende consultas de clínica médica y cardiología para adultos.',
-    detail: 'Especialista en clínica médica y cardiología.',
+    description: 'Consultas de clínica médica y cardiología para adultos, con seguimiento clínico integral.',
+    detail: 'Especialista en clínica médica y cardiología. Atiende consultas de adultos que requieren evaluación clínica general, orientación cardiovascular y continuidad en el seguimiento.',
     keywords: ['clínica médica', 'cardiología', 'adultos'],
+    consultationAreas: ['Clínica médica', 'Cardiología', 'Adultos', 'Seguimiento clínico'],
     phone: null, whatsapp: null, license: 'MP 24172 · CE 8341 · CE 13122',
     slug: 'guillermo-calvo-hidalgo', photo: './assets/images/profesionales/guillermo-calvo-hidalgo.webp'
   },
   {
     type: 'professional', name: 'Dra. Juana A. Presman', treatment: 'Dra.',
     specialty: 'Medicina Interna · Adolescencia',
-    description: 'Atiende adolescentes desde medicina interna, con experiencia en desórdenes alimentarios.',
-    detail: 'Médica especialista en medicina interna. Atiende medicina del adolescente y desórdenes alimentarios.',
+    description: 'Medicina interna para adolescentes, con atención especializada en desórdenes alimentarios.',
+    detail: 'Médica especialista en medicina interna. Trabaja en medicina del adolescente y en la atención especializada de desórdenes alimentarios, con una mirada clínica orientada al acompañamiento y seguimiento.',
     keywords: ['medicina interna', 'adolescencia', 'desórdenes alimentarios'],
+    consultationAreas: ['Medicina interna', 'Adolescencia', 'Desórdenes alimentarios', 'Seguimiento clínico'],
     phone: null, whatsapp: null, license: 'MP 13353 · ME 4328',
     slug: 'juana-presman', photo: './assets/images/profesionales/juana-presman.webp'
   },
   {
     type: 'professional', name: 'Julio César Guerini', treatment: null,
     specialty: 'Medicina Interna · Medicina del Trabajo · Medicina Legal',
-    description: 'Atiende medicina interna, medicina del trabajo y medicina legal.',
-    detail: 'Especialista en medicina interna, medicina legal y medicina del trabajo.',
+    description: 'Consultas vinculadas a medicina interna, medicina del trabajo y medicina legal.',
+    detail: 'Especialista en medicina interna, medicina legal y medicina del trabajo. Su perfil integra evaluación clínica de adultos con áreas vinculadas al ámbito laboral y médico-legal.',
     keywords: ['medicina interna', 'medicina laboral', 'medicina legal'],
+    consultationAreas: ['Medicina interna', 'Medicina del trabajo', 'Medicina legal', 'Adultos'],
     phone: null, whatsapp: null, license: 'MP 36.996 · MN 157187 · CE 18.660 · CE 19.577 · CE 22.157',
     slug: 'julio-guerini', photo: null
   },
   {
     type: 'professional', name: 'Dr. Marcelo H. Argüello', treatment: 'Dr.',
     specialty: 'Pediatría · Emergentología Pediátrica',
-    description: 'Atiende controles pediátricos y consultas de salud infantil.',
-    detail: 'Médico pediatra y emergentólogo pediatra.',
+    description: 'Pediatría para controles y consultas de salud infantil, con formación en emergentología.',
+    detail: 'Médico pediatra y emergentólogo pediatra. Atiende consultas pediátricas, controles de salud infantil y situaciones que requieren criterio especializado en emergentología pediátrica.',
     keywords: ['pediatría', 'emergentología pediátrica', 'niños'],
+    consultationAreas: ['Pediatría', 'Emergentología pediátrica', 'Controles de salud', 'Niñas y niños'],
     phone: null, whatsapp: null, license: 'MP 20281 · MN 121953 · ME 6827 · ME 14369',
     slug: 'marcelo-arguello', photo: './assets/images/profesionales/marcelo-arguello.webp'
   },
   {
     type: 'professional', name: 'Dra. Graciela Testa', treatment: 'Dra.',
     specialty: 'Pediatría · Endocrinología Pediátrica',
-    description: 'Atiende pediatría y endocrinología pediátrica para niñas, niños y adolescentes.',
-    detail: 'Médica especialista en pediatría y endocrinología pediátrica.',
+    description: 'Pediatría y endocrinología pediátrica para niñas, niños y adolescentes.',
+    detail: 'Médica especialista en pediatría y endocrinología pediátrica. Atiende consultas de salud infantil y seguimiento de situaciones hormonales o metabólicas en niñas, niños y adolescentes.',
     keywords: ['pediatría', 'endocrinología pediátrica', 'niños', 'adolescentes'],
+    consultationAreas: ['Pediatría', 'Endocrinología pediátrica', 'Niñas y niños', 'Adolescentes'],
     phone: null, whatsapp: null, license: 'MP 17870 · ME 5056 · ME 12384',
     slug: 'graciela-testa', photo: './assets/images/profesionales/graciela-testa.webp'
   },
   {
     type: 'professional', name: 'Dra. Malvina Signorino', treatment: 'Dra.',
     specialty: 'Pediatría · Endocrinología Pediátrica',
-    description: 'Atiende consultas pediátricas y endocrinología pediátrica.',
-    detail: 'Médica pediatra especialista en endocrinología pediátrica.',
+    description: 'Consultas pediátricas y endocrinología pediátrica para seguimiento especializado.',
+    detail: 'Médica pediatra especialista en endocrinología pediátrica. Acompaña consultas de salud infantil y controles vinculados al crecimiento, desarrollo y sistema endocrino pediátrico.',
     keywords: ['pediatría', 'endocrinología pediátrica', 'niños'],
+    consultationAreas: ['Pediatría', 'Endocrinología pediátrica', 'Crecimiento y desarrollo', 'Niñas y niños'],
     phone: null, whatsapp: null, license: 'MP 28446 · ME 15124 · ME 17798',
     slug: 'malvina-signorino', photo: './assets/images/profesionales/malvina-signorino.webp'
   },
   {
     type: 'professional', name: 'Dra. Paredes Natalia', treatment: 'Dra.',
     specialty: 'Pediatría',
-    description: 'Atiende controles de niño sano, consultas pediátricas, crecimiento y desarrollo.',
-    detail: 'Atención de niño sano y enfermo, patologías crónicas pediátricas, nutrición infantil y puericultura.',
+    description: 'Pediatría para controles, crecimiento, desarrollo y orientación en salud infantil.',
+    detail: 'Atiende pediatría general, controles de niño sano y consultas por enfermedad. También acompaña crecimiento y desarrollo, patologías crónicas pediátricas, nutrición infantil y puericultura.',
     keywords: ['pediatría', 'crecimiento y desarrollo', 'nutrición infantil', 'puericultura'],
+    consultationAreas: ['Pediatría', 'Niño sano', 'Crecimiento y desarrollo', 'Patologías crónicas pediátricas', 'Nutrición infantil', 'Puericultura'],
     phone: null, whatsapp: null, license: 'MP 36789',
     slug: 'paredes-natalia', photo: './assets/images/profesionales/paredes-natalia.webp'
   },
   {
     type: 'professional', name: 'Dra. Valeria Gaon', treatment: 'Dra.',
     specialty: 'Endocrinología',
-    description: 'Atiende endocrinología de adultos, con consultas presenciales y virtuales.',
-    detail: 'Especialista en endocrinología de adultos.',
+    description: 'Endocrinología de adultos, con consultas presenciales y virtuales confirmadas.',
+    detail: 'Especialista en endocrinología de adultos. Atiende consultas presenciales y virtuales para evaluación y seguimiento de condiciones hormonales y metabólicas.',
     keywords: ['endocrinología', 'adultos', 'consultas virtuales'],
+    consultationAreas: ['Endocrinología de adultos', 'Trastornos hormonales', 'Seguimiento metabólico'],
+    modalities: ['Presencial', 'Virtual'],
     phone: null, whatsapp: null, license: 'MP 22947 · ME 8774',
     slug: 'valeria-gaon', photo: './assets/images/profesionales/valeria-gaon.webp'
   },
   {
     type: 'professional', name: 'Dra. Mariela Alvarez', treatment: 'Dra.',
     specialty: 'Dermatología · Estética Médica',
-    description: 'Atiende dermatología integral para adultos y niños, dermatoscopia y control de lunares.',
-    detail: 'Médica cirujana, especialista en dermatología y estética médica. Realiza diagnóstico, tratamiento y prevención de enfermedades de la piel, el pelo y las uñas.',
+    description: 'Dermatología para adultos y niños, con foco en diagnóstico, prevención y seguimiento de piel.',
+    detail: 'Médica cirujana, especialista en dermatología y estética médica. Atiende dermatología integral en adultos y niños, incluyendo consultas por piel, pelo y uñas, dermatoscopia, control de lunares y seguimiento de lesiones cutáneas. También realiza tratamientos de estética médica cuando corresponde.',
     keywords: ['dermatología', 'estética médica', 'dermatoscopia', 'control de lunares'],
+    consultationAreas: ['Dermatología clínica', 'Piel, pelo y uñas', 'Dermatoscopia', 'Control de lunares', 'Lesiones cutáneas', 'Estética médica'],
     phone: null, whatsapp: null, license: 'MP 28710 · MP 15917',
     slug: 'mariela-alvarez', photo: './assets/images/profesionales/mariela-alvarez.webp'
   },
   {
     type: 'professional', name: 'Dra. Ana Virginia Corrado', treatment: 'Dra.',
     specialty: 'Dermatología',
-    description: 'Atiende dermatología clínica, con formación en dermatología oncológica.',
-    detail: 'Médica dermatóloga, diplomada en dermatología oncológica y docente de la UCC.',
+    description: 'Dermatología clínica con formación en dermatología oncológica.',
+    detail: 'Médica dermatóloga, diplomada en dermatología oncológica y docente de la UCC. Atiende consultas dermatológicas con foco clínico y seguimiento especializado de la piel.',
     keywords: ['dermatología', 'dermatología oncológica', 'piel'],
+    consultationAreas: ['Dermatología clínica', 'Dermatología oncológica', 'Control de piel', 'Seguimiento dermatológico'],
     phone: null, whatsapp: null, license: 'MP 28234/3 · ME 14464',
     slug: 'ana-virginia-corrado', photo: './assets/images/profesionales/ana-virginia-corrado.webp'
   },
   {
     type: 'professional', name: 'Dra. Sara Ochoa', treatment: 'Dra.',
     specialty: 'Tocoginecología · Menopausia',
-    description: 'Atiende tocoginecología, adolescencia y menopausia.',
-    detail: 'Especialista en tocoginecología, adolescencia y menopausia.',
+    description: 'Tocoginecología para adolescencia, adultez y etapa de menopausia.',
+    detail: 'Especialista en tocoginecología, adolescencia y menopausia. Atiende consultas ginecológicas orientadas a distintas etapas de la salud femenina.',
     keywords: ['ginecología', 'tocoginecología', 'menopausia', 'adolescencia'],
+    consultationAreas: ['Tocoginecología', 'Ginecología', 'Adolescencia', 'Menopausia'],
     phone: null, whatsapp: null, license: 'MP 9529 · ME 3247',
     slug: 'sara-ochoa', photo: './assets/images/profesionales/sara-ochoa.webp'
   },
   {
     type: 'professional', name: 'Lic. Maria Julieta Agüero', treatment: 'Lic.',
     specialty: 'Nutrición',
-    description: 'Atiende nutrición de niños y adultos con foco en hábitos alimentarios sostenibles.',
-    detail: 'Abordaje integral para obesidad y sobrepeso, diabetes, alimentación vegetariana y vegana, nutrición antiinflamatoria y microbiota.',
+    description: 'Nutrición para niños y adultos, orientada a mejorar hábitos alimentarios.',
+    detail: 'Licenciada en nutrición. Propone un abordaje integral para mejorar hábitos alimentarios en niños y adultos, con orientación en obesidad y sobrepeso, diabetes, alimentación vegetariana y vegana, nutrición antiinflamatoria y microbiota.',
     keywords: ['nutrición', 'obesidad', 'diabetes', 'microbiota'],
+    consultationAreas: ['Nutrición', 'Hábitos alimentarios', 'Obesidad y sobrepeso', 'Diabetes', 'Alimentación vegetariana y vegana', 'Microbiota'],
     phone: null, whatsapp: null, license: 'MP 3132',
     slug: 'julieta-aguero', photo: './assets/images/profesionales/julieta-aguero.webp'
   },
   {
     type: 'professional', name: 'Lic. Mónica Inés Garrone', treatment: 'Lic.',
     specialty: 'Kinesiología y Fisioterapia',
-    description: 'Atiende kinesiología, fisioterapia y rehabilitación postural global.',
-    detail: 'Licenciada en kinesiología y fisioterapia. Rehabilitación postural global, gimnasia postural y correctiva.',
+    description: 'Kinesiología y fisioterapia con trabajo en rehabilitación postural.',
+    detail: 'Licenciada en kinesiología y fisioterapia. Trabaja en rehabilitación postural global, gimnasia postural y gimnasia correctiva para mejorar función, postura y movimiento.',
     keywords: ['kinesiología', 'fisioterapia', 'rehabilitación postural', 'gimnasia correctiva'],
+    consultationAreas: ['Kinesiología', 'Fisioterapia', 'Rehabilitación postural global', 'Gimnasia postural', 'Gimnasia correctiva'],
     phone: null, whatsapp: null, license: 'MP 1379',
     slug: 'monica-garrone', photo: './assets/images/profesionales/monica-garrone.webp'
   },
   {
     type: 'professional', name: 'Dr. Guillermo Ferrero', treatment: 'Dr.',
     specialty: 'Psiquiatría · Psicología',
-    description: 'Atiende salud mental de adolescentes, jóvenes y adultos.',
-    detail: 'Médico cirujano, licenciado en psicología y especialista en psiquiatría.',
+    description: 'Salud mental para adolescentes, jóvenes y adultos, desde psiquiatría y psicología.',
+    detail: 'Médico cirujano, licenciado en psicología y especialista en psiquiatría. Cuenta con trayectoria en salud mental y atiende de manera integral a adolescentes, jóvenes y adultos.',
     keywords: ['psiquiatría', 'psicología', 'salud mental', 'adolescentes'],
+    consultationAreas: ['Psiquiatría', 'Psicología', 'Salud mental', 'Adolescentes', 'Jóvenes', 'Adultos'],
     phone: null, whatsapp: null, license: 'MP 18099 · MP 1119 · CE 6238',
     slug: 'guillermo-ferrero', photo: './assets/images/profesionales/guillermo-ferrero.webp'
   },
   {
     type: 'professional', name: 'Dra. Ana E. Ponzo Florimonte', treatment: 'Dra.',
     specialty: 'Psiquiatría · Geriatría',
-    description: 'Atiende psiquiatría y geriatría, con consultas presenciales y virtuales.',
-    detail: 'Especialista en psiquiatría y geriatría.',
+    description: 'Psiquiatría y geriatría, con consultas presenciales y virtuales confirmadas.',
+    detail: 'Especialista en psiquiatría y geriatría. Atiende consultas presenciales y virtuales, con foco en salud mental y acompañamiento clínico de personas mayores.',
     keywords: ['psiquiatría', 'geriatría', 'salud mental', 'adultos mayores'],
+    consultationAreas: ['Psiquiatría', 'Geriatría', 'Salud mental', 'Personas mayores'],
+    modalities: ['Presencial', 'Virtual'],
     phone: null, whatsapp: null, license: 'MP 34911 · ME 21390 · ME 17554',
     slug: 'ana-ponzo-florimonte', photo: './assets/images/profesionales/ana-ponzo-florimonte.webp'
   },
   {
     type: 'professional', name: 'Lic. Adriana Leticia Vitelli', treatment: 'Lic.',
     specialty: 'Psicología Clínica',
-    description: 'Atiende psicoterapia y psicoanálisis para adolescentes, jóvenes y adultos.',
-    detail: 'Especialista en psicología clínica. Atención presencial y online. Realiza asesoramiento y certificados de apto psicológico.',
+    description: 'Psicología clínica, psicoterapia y psicoanálisis para adolescentes, jóvenes y adultos.',
+    detail: 'Licenciada en psicología y especialista en psicología clínica. Trabaja en psicoterapia y psicoanálisis para adolescentes, jóvenes y adultos. También realiza asesoramiento y certificados de apto psicológico, con atención presencial y online.',
     keywords: ['psicología', 'psicoterapia', 'psicoanálisis', 'adolescentes'],
+    consultationAreas: ['Psicología clínica', 'Psicoterapia', 'Psicoanálisis', 'Adolescentes', 'Jóvenes', 'Adultos', 'Apto psicológico'],
+    modalities: ['Presencial', 'Online'],
     phone: null, whatsapp: 'https://wa.me/5493515487365', license: 'MP 1093 · ME 553',
     slug: 'adriana-vitelli', photo: './assets/images/profesionales/adriana-vitelli.webp'
   },
   {
     type: 'professional', name: 'Lic. María Inés Salto', treatment: 'Lic.',
     specialty: 'Psicopedagogía · Psicoanálisis',
-    description: 'Atiende psicopedagogía y psicoanálisis para adolescentes, jóvenes y adultos.',
-    detail: 'Atención en psicopedagogía y psicoanálisis para adolescentes, jóvenes y adultos.',
+    description: 'Psicopedagogía y psicoanálisis para adolescentes, jóvenes y adultos.',
+    detail: 'Atiende consultas de psicopedagogía y psicoanálisis para adolescentes, jóvenes y adultos. Su trabajo propone abrir un espacio de palabra para ordenar conflictos, construir una nueva mirada y acompañar procesos personales.',
     keywords: ['psicopedagogía', 'psicoanálisis', 'adolescentes', 'adultos'],
+    consultationAreas: ['Psicopedagogía', 'Psicoanálisis', 'Adolescentes', 'Jóvenes', 'Adultos'],
     phone: null, whatsapp: 'https://wa.me/5493515584625', license: 'MP 13-1129',
     slug: 'maria-ines-salto', photo: './assets/images/profesionales/maria-ines-salto.webp'
   },
@@ -233,7 +254,8 @@ const professionals = [
     type: 'space',
     name: 'Red Mayor',
     subtitle: 'Espacio de Gerontología',
-    description: 'Espacio de gerontología para personas mayores, familias e instituciones, con atención psicológica, orientación familiar, acompañamiento terapéutico, talleres y capacitaciones.',
+    description: 'Un espacio de gerontología para personas mayores, familias e instituciones, con un equipo especializado dentro de Médicos de Familia.',
+    detail: 'Red Mayor reúne profesionales con formación y experiencia en el acompañamiento de personas mayores. Brinda atención psicológica, orientación familiar, acompañamiento terapéutico, talleres sociorecreativos y capacitaciones para profesionales e instituciones.',
     logo: './assets/images/logos/red-mayor-logo.png',
     services: [
       'Atención psicológica',
@@ -304,15 +326,6 @@ const bindProfessionalCards = (scope = document) => {
   });
 };
 
-const renderCardKeywords = (keywords) => {
-  if (!keywords?.length) return '';
-  return `
-    <div class="pro-keywords" aria-label="Consultas que atiende">
-      ${keywords.slice(0, 2).map((keyword) => `<span>${escapeHTML(keyword)}</span>`).join('')}
-    </div>
-  `;
-};
-
 const renderRedMayorFeature = () => {
   if (!redMayorFeature) return;
 
@@ -336,16 +349,15 @@ const renderRedMayorFeature = () => {
           <h3>${escapeHTML(item.name)}</h3>
           <p>${escapeHTML(item.description)}</p>
           <div class="red-mayor-services" aria-label="Áreas de acompañamiento de Red Mayor">
-            ${item.services?.slice(0, 5).map((service) => `<span>${escapeHTML(service)}</span>`).join('') || ''}
+            ${item.services?.slice(0, 3).map((service) => `<span>${escapeHTML(service)}</span>`).join('') || ''}
           </div>
         </div>
       </div>
       ${item.members?.length ? `
-        <div class="red-mayor-team-list" aria-label="Equipo de Red Mayor">
+        <div class="red-mayor-team-summary" aria-label="Equipo de Red Mayor">
           <span class="red-mayor-team-kicker">Equipo</span>
-          ${item.members.slice(0, 4).map((member) => `
-            <span><strong>${escapeHTML(member.name)}</strong><small>${escapeHTML(member.role)} · ${escapeHTML(member.license)}</small></span>
-          `).join('')}
+          <strong>${item.members.length} integrantes del equipo</strong>
+          <small>Psicología y acompañamiento terapéutico</small>
         </div>
       ` : ''}
       <span class="red-mayor-action" aria-hidden="true">Consultar por Red Mayor <span>→</span></span>
@@ -415,7 +427,6 @@ const renderProfessionals = (filter = 'Todos') => {
           <span class="pro-spec">${escapeHTML(getDisplaySpecialty(pro.specialty))}</span>
           ${pro.license ? `<span class="pro-license">${escapeHTML(getCompactLicense(pro.license))}</span>` : ''}
           <p class="pro-desc">${escapeHTML(pro.description)}</p>
-          ${renderCardKeywords(pro.keywords)}
           <span class="pro-more" aria-hidden="true">Ver detalle y pedir turno <span>→</span></span>
         </div>
       </article>
@@ -500,6 +511,16 @@ const renderKeywordList = (keywords) => {
   `;
 };
 
+const renderModalities = (modalities) => {
+  if (!modalities?.length) return '';
+
+  return `
+    <div class="keyword-list">
+      ${modalities.map((modality) => `<span>${escapeHTML(modality)}</span>`).join('')}
+    </div>
+  `;
+};
+
 const renderSpaceServices = (services) => {
   if (!services?.length) return '';
 
@@ -554,7 +575,7 @@ const renderProfessionalDialog = (pro) => {
               <span class="professional-specialty">${escapeHTML(pro.subtitle || '')}</span>
             </div>
           </div>
-          <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.description)}</p>
+          <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.detail || pro.description)}</p>
         </div>
 
         ${renderSpaceServices(pro.services)}
@@ -616,10 +637,16 @@ const renderProfessionalDialog = (pro) => {
             <dd><a href="${escapeHTML(pro.phone)}">Contacto individual</a></dd>
           </div>
         ` : ''}
-        ${pro.keywords?.length ? `
+        ${pro.modalities?.length ? `
+          <div class="professional-meta-row">
+            <dt>Modalidad</dt>
+            <dd>${renderModalities(pro.modalities)}</dd>
+          </div>
+        ` : ''}
+        ${pro.consultationAreas?.length || pro.keywords?.length ? `
           <div class="professional-meta-row">
             <dt>Atiende consultas de</dt>
-            <dd>${renderKeywordList(pro.keywords)}</dd>
+            <dd>${renderKeywordList(pro.consultationAreas || pro.keywords)}</dd>
           </div>
         ` : ''}
       </dl>
