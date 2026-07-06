@@ -308,7 +308,7 @@ const renderCardKeywords = (keywords) => {
   if (!keywords?.length) return '';
   return `
     <div class="pro-keywords" aria-label="Consultas que atiende">
-      ${keywords.slice(0, 3).map((keyword) => `<span>${escapeHTML(keyword)}</span>`).join('')}
+      ${keywords.slice(0, 2).map((keyword) => `<span>${escapeHTML(keyword)}</span>`).join('')}
     </div>
   `;
 };
@@ -342,8 +342,9 @@ const renderRedMayorFeature = () => {
       </div>
       ${item.members?.length ? `
         <div class="red-mayor-team-list" aria-label="Equipo de Red Mayor">
-          ${item.members.map((member) => `
-            <span><strong>${escapeHTML(member.name)}</strong> ${escapeHTML(member.role)} · ${escapeHTML(member.license)}</span>
+          <span class="red-mayor-team-kicker">Equipo</span>
+          ${item.members.slice(0, 4).map((member) => `
+            <span><strong>${escapeHTML(member.name)}</strong><small>${escapeHTML(member.role)} · ${escapeHTML(member.license)}</small></span>
           `).join('')}
         </div>
       ` : ''}
@@ -387,8 +388,9 @@ const renderProfessionals = (filter = 'Todos') => {
       `;
     }
 
+    const photoStyle = pro.photoPosition ? ` style="object-position: ${escapeHTML(pro.photoPosition)}"` : '';
     const avatar = pro.photo
-      ? `<img src="${escapeHTML(pro.photo)}" alt="Foto de ${escapeHTML(pro.name)}" loading="lazy" decoding="async" />`
+      ? `<img src="${escapeHTML(pro.photo)}" alt="Foto de ${escapeHTML(pro.name)}" loading="lazy" decoding="async"${photoStyle} />`
       : escapeHTML(getInitials(pro.name));
 
     if (pro.isPending) {
@@ -410,8 +412,8 @@ const renderProfessionals = (filter = 'Todos') => {
         <div class="avatar" aria-hidden="true">${avatar}</div>
         <div class="pro-content">
           <h3>${escapeHTML(pro.name)}</h3>
-          <span class="pro-spec">${escapeHTML(pro.specialty)}</span>
-          ${pro.license ? `<span class="pro-license">${escapeHTML(pro.license)}</span>` : ''}
+          <span class="pro-spec">${escapeHTML(getDisplaySpecialty(pro.specialty))}</span>
+          ${pro.license ? `<span class="pro-license">${escapeHTML(getCompactLicense(pro.license))}</span>` : ''}
           <p class="pro-desc">${escapeHTML(pro.description)}</p>
           ${renderCardKeywords(pro.keywords)}
           <span class="pro-more" aria-hidden="true">Ver detalle y pedir turno <span>→</span></span>
@@ -458,6 +460,16 @@ const getPrimarySpecialty = (specialty = '') => specialty
   .split('·')[0]
   .trim()
   .toLocaleLowerCase('es-AR');
+
+const getDisplaySpecialty = (specialty = '') => specialty
+  .split('·')[0]
+  .trim();
+
+const getCompactLicense = (license = '') => {
+  const licenses = license.split('·').map((item) => item.trim()).filter(Boolean);
+  if (!licenses.length) return '';
+  return licenses.length > 1 ? `${licenses[0]} + ${licenses.length - 1}` : licenses[0];
+};
 
 const getProfessionalMessageName = (pro) => {
   if (!pro?.name) return '';
@@ -532,33 +544,37 @@ const renderProfessionalDialog = (pro) => {
       : '';
 
     professionalDialogContent.innerHTML = `
-      <div class="professional-hero space-hero">
-        <div class="space-dialog-logo" aria-hidden="true" data-initials="RM">${logoImg}</div>
-        <div>
-          <span class="professional-kicker">Espacio de atención especializada</span>
-          <h2 id="professionalDialogTitle">${escapeHTML(pro.name)}</h2>
+      <div class="professional-scroll">
+        <div class="professional-hero space-hero">
+          <div class="professional-identity">
+            <div class="space-dialog-logo" aria-hidden="true" data-initials="RM">${logoImg}</div>
+            <div>
+              <span class="professional-kicker">Espacio de atención especializada</span>
+              <h2 id="professionalDialogTitle">${escapeHTML(pro.name)}</h2>
+              <span class="professional-specialty">${escapeHTML(pro.subtitle || '')}</span>
+            </div>
+          </div>
+          <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.description)}</p>
         </div>
-        <span class="professional-specialty">${escapeHTML(pro.subtitle || '')}</span>
-        <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.description)}</p>
+
+        ${renderSpaceServices(pro.services)}
+        ${renderSpaceMembers(pro.members)}
+
+        <dl class="professional-meta space-location-meta">
+          <div class="professional-meta-row">
+            <dt>Ubicación</dt>
+            <dd>Médicos de Familia · Córdoba capital</dd>
+          </div>
+        </dl>
+
+        ${pro.isPending ? `
+          <p class="professional-note">
+            Información del espacio en proceso de validación final. Los datos definitivos del equipo se incorporarán próximamente.
+          </p>
+        ` : ''}
       </div>
 
-      ${renderSpaceServices(pro.services)}
-      ${renderSpaceMembers(pro.members)}
-
-      <dl class="professional-meta space-location-meta">
-        <div class="professional-meta-row">
-          <dt>Ubicación</dt>
-          <dd>Médicos de Familia · Córdoba capital</dd>
-        </div>
-      </dl>
-
-      ${pro.isPending ? `
-        <p class="professional-note">
-          Información del espacio en proceso de validación final. Los datos definitivos del equipo se incorporarán próximamente.
-        </p>
-      ` : ''}
-
-      <div class="professional-actions">
+      <div class="professional-actions professional-actions-sticky">
         <a class="btn btn-primary btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Consultar por Red Mayor</a>
         <a class="btn btn-secondary" href="tel:+543514214225">Llamar al centro</a>
       </div>
@@ -567,52 +583,49 @@ const renderProfessionalDialog = (pro) => {
   }
 
   const portrait = pro.photo
-    ? `<img src="${escapeHTML(pro.photo)}" alt="Foto de ${escapeHTML(pro.name)}" loading="lazy" decoding="async" />`
+    ? `<img src="${escapeHTML(pro.photo)}" alt="Foto de ${escapeHTML(pro.name)}" loading="lazy" decoding="async"${pro.photoPosition ? ` style="object-position: ${escapeHTML(pro.photoPosition)}"` : ''} />`
     : escapeHTML(getInitials(pro.name));
 
   professionalDialogContent.innerHTML = `
-    <div class="professional-hero">
-      <div class="professional-avatar" aria-hidden="${pro.photo ? 'false' : 'true'}">${portrait}</div>
-      <div>
-        <span class="professional-kicker">${pro.isPending ? 'Pendiente' : 'Profesional del centro'}</span>
-        <h2 id="professionalDialogTitle">${escapeHTML(pro.name)}</h2>
+    <div class="professional-scroll">
+      <div class="professional-hero">
+        <div class="professional-identity">
+          <div class="professional-avatar" aria-hidden="${pro.photo ? 'false' : 'true'}">${portrait}</div>
+          <div>
+            <span class="professional-kicker">${pro.isPending ? 'Pendiente' : 'Profesional del centro'}</span>
+            <h2 id="professionalDialogTitle">${escapeHTML(pro.name)}</h2>
+            <span class="professional-specialty">${escapeHTML(pro.specialty)}</span>
+            ${pro.license ? `<span class="professional-license">${escapeHTML(pro.license)}</span>` : ''}
+          </div>
+        </div>
+        <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.detail || pro.description)}</p>
       </div>
-      <span class="professional-specialty">${escapeHTML(pro.specialty)}</span>
-      <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.detail || pro.description)}</p>
+
+      <dl class="professional-meta">
+        <div class="professional-meta-row">
+          <dt>Área</dt>
+          <dd>${escapeHTML(pro.specialty)}</dd>
+        </div>
+        <div class="professional-meta-row">
+          <dt>Ubicación</dt>
+          <dd>Médicos de Familia, Córdoba capital</dd>
+        </div>
+        ${pro.phone ? `
+          <div class="professional-meta-row">
+            <dt>Teléfono</dt>
+            <dd><a href="${escapeHTML(pro.phone)}">Contacto individual</a></dd>
+          </div>
+        ` : ''}
+        ${pro.keywords?.length ? `
+          <div class="professional-meta-row">
+            <dt>Atiende consultas de</dt>
+            <dd>${renderKeywordList(pro.keywords)}</dd>
+          </div>
+        ` : ''}
+      </dl>
     </div>
 
-    <dl class="professional-meta">
-      <div class="professional-meta-row">
-        <dt>Área</dt>
-        <dd>${escapeHTML(pro.specialty)}</dd>
-      </div>
-      ${pro.license ? `
-        <div class="professional-meta-row">
-          <dt>Matrícula</dt>
-          <dd>${escapeHTML(pro.license)}</dd>
-        </div>
-      ` : ''}
-      <div class="professional-meta-row">
-        <dt>Ubicación</dt>
-        <dd>Médicos de Familia, Córdoba capital</dd>
-      </div>
-      ${pro.phone ? `
-        <div class="professional-meta-row">
-          <dt>Teléfono</dt>
-          <dd><a href="${escapeHTML(pro.phone)}">Contacto individual</a></dd>
-        </div>
-      ` : ''}
-      ${pro.keywords?.length ? `
-        <div class="professional-meta-row">
-          <dt>Atiende consultas de</dt>
-          <dd>${renderKeywordList(pro.keywords)}</dd>
-        </div>
-      ` : ''}
-    </dl>
-
-    <p class="professional-note">Al escribir por WhatsApp, el mensaje ya incluye el profesional y la especialidad para que el equipo pueda orientar el turno.</p>
-
-    <div class="professional-actions">
+    <div class="professional-actions professional-actions-sticky">
       <a class="btn btn-primary btn-whatsapp" href="${escapeHTML(contactUrl)}" target="_blank" rel="noopener">Pedir turno por WhatsApp</a>
       <a class="btn btn-secondary" href="tel:+543514214225">Llamar al centro</a>
     </div>
