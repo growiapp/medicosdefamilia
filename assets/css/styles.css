@@ -3087,7 +3087,7 @@ p {
 
   .red-mayor-copy p {
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     font-size: .92rem;
@@ -3372,6 +3372,72 @@ p {
   .family-editorial-card,
   .family-editorial-card img {
     min-height: 280px;
+  }
+}
+
+/* ===== Responsive optimization pass v9 ===== */
+
+/* Tighter vertical rhythm between sections on mobile: the fixed clamp
+   minimums were stacking into ~130-150px gaps between sections */
+@media (max-width: 740px) {
+  .section {
+    padding: clamp(48px, 11vw, 72px) 0;
+  }
+
+  .map-section {
+    padding-top: clamp(36px, 8vw, 56px);
+  }
+
+  .final-cta {
+    padding: clamp(56px, 12vw, 88px) 0;
+  }
+
+  .editorial-text p {
+    line-height: 1.65;
+  }
+}
+
+/* Tablet 741-1080px: restore the 2-column layouts that already work at
+   desktop instead of stretching text/cards edge-to-edge like mobile */
+@media (min-width: 741px) and (max-width: 1080px) {
+  .philosophy-grid {
+    grid-template-columns: minmax(0, .88fr) minmax(340px, .72fr);
+  }
+
+  .contact-panel {
+    grid-template-columns: minmax(0, .92fr) minmax(360px, .72fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Hero readability in the narrow tablet band below the 900px 2-column hero */
+@media (min-width: 741px) and (max-width: 899px) {
+  .hero-copy {
+    max-width: 560px;
+  }
+
+  .hero-trust {
+    max-width: 460px;
+  }
+}
+
+/* Desktop: give the Red Mayor CTA its own column instead of leaving empty
+   space to the right of the description */
+@media (min-width: 1081px) {
+  .red-mayor-card {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 28px;
+  }
+
+  .red-mayor-action {
+    justify-self: end;
   }
 }
 
