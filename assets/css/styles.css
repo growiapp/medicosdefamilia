@@ -5,8 +5,7 @@
   --paper-4: #d8e2d9;
   --ink: #17221d;
   --ink-soft: #3f4d47;
-  --muted: #748179;
-  --muted-2: #9a9588;
+  --muted: #647169;
   --line: #ddd5c5;
   --line-strong: #c9bfad;
   --green: #284f43;
@@ -15,7 +14,6 @@
   --clay: #b97855;
   --cream: #fbfaf5;
   --white: #ffffff;
-  --dangerless: #edf4ee;
   --shadow-xs: 0 1px 2px rgba(23, 34, 29, .05);
   --shadow-sm: 0 10px 30px -24px rgba(23, 34, 29, .28);
   --shadow-md: 0 18px 60px -42px rgba(23, 34, 29, .42);
@@ -150,8 +148,6 @@ p {
   position: relative;
 }
 
-.section-tight { padding-top: clamp(36px, 5vw, 72px); }
-
 .section-head {
   display: grid;
   grid-template-columns: minmax(0, .88fr) minmax(280px, .58fr);
@@ -236,19 +232,6 @@ p {
   background: #0d7466;
   box-shadow: 0 24px 42px -24px rgba(15, 127, 111, .9);
 }
-
-.link-arrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  width: fit-content;
-  color: var(--green);
-  font-weight: 700;
-  font-size: .94rem;
-  transition: gap var(--duration-base) var(--ease-premium), color var(--duration-base) var(--ease-soft);
-}
-
-.link-arrow:hover { gap: 12px; color: var(--green-dark); }
 
 .address-link {
   color: inherit;
@@ -851,13 +834,6 @@ p {
   overflow-wrap: anywhere;
 }
 
-.hero-contact-arrow {
-  display: none;
-  color: var(--green);
-  font-size: 1rem;
-  font-weight: 800;
-}
-
 
 .hero-human-card {
   position: relative;
@@ -1233,8 +1209,7 @@ p {
   z-index: 1;
 }
 
-.red-mayor-kicker,
-.red-mayor-team {
+.red-mayor-kicker {
   display: inline-flex;
   width: fit-content;
   color: var(--green);
@@ -1523,11 +1498,6 @@ p {
   font-weight: 800;
 }
 
-.pending-data {
-  color: var(--muted);
-  font-weight: 650;
-}
-
 .professional-dialog[hidden] { display: none; }
 
 .professional-dialog {
@@ -1736,16 +1706,6 @@ p {
   letter-spacing: 0;
   text-transform: none;
   white-space: normal;
-}
-
-.professional-license {
-  display: block;
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: .8rem;
-  font-weight: 750;
-  line-height: 1.42;
-  overflow-wrap: anywhere;
 }
 
 .professional-description {
@@ -2605,8 +2565,7 @@ p {
   will-change: opacity, transform;
 }
 
-.reveal.visible,
-.reveal.is-visible {
+.reveal.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
@@ -2644,18 +2603,7 @@ p {
 .reveal.visible .family-editorial-card,
 .reveal.visible .location-photo-strip,
 .reveal.visible .footer-col,
-.reveal.visible .trust-item,
-.reveal.is-visible .pillar,
-.reveal.is-visible .pro-card,
-.reveal.is-visible .service-card,
-  .reveal.is-visible .red-mayor-card,
-.reveal.is-visible .contact-panel > *,
-  .reveal.is-visible.contact-panel > *,
-  .reveal.is-visible .center-photo-card,
-  .reveal.is-visible .family-editorial-card,
-  .reveal.is-visible .location-photo-strip,
-  .reveal.is-visible .footer-col,
-  .reveal.is-visible .trust-item {
+.reveal.visible .trust-item {
   animation: revealChild 780ms var(--ease-premium) forwards;
 }
 
@@ -3213,10 +3161,6 @@ p {
   .hero-fact + .hero-fact {
     border-left: 0;
     border-top: 1px solid rgba(201, 191, 173, .72);
-  }
-
-  .hero-contact-arrow {
-    display: none;
   }
 
   .hero-contact-icon {

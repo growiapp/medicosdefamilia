@@ -604,6 +604,10 @@ const renderProfessionalDialog = (pro) => {
           <dt>Matrículas</dt>
           <dd>${escapeHTML(pro.license)}</dd>
         </div>` : ''}
+        ${pro.modalities?.length ? `<div class="professional-meta-row">
+          <dt>Modalidad</dt>
+          <dd>${escapeHTML(pro.modalities.join(' · '))}</dd>
+        </div>` : ''}
         ${pro.consultationAreas?.length || pro.keywords?.length ? `
           <div class="professional-meta-row">
             <dt>Áreas de consulta</dt>
