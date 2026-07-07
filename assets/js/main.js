@@ -254,8 +254,8 @@ const professionals = [
     type: 'space',
     name: 'Red Mayor',
     subtitle: 'Espacio de Gerontología',
-    description: 'Un espacio de gerontología para personas mayores, familias e instituciones, con un equipo especializado dentro de Médicos de Familia.',
-    detail: 'Red Mayor reúne profesionales con formación y experiencia en el acompañamiento de personas mayores. Brinda atención psicológica, orientación familiar, acompañamiento terapéutico, talleres sociorecreativos y capacitaciones para profesionales e instituciones.',
+    description: 'Acompañamiento especializado para personas mayores, familias e instituciones.',
+    detail: 'Red Mayor brinda atención psicológica, orientación familiar, acompañamiento terapéutico, talleres sociorecreativos y capacitaciones para profesionales e instituciones.',
     logo: './assets/images/logos/red-mayor-logo.png',
     services: [
       'Atención psicológica',
@@ -349,20 +349,15 @@ const renderRedMayorFeature = () => {
       <div class="red-mayor-main">
         <div class="red-mayor-logo" aria-hidden="true" data-initials="RM">${logoImg}</div>
         <div class="red-mayor-copy">
-          <span class="red-mayor-kicker">Espacio de gerontología en Córdoba</span>
-          <h3>${escapeHTML(item.name)}</h3>
-          <p>Un equipo especializado en el acompañamiento de personas mayores, familias e instituciones.</p>
-          <div class="red-mayor-services" aria-label="Acompañamiento de Red Mayor">
-            ${item.services?.slice(0, 3).map((service) => `<span>${escapeHTML(service)}</span>`).join('') || ''}
+          <span class="red-mayor-kicker">${escapeHTML(item.name)}</span>
+          <h3>${escapeHTML(item.subtitle || 'Espacio de Gerontología')}</h3>
+          <p>${escapeHTML(item.description)}</p>
+          <div class="red-mayor-services" aria-label="Servicios de Red Mayor">
+            ${item.services?.slice(0, 2).map((service) => `<span>${escapeHTML(service)}</span>`).join('') || ''}
           </div>
         </div>
       </div>
-      ${item.members?.length ? `
-        <div class="red-mayor-team-summary" aria-label="Equipo de Red Mayor">
-          <strong>${item.members.length} profesionales del espacio</strong>
-        </div>
-      ` : ''}
-      <span class="red-mayor-action" aria-hidden="true">Consultar por Red Mayor</span>
+      <span class="red-mayor-action" aria-hidden="true">Ver detalle y pedir turno</span>
     </article>
   `;
 
@@ -507,22 +502,12 @@ const renderKeywordList = (keywords) => {
   `;
 };
 
-const renderModalities = (modalities) => {
-  if (!modalities?.length) return '';
-
-  return `
-    <div class="keyword-list">
-      ${modalities.map((modality) => `<span>${escapeHTML(modality)}</span>`).join('')}
-    </div>
-  `;
-};
-
 const renderSpaceServices = (services) => {
   if (!services?.length) return '';
 
   return `
     <section class="space-section" aria-labelledby="space-services-title">
-      <h3 id="space-services-title">Acompañamiento</h3>
+      <h3 id="space-services-title">Áreas de acompañamiento</h3>
       <div class="space-services">
         ${services.map((service) => `<span class="space-service-chip">${escapeHTML(service)}</span>`).join('')}
       </div>
@@ -566,9 +551,9 @@ const renderProfessionalDialog = (pro) => {
           <div class="professional-identity">
             <div class="space-dialog-logo" aria-hidden="true" data-initials="RM">${logoImg}</div>
             <div>
-              <span class="professional-kicker">Espacio de atención especializada</span>
-              <h2 id="professionalDialogTitle">${escapeHTML(pro.name)}</h2>
-              <span class="professional-specialty">${escapeHTML(pro.subtitle || '')}</span>
+              <span class="professional-kicker">${escapeHTML(pro.name)}</span>
+              <h2 id="professionalDialogTitle">${escapeHTML(pro.subtitle || 'Espacio de Gerontología')}</h2>
+              <span class="professional-specialty">Acompañamiento para personas mayores, familias e instituciones.</span>
             </div>
           </div>
           <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.detail || pro.description)}</p>
@@ -619,15 +604,9 @@ const renderProfessionalDialog = (pro) => {
           <dt>Matrículas</dt>
           <dd>${escapeHTML(pro.license)}</dd>
         </div>` : ''}
-        ${pro.modalities?.length ? `
-          <div class="professional-meta-row">
-            <dt>Modalidad de atención</dt>
-            <dd>${renderModalities(pro.modalities)}</dd>
-          </div>
-        ` : ''}
         ${pro.consultationAreas?.length || pro.keywords?.length ? `
           <div class="professional-meta-row">
-            <dt>Motivos de consulta</dt>
+            <dt>Áreas de consulta</dt>
             <dd>${renderKeywordList(pro.consultationAreas || pro.keywords)}</dd>
           </div>
         ` : ''}
