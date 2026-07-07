@@ -75,13 +75,13 @@ const professionals = [
     keywords: ['clínica médica', 'medicina interna', 'terapia intensiva', 'adultos mayores'],
     consultationAreas: ['Clínica médica', 'Medicina interna', 'Adultos', 'Personas mayores', 'Terapia intensiva'],
     phone: null, whatsapp: null, license: 'MP 17871 · MP 5130 · MP 9125',
-    slug: 'carlos-presman', photo: './assets/images/profesionales/carlos-presman.webp', photoPosition: 'center 38%'
+    slug: 'carlos-presman', photo: './assets/images/profesionales/carlos-presman.webp'
   },
   {
     type: 'professional', name: 'Dr. Guillermo Calvo Hidalgo', treatment: 'Dr.',
     specialty: 'Clínica Médica · Cardiología',
     description: 'Consultas de clínica médica y cardiología para adultos, con seguimiento clínico integral.',
-    detail: 'Especialista en clínica médica y cardiología. Atiende consultas de adultos que requieren evaluación clínica general, orientación cardiovascular y continuidad en el seguimiento.',
+    detail: 'Especialista en clínica médica y cardiología. Orienta a adultos que requieren evaluación clínica general, mirada cardiovascular y continuidad en el seguimiento.',
     keywords: ['clínica médica', 'cardiología', 'adultos'],
     consultationAreas: ['Clínica médica', 'Cardiología', 'Adultos', 'Seguimiento clínico'],
     phone: null, whatsapp: null, license: 'MP 24172 · CE 8341 · CE 13122',
@@ -95,7 +95,7 @@ const professionals = [
     keywords: ['medicina interna', 'adolescencia', 'desórdenes alimentarios'],
     consultationAreas: ['Medicina interna', 'Adolescencia', 'Desórdenes alimentarios', 'Seguimiento clínico'],
     phone: null, whatsapp: null, license: 'MP 13353 · ME 4328',
-    slug: 'juana-presman', photo: './assets/images/profesionales/juana-presman.webp', photoPosition: 'center 36%'
+    slug: 'juana-presman', photo: './assets/images/profesionales/juana-presman.webp'
   },
   {
     type: 'professional', name: 'Julio César Guerini', treatment: null,
@@ -121,7 +121,7 @@ const professionals = [
     type: 'professional', name: 'Dra. Graciela Testa', treatment: 'Dra.',
     specialty: 'Pediatría · Endocrinología Pediátrica',
     description: 'Pediatría y endocrinología pediátrica para niñas, niños y adolescentes.',
-    detail: 'Médica especialista en pediatría y endocrinología pediátrica. Atiende consultas de salud infantil y seguimiento de situaciones hormonales o metabólicas en niñas, niños y adolescentes.',
+    detail: 'Médica especialista en pediatría y endocrinología pediátrica. Trabaja con niñas, niños y adolescentes en consultas de salud infantil y seguimiento de situaciones hormonales o metabólicas.',
     keywords: ['pediatría', 'endocrinología pediátrica', 'niños', 'adolescentes'],
     consultationAreas: ['Pediatría', 'Endocrinología pediátrica', 'Niñas y niños', 'Adolescentes'],
     phone: null, whatsapp: null, license: 'MP 17870 · ME 5056 · ME 12384',
@@ -156,7 +156,7 @@ const professionals = [
     consultationAreas: ['Endocrinología de adultos', 'Trastornos hormonales', 'Seguimiento metabólico'],
     modalities: ['Presencial', 'Virtual'],
     phone: null, whatsapp: null, license: 'MP 22947 · ME 8774',
-    slug: 'valeria-gaon', photo: './assets/images/profesionales/valeria-gaon.webp', photoPosition: 'center 40%'
+    slug: 'valeria-gaon', photo: './assets/images/profesionales/valeria-gaon.webp'
   },
   {
     type: 'professional', name: 'Dra. Mariela Alvarez', treatment: 'Dra.',
@@ -172,7 +172,7 @@ const professionals = [
     type: 'professional', name: 'Dra. Ana Virginia Corrado', treatment: 'Dra.',
     specialty: 'Dermatología',
     description: 'Dermatología clínica con formación en dermatología oncológica.',
-    detail: 'Médica dermatóloga, diplomada en dermatología oncológica y docente de la UCC. Atiende consultas dermatológicas con foco clínico y seguimiento especializado de la piel.',
+    detail: 'Médica dermatóloga, diplomada en dermatología oncológica y docente de la UCC. Su práctica se orienta a dermatología clínica y seguimiento especializado de la piel.',
     keywords: ['dermatología', 'dermatología oncológica', 'piel'],
     consultationAreas: ['Dermatología clínica', 'Dermatología oncológica', 'Control de piel', 'Seguimiento dermatológico'],
     phone: null, whatsapp: null, license: 'MP 28234/3 · ME 14464',
@@ -238,13 +238,13 @@ const professionals = [
     consultationAreas: ['Psicología clínica', 'Psicoterapia', 'Psicoanálisis', 'Adolescentes', 'Jóvenes', 'Adultos', 'Apto psicológico'],
     modalities: ['Presencial', 'Online'],
     phone: null, whatsapp: 'https://wa.me/5493515487365', license: 'MP 1093 · ME 553',
-    slug: 'adriana-vitelli', photo: './assets/images/profesionales/adriana-vitelli.webp', photoPosition: 'center 36%'
+    slug: 'adriana-vitelli', photo: './assets/images/profesionales/adriana-vitelli.webp'
   },
   {
     type: 'professional', name: 'Lic. María Inés Salto', treatment: 'Lic.',
     specialty: 'Psicopedagogía · Psicoanálisis',
     description: 'Psicopedagogía y psicoanálisis para adolescentes, jóvenes y adultos.',
-    detail: 'Atiende consultas de psicopedagogía y psicoanálisis para adolescentes, jóvenes y adultos. Su trabajo propone abrir un espacio de palabra para ordenar conflictos, construir una nueva mirada y acompañar procesos personales.',
+    detail: 'Trabaja en psicopedagogía y psicoanálisis con adolescentes, jóvenes y adultos. Su práctica propone abrir un espacio de palabra para ordenar conflictos, construir una nueva mirada y acompañar procesos personales.',
     keywords: ['psicopedagogía', 'psicoanálisis', 'adolescentes', 'adultos'],
     consultationAreas: ['Psicopedagogía', 'Psicoanálisis', 'Adolescentes', 'Jóvenes', 'Adultos'],
     phone: null, whatsapp: 'https://wa.me/5493515584625', license: 'MP 13-1129',
@@ -348,7 +348,7 @@ const renderRedMayorFeature = () => {
           <span class="red-mayor-kicker">Espacio de gerontología en Córdoba</span>
           <h3>${escapeHTML(item.name)}</h3>
           <p>${escapeHTML(item.description)}</p>
-          <div class="red-mayor-services" aria-label="Áreas de acompañamiento de Red Mayor">
+          <div class="red-mayor-services" aria-label="Acompañamiento de Red Mayor">
             ${item.services?.slice(0, 3).map((service) => `<span>${escapeHTML(service)}</span>`).join('') || ''}
           </div>
         </div>
@@ -356,8 +356,8 @@ const renderRedMayorFeature = () => {
       ${item.members?.length ? `
         <div class="red-mayor-team-summary" aria-label="Equipo de Red Mayor">
           <span class="red-mayor-team-kicker">Equipo</span>
-          <strong>${item.members.length} integrantes del equipo</strong>
-          <small>Psicología y acompañamiento terapéutico</small>
+          <strong>Equipo especializado en gerontología</strong>
+          <small>${item.members.length} profesionales del espacio</small>
         </div>
       ` : ''}
       <span class="red-mayor-action" aria-hidden="true">Consultar por Red Mayor</span>
@@ -477,9 +477,7 @@ const getDisplaySpecialty = (specialty = '') => specialty
   .trim();
 
 const getCompactLicense = (license = '') => {
-  const licenses = license.split('·').map((item) => item.trim()).filter(Boolean);
-  if (!licenses.length) return '';
-  return licenses.length > 1 ? 'Matrículas profesionales' : 'Matrícula profesional';
+  return license.split('·').map((item) => item.trim()).filter(Boolean).join(' · ');
 };
 
 const getProfessionalMessageName = (pro) => {
@@ -526,7 +524,7 @@ const renderSpaceServices = (services) => {
 
   return `
     <section class="space-section" aria-labelledby="space-services-title">
-      <h3 id="space-services-title">Áreas de acompañamiento</h3>
+      <h3 id="space-services-title">Acompañamiento</h3>
       <div class="space-services">
         ${services.map((service) => `<span class="space-service-chip">${escapeHTML(service)}</span>`).join('')}
       </div>
@@ -583,7 +581,7 @@ const renderProfessionalDialog = (pro) => {
 
         <dl class="professional-meta space-location-meta">
           <div class="professional-meta-row">
-            <dt>Ubicación</dt>
+            <dt>Atención en el centro</dt>
             <dd>Médicos de Familia · Córdoba capital</dd>
           </div>
         </dl>
@@ -616,7 +614,6 @@ const renderProfessionalDialog = (pro) => {
             <span class="professional-kicker">${pro.isPending ? 'Pendiente' : 'Profesional del centro'}</span>
             <h2 id="professionalDialogTitle">${escapeHTML(pro.name)}</h2>
             <span class="professional-specialty">${escapeHTML(pro.specialty)}</span>
-            ${pro.license ? `<span class="professional-license">${escapeHTML(pro.license)}</span>` : ''}
           </div>
         </div>
         <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.detail || pro.description)}</p>
@@ -624,28 +621,22 @@ const renderProfessionalDialog = (pro) => {
 
       <dl class="professional-meta">
         <div class="professional-meta-row">
-          <dt>Área</dt>
+          <dt>Especialidad</dt>
           <dd>${escapeHTML(pro.specialty)}</dd>
         </div>
-        <div class="professional-meta-row">
-          <dt>Ubicación</dt>
-          <dd>Médicos de Familia, Córdoba capital</dd>
-        </div>
-        ${pro.phone ? `
-          <div class="professional-meta-row">
-            <dt>Teléfono</dt>
-            <dd><a href="${escapeHTML(pro.phone)}">Contacto individual</a></dd>
-          </div>
-        ` : ''}
+        ${pro.license ? `<div class="professional-meta-row">
+          <dt>Matrículas</dt>
+          <dd>${escapeHTML(pro.license)}</dd>
+        </div>` : ''}
         ${pro.modalities?.length ? `
           <div class="professional-meta-row">
-            <dt>Modalidad</dt>
+            <dt>Modalidad de atención</dt>
             <dd>${renderModalities(pro.modalities)}</dd>
           </div>
         ` : ''}
         ${pro.consultationAreas?.length || pro.keywords?.length ? `
           <div class="professional-meta-row">
-            <dt>Atiende consultas de</dt>
+            <dt>Motivos de consulta</dt>
             <dd>${renderKeywordList(pro.consultationAreas || pro.keywords)}</dd>
           </div>
         ` : ''}
