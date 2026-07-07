@@ -1161,7 +1161,7 @@ p {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
+  grid-template-columns: 112px minmax(0, 1fr);
   gap: clamp(16px, 2.4vw, 26px);
   align-items: center;
   min-width: 0;
@@ -1191,8 +1191,8 @@ p {
 
 .red-mayor-logo {
   position: relative;
-  width: 92px;
-  height: 92px;
+  width: 112px;
+  height: 112px;
   display: grid;
   place-items: center;
   border: 1px solid rgba(40, 79, 67, .2);
@@ -1207,7 +1207,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 10px;
+  padding: 12px;
 }
 
 .red-mayor-logo[data-fallback="true"]::after,
@@ -1281,7 +1281,7 @@ p {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 4px;
+  gap: 5px;
   min-width: min(100%, 260px);
   padding: 0;
   border: 0;
@@ -1298,24 +1298,8 @@ p {
 .red-mayor-team-summary strong {
   display: block;
   color: var(--ink);
-  font-size: .98rem;
+  font-size: 1.02rem;
   line-height: 1.25;
-}
-
-.red-mayor-team-summary small {
-  display: block;
-  color: var(--muted);
-  font-size: .78rem;
-  font-weight: 700;
-  line-height: 1.35;
-}
-
-.red-mayor-team-kicker {
-  color: var(--green) !important;
-  font-size: .72rem !important;
-  font-weight: 850;
-  letter-spacing: .1em;
-  text-transform: uppercase;
 }
 
 .red-mayor-action {
@@ -1514,6 +1498,10 @@ p {
   text-transform: none;
   white-space: normal;
   overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .pro-license {
@@ -1907,10 +1895,6 @@ p {
   font-size: .8rem;
   font-weight: 750;
   line-height: 1.35;
-}
-
-.space-location-meta {
-  margin-top: -4px;
 }
 
 .professional-note {

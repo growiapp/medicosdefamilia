@@ -298,20 +298,24 @@ const matchesFilter = (pro, filter) => {
   if (pro.type === 'space') return false;
   if (filter === 'Todos') return true;
 
-  const specialty = pro.specialty.toLowerCase();
   const normalized = filter.toLowerCase();
+  const haystack = [
+    pro.specialty,
+    ...(pro.keywords || []),
+    ...(pro.consultationAreas || [])
+  ].join(' ').toLowerCase();
 
-  if (normalized === 'clínica') {
-    return ['clínica', 'medicina interna', 'cardiología'].some((t) => specialty.includes(t));
-  }
-  if (normalized === 'salud mental') {
-    return ['psicología', 'psiquiatría', 'psicopedagogía', 'psicoanálisis'].some((t) => specialty.includes(t));
-  }
   if (normalized === 'ginecología') {
-    return ['ginecología', 'tocoginecología'].some((t) => specialty.includes(t));
+    return ['ginecología', 'tocoginecología'].some((t) => haystack.includes(t));
+  }
+  if (normalized === 'clínica médica') {
+    return haystack.includes('clínica médica');
+  }
+  if (normalized === 'geriatría') {
+    return ['geriatría', 'personas mayores', 'adultos mayores'].some((t) => haystack.includes(t));
   }
 
-  return specialty.includes(normalized);
+  return haystack.includes(normalized);
 };
 
 const bindProfessionalCards = (scope = document) => {
@@ -347,7 +351,7 @@ const renderRedMayorFeature = () => {
         <div class="red-mayor-copy">
           <span class="red-mayor-kicker">Espacio de gerontología en Córdoba</span>
           <h3>${escapeHTML(item.name)}</h3>
-          <p>${escapeHTML(item.description)}</p>
+          <p>Un equipo especializado en el acompañamiento de personas mayores, familias e instituciones.</p>
           <div class="red-mayor-services" aria-label="Acompañamiento de Red Mayor">
             ${item.services?.slice(0, 3).map((service) => `<span>${escapeHTML(service)}</span>`).join('') || ''}
           </div>
@@ -355,9 +359,7 @@ const renderRedMayorFeature = () => {
       </div>
       ${item.members?.length ? `
         <div class="red-mayor-team-summary" aria-label="Equipo de Red Mayor">
-          <span class="red-mayor-team-kicker">Equipo</span>
-          <strong>Equipo especializado en gerontología</strong>
-          <small>${item.members.length} profesionales del espacio</small>
+          <strong>${item.members.length} profesionales del espacio</strong>
         </div>
       ` : ''}
       <span class="red-mayor-action" aria-hidden="true">Consultar por Red Mayor</span>
@@ -424,7 +426,7 @@ const renderProfessionals = (filter = 'Todos') => {
         <div class="avatar" aria-hidden="true">${avatar}</div>
         <div class="pro-content">
           <h3>${escapeHTML(pro.name)}</h3>
-          <span class="pro-spec">${escapeHTML(getDisplaySpecialty(pro.specialty))}</span>
+          <span class="pro-spec">${escapeHTML(pro.specialty)}</span>
           ${pro.license ? `<span class="pro-license">${escapeHTML(getCompactLicense(pro.license))}</span>` : ''}
           <p class="pro-desc">${escapeHTML(pro.description)}</p>
           <span class="pro-more" aria-hidden="true">Ver detalle y pedir turno</span>
@@ -471,10 +473,6 @@ const getPrimarySpecialty = (specialty = '') => specialty
   .split('·')[0]
   .trim()
   .toLocaleLowerCase('es-AR');
-
-const getDisplaySpecialty = (specialty = '') => specialty
-  .split('·')[0]
-  .trim();
 
 const getCompactLicense = (license = '') => {
   return license.split('·').map((item) => item.trim()).filter(Boolean).join(' · ');
@@ -576,15 +574,8 @@ const renderProfessionalDialog = (pro) => {
           <p class="professional-description" id="professionalDialogDescription">${escapeHTML(pro.detail || pro.description)}</p>
         </div>
 
-        ${renderSpaceServices(pro.services)}
         ${renderSpaceMembers(pro.members)}
-
-        <dl class="professional-meta space-location-meta">
-          <div class="professional-meta-row">
-            <dt>Atención en el centro</dt>
-            <dd>Médicos de Familia · Córdoba capital</dd>
-          </div>
-        </dl>
+        ${renderSpaceServices(pro.services)}
 
         ${pro.isPending ? `
           <p class="professional-note">
