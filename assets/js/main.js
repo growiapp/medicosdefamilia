@@ -70,11 +70,13 @@ const professionals = [
   {
     type: 'professional', name: 'Dr. Carlos Presman', treatment: 'Dr.',
     specialty: 'Clínica Médica · Medicina Interna',
+    cardSpecialty: 'Clínica Médica',
+    filterCategories: ['Clínica Médica'],
     description: 'Acompaña consultas clínicas de adultos y personas mayores, con mirada de medicina interna.',
     detail: 'Médico clínico de adultos y adultos mayores, especialista en medicina interna y terapia intensiva. Su perfil permite orientar controles, seguimiento clínico y evaluación integral de pacientes adultos.',
     keywords: ['clínica médica', 'medicina interna', 'terapia intensiva', 'adultos mayores'],
     consultationAreas: ['Clínica médica', 'Medicina interna', 'Adultos', 'Personas mayores', 'Terapia intensiva'],
-    phone: null, whatsapp: null, license: 'MP 17871 · MP 5130 · MP 9125',
+    phone: null, whatsapp: null, license: 'MP 17871 · ME 5130 · ME 9125',
     slug: 'carlos-presman', photo: './assets/images/profesionales/carlos-presman.webp'
   },
   {
@@ -90,6 +92,8 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Juana A. Presman', treatment: 'Dra.',
     specialty: 'Medicina Interna · Adolescencia',
+    cardSpecialty: 'Clínica Médica · Adolescencia',
+    filterCategories: ['Clínica Médica'],
     description: 'Medicina interna para adolescentes, con atención especializada en desórdenes alimentarios.',
     detail: 'Médica especialista en medicina interna. Trabaja en medicina del adolescente y en la atención especializada de desórdenes alimentarios, con una mirada clínica orientada al acompañamiento y seguimiento.',
     keywords: ['medicina interna', 'adolescencia', 'desórdenes alimentarios'],
@@ -100,10 +104,12 @@ const professionals = [
   {
     type: 'professional', name: 'Julio César Guerini', treatment: null,
     specialty: 'Medicina Interna · Medicina del Trabajo · Medicina Legal',
+    cardSpecialty: 'Clínica Médica',
+    filterCategories: ['Clínica Médica'],
     description: 'Consultas vinculadas a medicina interna, medicina del trabajo y medicina legal.',
-    detail: 'Especialista en medicina interna, medicina legal y medicina del trabajo. Su perfil integra evaluación clínica de adultos con áreas vinculadas al ámbito laboral y médico-legal.',
-    keywords: ['medicina interna', 'medicina laboral', 'medicina legal'],
-    consultationAreas: ['Medicina interna', 'Medicina del trabajo', 'Medicina legal', 'Adultos'],
+    detail: 'Especialista en medicina interna, medicina legal y medicina del trabajo. Su perfil integra la evaluación clínica de adultos y adultos mayores, y permite orientar controles, seguimiento clínico y evaluación integral de pacientes.',
+    keywords: ['clínica médica', 'medicina interna', 'medicina laboral', 'medicina legal', 'adultos mayores'],
+    consultationAreas: ['Medicina interna', 'Medicina del trabajo', 'Medicina legal', 'Adultos', 'Adultos mayores', 'Seguimiento clínico', 'Evaluación integral'],
     phone: null, whatsapp: null, license: 'MP 36.996 · MN 157187 · CE 18.660 · CE 19.577 · CE 22.157',
     slug: 'julio-guerini', photo: null
   },
@@ -119,21 +125,21 @@ const professionals = [
   },
   {
     type: 'professional', name: 'Dra. Graciela Testa', treatment: 'Dra.',
-    specialty: 'Pediatría · Endocrinología Pediátrica',
-    description: 'Pediatría y endocrinología pediátrica para niñas, niños y adolescentes.',
-    detail: 'Médica especialista en pediatría y endocrinología pediátrica. Trabaja con niñas, niños y adolescentes en consultas de salud infantil y seguimiento de situaciones hormonales o metabólicas.',
-    keywords: ['pediatría', 'endocrinología pediátrica', 'niños', 'adolescentes'],
-    consultationAreas: ['Pediatría', 'Endocrinología pediátrica', 'Niñas y niños', 'Adolescentes'],
+    specialty: 'Endocrinología Pediátrica',
+    description: 'Endocrinología pediátrica para recién nacidos, niñas, niños y adolescentes.',
+    detail: 'Médica pediatra especialista en endocrinología infantil. Atiende consultas relacionadas con el diagnóstico, control y tratamiento de trastornos hormonales en recién nacidos, niños y adolescentes.',
+    keywords: ['endocrinología pediátrica', 'endocrinología infantil', 'trastornos hormonales', 'recién nacidos', 'niños', 'adolescentes'],
+    consultationAreas: ['Endocrinología pediátrica', 'Trastornos hormonales', 'Recién nacidos', 'Niñas y niños', 'Adolescentes'],
     phone: null, whatsapp: null, license: 'MP 17870 · ME 5056 · ME 12384',
     slug: 'graciela-testa', photo: './assets/images/profesionales/graciela-testa.webp'
   },
   {
     type: 'professional', name: 'Dra. Malvina Signorino', treatment: 'Dra.',
-    specialty: 'Pediatría · Endocrinología Pediátrica',
-    description: 'Consultas pediátricas y endocrinología pediátrica para seguimiento especializado.',
+    specialty: 'Endocrinología Pediátrica',
+    description: 'Endocrinología pediátrica para el seguimiento del crecimiento, el desarrollo y el sistema endocrino.',
     detail: 'Médica pediatra especialista en endocrinología pediátrica. Acompaña consultas de salud infantil y controles vinculados al crecimiento, desarrollo y sistema endocrino pediátrico.',
-    keywords: ['pediatría', 'endocrinología pediátrica', 'niños'],
-    consultationAreas: ['Pediatría', 'Endocrinología pediátrica', 'Crecimiento y desarrollo', 'Niñas y niños'],
+    keywords: ['endocrinología pediátrica', 'crecimiento y desarrollo', 'sistema endocrino', 'niños'],
+    consultationAreas: ['Endocrinología pediátrica', 'Crecimiento y desarrollo', 'Sistema endocrino pediátrico', 'Niñas y niños'],
     phone: null, whatsapp: null, license: 'MP 28446 · ME 15124 · ME 17798',
     slug: 'malvina-signorino', photo: './assets/images/profesionales/malvina-signorino.webp'
   },
@@ -159,22 +165,24 @@ const professionals = [
     slug: 'valeria-gaon', photo: './assets/images/profesionales/valeria-gaon.webp'
   },
   {
-    type: 'professional', name: 'Dra. Mariela Alvarez', treatment: 'Dra.',
-    specialty: 'Dermatología · Estética Médica',
-    description: 'Dermatología para adultos y niños, con foco en diagnóstico, prevención y seguimiento de piel.',
-    detail: 'Médica cirujana, especialista en dermatología y estética médica. Atiende dermatología integral en adultos y niños, incluyendo consultas por piel, pelo y uñas, dermatoscopia, control de lunares y seguimiento de lesiones cutáneas. También realiza tratamientos de estética médica cuando corresponde.',
-    keywords: ['dermatología', 'estética médica', 'dermatoscopia', 'control de lunares'],
-    consultationAreas: ['Dermatología clínica', 'Piel, pelo y uñas', 'Dermatoscopia', 'Control de lunares', 'Lesiones cutáneas', 'Estética médica'],
-    phone: null, whatsapp: null, license: 'MP 28710 · MP 15917',
+    type: 'professional', name: 'Dra. Mariela Álvarez', treatment: 'Dra.',
+    specialty: 'Dermatología · Cirugía Dermatológica · Estética Médica Facial',
+    description: 'Dermatología integral para adultos, adolescentes y niños, con diagnóstico, prevención y seguimiento de la salud de la piel.',
+    detail: 'Médica cirujana especialista en dermatología y estética médica. Atiende a adultos, adolescentes y niños con un abordaje integral de las enfermedades de la piel, el pelo y las uñas. Realiza dermatoscopia, control de lunares, diagnóstico y seguimiento de lesiones cutáneas, cirugía dermatológica y tratamientos de estética médica con un enfoque seguro, personalizado y basado en evidencia científica.',
+    keywords: ['dermatología', 'cirugía dermatológica', 'estética médica facial', 'dermatoscopia digital', 'control de lunares', 'lesiones cutáneas'],
+    consultationAreas: ['Niños, adolescentes y adultos', 'Dermatología clínica', 'Acné, rosácea y manchas', 'Piel, pelo y uñas', 'Dermatoscopia digital', 'Control de lunares', 'Cirugía dermatológica', 'Botox', 'Rellenos con ácido hialurónico', 'Bioestimuladores', 'Skin care'],
+    areasLayout: 'list',
+    phone: null, whatsapp: null, license: 'MP 28710 · ME 15917',
     slug: 'mariela-alvarez', photo: './assets/images/profesionales/mariela-alvarez.webp'
   },
   {
     type: 'professional', name: 'Dra. Ana Virginia Corrado', treatment: 'Dra.',
     specialty: 'Dermatología',
-    description: 'Dermatología clínica con formación en dermatología oncológica.',
-    detail: 'Médica dermatóloga, diplomada en dermatología oncológica y docente de la UCC. Su práctica se orienta a dermatología clínica y seguimiento especializado de la piel.',
-    keywords: ['dermatología', 'dermatología oncológica', 'piel'],
-    consultationAreas: ['Dermatología clínica', 'Dermatología oncológica', 'Control de piel', 'Seguimiento dermatológico'],
+    description: 'Dermatología clínica integral y oncológica para distintas etapas de la vida.',
+    detail: 'Médica dermatóloga, diplomada en Dermatología Oncológica y docente de la Universidad Católica de Córdoba. Atiende afecciones dermatológicas en adultos, adultos mayores, adolescentes y niños.',
+    keywords: ['dermatología', 'dermatología clínica integral', 'dermatología oncológica', 'cirugía dermatológica', 'dermatología pediátrica', 'dermatoscopia'],
+    consultationAreas: ['Dermatología Clínica Integral', 'Dermatología Oncológica', 'Cirugía Dermatológica', 'Dermatología Pediátrica', 'Dermatoscopia', 'Dermatología Estética Preventiva y Reparadora', 'Procedimientos terapéuticos del fotodaño'],
+    areasLayout: 'list',
     phone: null, whatsapp: null, license: 'MP 28234/3 · ME 14464',
     slug: 'ana-virginia-corrado', photo: './assets/images/profesionales/ana-virginia-corrado.webp'
   },
@@ -242,13 +250,14 @@ const professionals = [
   },
   {
     type: 'professional', name: 'Lic. María Inés Salto', treatment: 'Lic.',
-    specialty: 'Psicopedagogía · Psicoanálisis',
-    description: 'Psicopedagogía y psicoanálisis para adolescentes, jóvenes y adultos.',
-    detail: 'Trabaja en psicopedagogía y psicoanálisis con adolescentes, jóvenes y adultos. Su práctica propone abrir un espacio de palabra para ordenar conflictos, construir una nueva mirada y acompañar procesos personales.',
-    keywords: ['psicopedagogía', 'psicoanálisis', 'adolescentes', 'adultos'],
-    consultationAreas: ['Psicopedagogía', 'Psicoanálisis', 'Adolescentes', 'Jóvenes', 'Adultos'],
+    specialty: 'Psicoanálisis',
+    description: 'Psicoanálisis para adolescentes, jóvenes y adultos.',
+    detail: 'Trabaja en psicoanálisis con adolescentes, jóvenes y adultos. Su práctica propone abrir un espacio de palabra para ordenar conflictos, construir una nueva mirada y acompañar procesos personales.',
+    keywords: ['psicoanálisis', 'adolescentes', 'jóvenes', 'adultos'],
+    consultationAreas: ['Psicoanálisis'],
     phone: null, whatsapp: 'https://wa.me/5493515584625', license: 'MP 13-1129',
-    slug: 'maria-ines-salto', photo: './assets/images/profesionales/maria-ines-salto.webp'
+    slug: 'maria-ines-salto', photo: './assets/images/profesionales/maria-ines-salto.webp',
+    photoAlt: 'Retrato de María Inés Salto, psicoanalista de Médicos de Familia'
   },
   {
     type: 'space',
@@ -301,6 +310,8 @@ const matchesFilter = (pro, filter) => {
   const normalized = filter.toLowerCase();
   const haystack = [
     pro.specialty,
+    pro.cardSpecialty,
+    ...(pro.filterCategories || []),
     ...(pro.keywords || []),
     ...(pro.consultationAreas || [])
   ].join(' ').toLowerCase();
@@ -309,7 +320,7 @@ const matchesFilter = (pro, filter) => {
     return ['ginecología', 'tocoginecología'].some((t) => haystack.includes(t));
   }
   if (normalized === 'clínica médica') {
-    return haystack.includes('clínica médica');
+    return ['clínica médica', 'medicina interna'].some((term) => haystack.includes(term));
   }
   if (normalized === 'geriatría') {
     return ['geriatría', 'personas mayores', 'adultos mayores'].some((t) => haystack.includes(t));
@@ -397,18 +408,19 @@ const renderProfessionals = (filter = 'Todos') => {
       `;
     }
 
+    const visibleSpecialty = pro.cardSpecialty || pro.specialty;
     const photoStyle = pro.photoPosition ? ` style="object-position: ${escapeHTML(pro.photoPosition)}"` : '';
     const avatar = pro.photo
-      ? `<img src="${escapeHTML(pro.photo)}" alt="Foto de ${escapeHTML(pro.name)}" loading="lazy" decoding="async"${photoStyle} />`
+      ? `<img src="${escapeHTML(pro.photo)}" alt="${escapeHTML(pro.photoAlt || `Foto de ${pro.name}`)}" loading="lazy" decoding="async"${photoStyle} />`
       : escapeHTML(getInitials(pro.name));
 
     if (pro.isPending) {
       return `
-        <article class="pro-card is-pending" data-specialty="${escapeHTML(pro.specialty)}" style="--stagger-index: ${index}">
+        <article class="pro-card is-pending" data-specialty="${escapeHTML(visibleSpecialty)}" style="--stagger-index: ${index}">
           <div class="avatar" aria-hidden="true">${avatar}</div>
           <div class="pro-content">
             <h3>${escapeHTML(pro.name)}</h3>
-            <span class="pro-spec">${escapeHTML(pro.specialty)}</span>
+            <span class="pro-spec">${escapeHTML(visibleSpecialty)}</span>
             <p class="pro-desc">${escapeHTML(pro.description)}</p>
             <span class="pro-more">Pendiente de validación</span>
           </div>
@@ -417,11 +429,11 @@ const renderProfessionals = (filter = 'Todos') => {
     }
 
     return `
-      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card" data-specialty="${escapeHTML(pro.specialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-haspopup="dialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}, ${escapeHTML(pro.specialty)} en Córdoba" style="--stagger-index: ${index}">
+      <article id="profesional-${escapeHTML(pro.slug)}" class="pro-card" data-specialty="${escapeHTML(visibleSpecialty)}" data-slug="${escapeHTML(pro.slug)}" role="button" tabindex="0" aria-controls="professionalDialog" aria-haspopup="dialog" aria-expanded="false" aria-label="Ver información de ${escapeHTML(pro.name)}, ${escapeHTML(visibleSpecialty)} en Córdoba" style="--stagger-index: ${index}">
         <div class="avatar" aria-hidden="true">${avatar}</div>
         <div class="pro-content">
           <h3>${escapeHTML(pro.name)}</h3>
-          <span class="pro-spec">${escapeHTML(pro.specialty)}</span>
+          <span class="pro-spec">${escapeHTML(visibleSpecialty)}</span>
           ${pro.license ? `<span class="pro-license">${escapeHTML(getCompactLicense(pro.license))}</span>` : ''}
           <p class="pro-desc">${escapeHTML(pro.description)}</p>
           <span class="pro-more" aria-hidden="true">Ver detalle y pedir turno</span>
@@ -502,6 +514,21 @@ const renderKeywordList = (keywords) => {
   `;
 };
 
+const renderConsultationAreas = (pro) => {
+  const areas = pro?.consultationAreas || pro?.keywords;
+  if (!areas?.length) return '';
+
+  if (pro.areasLayout === 'list') {
+    return `
+      <ul class="consultation-area-list">
+        ${areas.map((area) => `<li>${escapeHTML(area)}</li>`).join('')}
+      </ul>
+    `;
+  }
+
+  return renderKeywordList(areas);
+};
+
 const renderSpaceServices = (services) => {
   if (!services?.length) return '';
 
@@ -578,7 +605,7 @@ const renderProfessionalDialog = (pro) => {
   }
 
   const portrait = pro.photo
-    ? `<img src="${escapeHTML(pro.photo)}" alt="Foto de ${escapeHTML(pro.name)}" loading="lazy" decoding="async"${pro.photoPosition ? ` style="object-position: ${escapeHTML(pro.photoPosition)}"` : ''} />`
+    ? `<img src="${escapeHTML(pro.photo)}" alt="${escapeHTML(pro.photoAlt || `Foto de ${pro.name}`)}" loading="lazy" decoding="async"${pro.photoPosition ? ` style="object-position: ${escapeHTML(pro.photoPosition)}"` : ''} />`
     : escapeHTML(getInitials(pro.name));
 
   professionalDialogContent.innerHTML = `
@@ -611,7 +638,7 @@ const renderProfessionalDialog = (pro) => {
         ${pro.consultationAreas?.length || pro.keywords?.length ? `
           <div class="professional-meta-row">
             <dt>Áreas de consulta</dt>
-            <dd>${renderKeywordList(pro.consultationAreas || pro.keywords)}</dd>
+            <dd>${renderConsultationAreas(pro)}</dd>
           </div>
         ` : ''}
       </dl>
