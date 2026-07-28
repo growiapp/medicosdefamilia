@@ -23,7 +23,14 @@
   --duration-fast: 160ms;
   --duration-base: 260ms;
   --duration-dialog: 420ms;
+  --duration-dialog-close: 300ms;
   --duration-slow: 820ms;
+  --reveal-distance: 24px;
+  --reveal-distance-lg: 28px;
+  --reveal-distance-sm: 16px;
+  --reveal-scale: .97;
+  --reveal-scale-image: .98;
+  --stagger-step: 70ms;
   --radius-xs: 6px;
   --radius-sm: 10px;
   --radius-md: 18px;
@@ -142,6 +149,16 @@ p {
   height: 1px;
   background: currentColor;
   opacity: .55;
+}
+
+.reveal .eyebrow::before {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 520ms var(--ease-premium) 80ms;
+}
+
+.reveal.visible .eyebrow::before {
+  transform: scaleX(1);
 }
 
 .section {
@@ -566,23 +583,23 @@ p {
 .hero-panel.visible .hero-premium-top,
 .hero-panel.visible .hero-facts,
 .hero-panel.visible .hero-fact {
-  animation: heroEntry 900ms var(--ease-premium) forwards;
+  animation: heroEntry 640ms var(--ease-premium) forwards;
 }
 
 .hero-panel.visible .hero-human-card {
-  animation: heroImageEntry 1000ms var(--ease-premium) 280ms forwards;
+  animation: heroImageEntry 720ms var(--ease-premium) 160ms forwards;
 }
 
-.hero-copy.visible > .eyebrow { animation-delay: 80ms; }
-.hero-copy.visible > h1 { animation-delay: 180ms; }
-.hero-copy.visible > .hero-lede { animation-delay: 300ms; }
-.hero-copy.visible > .hero-actions { animation-delay: 420ms; }
-.hero-copy.visible .hero-actions .btn:nth-child(1) { animation-delay: 500ms; }
-.hero-copy.visible .hero-actions .btn:nth-child(2) { animation-delay: 610ms; }
-.hero-panel.visible .hero-premium-top { animation-delay: 260ms; }
-.hero-panel.visible .hero-facts { animation-delay: 540ms; }
-.hero-panel.visible .hero-fact:nth-child(1) { animation-delay: 620ms; }
-.hero-panel.visible .hero-fact:nth-child(2) { animation-delay: 720ms; }
+.hero-copy.visible > .eyebrow { animation-delay: 0ms; }
+.hero-copy.visible > h1 { animation-delay: 90ms; }
+.hero-copy.visible > .hero-lede { animation-delay: 180ms; }
+.hero-copy.visible > .hero-actions { animation-delay: 260ms; }
+.hero-copy.visible .hero-actions .btn:nth-child(1) { animation-delay: 300ms; }
+.hero-copy.visible .hero-actions .btn:nth-child(2) { animation-delay: 370ms; }
+.hero-panel.visible .hero-premium-top { animation-delay: 140ms; }
+.hero-panel.visible .hero-facts { animation-delay: 320ms; }
+.hero-panel.visible .hero-fact:nth-child(1) { animation-delay: 380ms; }
+.hero-panel.visible .hero-fact:nth-child(2) { animation-delay: 450ms; }
 
 @keyframes heroEntry {
   from {
@@ -1248,6 +1265,12 @@ p {
   font-size: .92rem;
   font-weight: 850;
   white-space: nowrap;
+  transition: transform var(--duration-base) var(--ease-premium);
+}
+
+.red-mayor-card:hover .red-mayor-action,
+.red-mayor-card:focus-visible .red-mayor-action {
+  transform: translateX(3px);
 }
 
 .filter-btn {
@@ -1300,8 +1323,8 @@ p {
 }
 
 .pro-grid.is-filtering {
-  opacity: .18;
-  transform: translateY(10px);
+  opacity: .5;
+  transform: translateY(6px);
 }
 
 .pro-card {
@@ -1493,6 +1516,11 @@ p {
 
 .professional-dialog.is-closing {
   opacity: 0;
+  transition-duration: var(--duration-dialog-close);
+}
+
+.professional-dialog.is-closing .professional-panel {
+  transition-duration: var(--duration-dialog-close);
 }
 
 .professional-dialog-backdrop {
@@ -2546,7 +2574,7 @@ p {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px) scale(.984);
+  transform: translateY(var(--reveal-distance-lg)) scale(.984);
   transition:
     opacity var(--duration-slow) var(--ease-soft),
     transform var(--duration-slow) var(--ease-premium);
@@ -2569,7 +2597,7 @@ p {
   .reveal .location-photo-strip,
   .reveal .footer-col {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(var(--reveal-distance));
 }
 
 .reveal .center-photo-card,
@@ -2577,7 +2605,7 @@ p {
 .reveal .location-photo-strip,
 .reveal .hero-human-card,
 .reveal.map-embed-card {
-  transform: translateY(24px) scale(.98);
+  transform: translateY(var(--reveal-distance-sm)) scale(var(--reveal-scale-image));
 }
 
 .reveal.visible .life-stage-item,
@@ -2610,7 +2638,7 @@ p {
 
 .reveal.visible .pro-card,
 .reveal.visible .service-card {
-  animation-delay: calc(60ms + (var(--stagger-index, 0) * 70ms));
+  animation-delay: calc(60ms + (var(--stagger-index, 0) * var(--stagger-step)));
 }
 
 .reveal.visible .service-card:nth-child(1) { --stagger-index: 0; }
@@ -2626,7 +2654,7 @@ p {
 @keyframes revealChild {
   from {
     opacity: 0;
-    transform: translateY(22px) scale(var(--reveal-scale, .97));
+    transform: translateY(var(--reveal-child-distance, 22px)) scale(var(--reveal-scale, .97));
   }
   to {
     opacity: 1;
@@ -2638,7 +2666,32 @@ p {
 .reveal.visible .family-editorial-card,
 .reveal.visible .location-photo-strip,
 .reveal.visible.map-embed-card {
-  --reveal-scale: .98;
+  --reveal-scale: var(--reveal-scale-image);
+  --reveal-child-distance: var(--reveal-distance-sm);
+}
+
+/* Mobile motion: shorter distances and quicker entrances than desktop */
+@media (max-width: 740px) {
+  :root {
+    --reveal-distance: 16px;
+    --reveal-distance-lg: 18px;
+    --reveal-distance-sm: 10px;
+  }
+
+  .hero-copy.visible > .eyebrow,
+  .hero-copy.visible > h1,
+  .hero-copy.visible > .hero-lede,
+  .hero-copy.visible > .hero-actions,
+  .hero-copy.visible .hero-actions .btn,
+  .hero-panel.visible .hero-premium-top,
+  .hero-panel.visible .hero-facts,
+  .hero-panel.visible .hero-fact {
+    animation-duration: 460ms;
+  }
+
+  .hero-panel.visible .hero-human-card {
+    animation-duration: 560ms;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

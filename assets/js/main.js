@@ -47,7 +47,9 @@ let closeDialogTimer = null;
 let filterTimer = null;
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const dialogMotionMs = prefersReducedMotion ? 0 : 420;
+// Must match --duration-dialog-close in styles.css: closing is intentionally
+// quicker than opening (--duration-dialog).
+const dialogMotionMs = prefersReducedMotion ? 0 : 300;
 
 const pageChrome = [...document.querySelectorAll('body > header, body > main, body > footer')];
 
@@ -801,3 +803,11 @@ if (prefersReducedMotion) {
 } else {
   revealElements.forEach((element) => element.classList.add('visible'));
 }
+
+// Safety net: if an observer callback never fires for some element (edge
+// case, not the expected path), don't leave content permanently hidden.
+window.setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.visible)').forEach((element) => {
+    element.classList.add('visible');
+  });
+}, 2500);
