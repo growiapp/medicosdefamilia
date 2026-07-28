@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://maps.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="./assets/css/styles.css?v=20260727" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=20260728" />
 </head>
 <body>
   <svg class="icon-sprite" aria-hidden="true" focusable="false">
@@ -126,17 +126,6 @@
           <div class="hero-actions" aria-label="Acciones principales">
             <a class="btn btn-primary btn-whatsapp" href="https://wa.me/543513199546?text=Hola%20M%C3%A9dicos%20de%20Familia%2C%20quiero%20hacer%20una%20consulta%20o%20coordinar%20un%20turno." target="_blank" rel="noopener">Pedir turno por WhatsApp</a>
             <a class="btn btn-secondary" href="#profesionales">Ver profesionales</a>
-          </div>
-
-          <div class="hero-trust" aria-label="Datos destacados del centro">
-            <div class="trust-item">
-              <span class="trust-value">22</span>
-              <span class="trust-label">profesionales</span>
-            </div>
-            <div class="trust-item">
-              <span class="trust-value">80</span>
-              <span class="trust-label">años de historia</span>
-            </div>
           </div>
         </div>
 
@@ -226,7 +215,6 @@
 
                 <h3>Un solo lugar para el bienestar de toda la familia</h3>
                 <p>Sabemos que el tiempo es valioso. Por eso reunimos diferentes especialidades en un mismo espacio, facilitando la coordinación de consultas y el seguimiento de cada integrante de la familia, con la atención cercana y humana que hoy más que nunca necesitamos.</p>
-                <p class="history-address">27 de abril 1254, Ciudad de Córdoba.</p>
 
                 <aside class="history-mission" aria-labelledby="history-mission-title">
                   <h3 id="history-mission-title">Nuestra misión</h3>
@@ -300,6 +288,7 @@
             <p>Consultas médicas, salud mental, nutrición, rehabilitación y gerontología en Córdoba Capital, con turnos coordinados por el equipo del centro.</p>
         </div>
 
+        <span class="group-label">Por etapa de la vida</span>
         <div class="life-stage-grid reveal" aria-label="Atención según la etapa de la vida">
           <article class="life-stage-item">
             <span class="life-stage-number">01</span>
@@ -318,6 +307,7 @@
           </article>
         </div>
 
+        <span class="group-label">Por especialidad médica</span>
         <div class="service-grid reveal">
           <article class="service-card">
             <span class="service-kicker">Consulta clínica</span>
@@ -369,18 +359,15 @@
         </div>
 
         <div class="contact-panel reveal" id="contacto">
-          <section class="schedule-card" aria-labelledby="schedule-title">
-            <h3 id="schedule-title">Horarios de atención</h3>
-            <div class="schedule-list">
-              <div class="schedule-row"><strong>Lunes a viernes</strong><span>09:30 a 20:00</span></div>
-            </div>
-            <div class="help-box">
-              <span class="help-box-icon" aria-hidden="true"><svg><use href="#icon-clock"></use></svg></span>
-              <p>Los turnos se coordinan previamente para ordenar la atención en consultorio.</p>
-            </div>
-          </section>
+          <div class="contact-schedule-strip" aria-label="Horario de atención">
+            <span class="contact-schedule-icon" aria-hidden="true"><svg><use href="#icon-clock"></use></svg></span>
+            <span class="contact-schedule-text">
+              <strong>Lunes a viernes · 09:30 a 20:00</strong>
+              <span>Turnos coordinados previamente para ordenar la atención en consultorio.</span>
+            </span>
+          </div>
 
-          <section class="contact-card" aria-labelledby="contact-title">
+          <section class="contact-main" aria-labelledby="contact-title">
             <h3 id="contact-title">Datos de contacto</h3>
             <ul class="contact-list">
               <li class="contact-item">
@@ -399,7 +386,6 @@
             </ul>
             <div class="contact-actions">
               <a class="btn btn-primary btn-whatsapp" href="https://wa.me/543513199546?text=Hola%20M%C3%A9dicos%20de%20Familia%2C%20quiero%20hacer%20una%20consulta%20o%20coordinar%20un%20turno." target="_blank" rel="noopener">Escribir por WhatsApp</a>
-              <a class="btn btn-secondary" href="tel:+543514214225">Llamar</a>
             </div>
           </section>
         </div>
@@ -526,7 +512,7 @@
     </aside>
   </div>
 
-  <script src="./assets/js/main.js?v=20260722" defer></script>
+  <script src="./assets/js/main.js?v=20260728" defer></script>
 
   <script type="application/ld+json">
     {

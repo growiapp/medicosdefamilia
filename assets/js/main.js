@@ -5,6 +5,37 @@ const CONTACT = Object.freeze({
   mapsUrl: 'https://maps.app.goo.gl/eV1vY4MmGpJ5j6Mh9'
 });
 
+// Neutral measurement layer: pushes structured events to window.dataLayer so a
+// future GTM container can pick them up without any code changes here. No
+// tracking script is loaded and no container/measurement ID is referenced.
+window.dataLayer = window.dataLayer || [];
+
+const pushDataLayerEvent = (event, payload = {}) => {
+  window.dataLayer.push({ event, ...payload });
+};
+
+document.addEventListener('click', (event) => {
+  const whatsappLink = event.target.closest('a[href*="wa.me"]');
+  if (whatsappLink) {
+    pushDataLayerEvent('whatsapp_click', {
+      link_url: whatsappLink.href,
+      link_section: whatsappLink.closest('section, header, footer')?.id || 'unknown'
+    });
+    return;
+  }
+
+  const telLink = event.target.closest('a[href^="tel:"]');
+  if (telLink) {
+    pushDataLayerEvent('phone_click', { link_url: telLink.href });
+    return;
+  }
+
+  const mapsLink = event.target.closest('a[href*="maps.app.goo.gl"]');
+  if (mapsLink) {
+    pushDataLayerEvent('maps_click', { link_url: mapsLink.href });
+  }
+});
+
 const siteHeader = document.getElementById('header');
 const menuToggle = document.getElementById('menuToggle');
 const mobileDrawer = document.getElementById('mobileDrawer');
@@ -263,7 +294,7 @@ const professionals = [
     type: 'space',
     name: 'Red Mayor',
     subtitle: 'Espacio de Gerontología',
-    description: 'Acompañamiento especializado para personas mayores, familias e instituciones.',
+    description: 'Encuentros y actividades para promover un envejecimiento activo, saludable y con vínculos significativos.',
     detail: 'Red Mayor brinda atención psicológica, orientación familiar, acompañamiento terapéutico, talleres sociorecreativos y capacitaciones para profesionales e instituciones.',
     logo: './assets/images/logos/red-mayor-logo.png',
     services: [
@@ -454,6 +485,7 @@ filterButtons.forEach((button) => {
 
     button.classList.add('active');
     button.setAttribute('aria-pressed', 'true');
+    pushDataLayerEvent('specialty_filter', { filter: button.dataset.filter });
 
     if (prefersReducedMotion || !proGrid) {
       renderProfessionals(button.dataset.filter);
@@ -672,6 +704,11 @@ const openProfessionalDialog = (slug, trigger) => {
   window.clearTimeout(closeDialogTimer);
   lastProfessionalTrigger = trigger;
   renderProfessionalDialog(pro);
+  pushDataLayerEvent('professional_view', {
+    professional_slug: pro.slug,
+    professional_name: pro.name,
+    professional_type: pro.type
+  });
   professionalDialog.classList.remove('is-closing');
   professionalDialog.hidden = false;
   professionalDialog.setAttribute('aria-hidden', 'false');
