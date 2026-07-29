@@ -3448,21 +3448,23 @@ p {
   }
 }
 
-/* ===== Hero mobile — compactación y jerarquía · 2026-07-29 =====
-   Menos aire acumulado entre bloques de texto, CTA secundario con
-   menor peso visual y la foto con más presencia en el primer viewport. */
+/* ===== Hero mobile — pieza única · 2026-07-30 =====
+   V2: los dos CTA pasan a compartir ancho, altura y padding (jerarquía
+   sólo por color/peso, no por tamaño); el panel pierde el tratamiento
+   de "card" (borde/fondo/sombra) para leerse como continuación de la
+   misma columna editorial, no como un bloque aparte. */
 @media (max-width: 740px) {
   .hero {
-    padding: 24px 0 40px;
+    padding: 20px 0 36px;
   }
 
   .hero-copy .eyebrow {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .hero-lede {
-    margin-top: 12px;
-    line-height: 1.52;
+    margin-top: 10px;
+    line-height: 1.5;
   }
 
   .hero-actions {
@@ -3470,30 +3472,37 @@ p {
     gap: 10px;
   }
 
-  .hero-actions .btn-primary {
+  .hero-actions .btn {
     width: 100%;
   }
 
   .hero-actions .btn-secondary {
-    width: auto;
-    min-height: 44px;
-    padding: 9px 16px;
     font-weight: 600;
-    font-size: .86rem;
-    background: transparent;
-    border-color: rgba(201, 191, 173, .6);
-  }
-
-  .hero-actions .btn-secondary:hover {
-    background: rgba(255, 253, 248, .6);
   }
 
   .hero-grid {
-    gap: 18px;
+    gap: 22px;
   }
 
+  /* El panel deja de ser una card flotante: sin borde/fondo/sombra
+     propios, alineado al mismo margen que el texto de arriba. La foto
+     conserva su propio marco (borde + radio), que ya aporta la
+     definición visual que necesita. */
   .hero-premium {
-    padding: 14px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    gap: 14px;
+  }
+
+  .hero-premium::before {
+    display: none;
+  }
+
+  .hero-premium-top {
+    padding: 0;
   }
 
   .hero-human-card,
