@@ -652,28 +652,6 @@ p {
   margin-top: 34px;
 }
 
-.status-dot {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  max-width: 100%;
-  color: var(--green);
-  letter-spacing: 0;
-  text-transform: none;
-  font-size: .84rem;
-  font-weight: 750;
-}
-
-.status-dot::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 0 5px rgba(40, 79, 67, .1);
-}
-
 .hero-panel {
   position: relative;
   width: 100%;
