@@ -127,10 +127,11 @@ const professionals = [
     specialty: 'Medicina Interna · Adolescencia',
     cardSpecialty: 'Clínica Médica · Adolescencia',
     filterCategories: ['Clínica Médica'],
-    description: 'Medicina interna para adolescentes, con atención especializada en desórdenes alimentarios.',
-    detail: 'Médica especialista en medicina interna. Trabaja en medicina del adolescente y en la atención especializada de desórdenes alimentarios, con una mirada clínica orientada al acompañamiento y seguimiento.',
-    keywords: ['medicina interna', 'adolescencia', 'desórdenes alimentarios'],
-    consultationAreas: ['Medicina interna', 'Adolescencia', 'Desórdenes alimentarios', 'Seguimiento clínico'],
+    description: 'Medicina interna con formación en salud del adolescente y atención especializada en desórdenes alimentarios.',
+    detail: 'Médica especialista en medicina interna, con formación y experiencia en salud del adolescente. Atiende también consultas de desórdenes alimentarios, con una mirada clínica orientada al acompañamiento y el seguimiento.',
+    credential: 'Expertoria en Salud del Adolescente · N.º 94 C.M.P.C.',
+    keywords: ['medicina interna', 'salud del adolescente', 'desórdenes alimentarios'],
+    consultationAreas: ['Medicina interna', 'Salud del adolescente', 'Desórdenes alimentarios', 'Seguimiento clínico'],
     phone: null, whatsapp: null, license: 'MP 13353 · ME 4328',
     slug: 'juana-presman', photo: './assets/images/profesionales/juana-presman.webp'
   },
@@ -144,7 +145,8 @@ const professionals = [
     keywords: ['clínica médica', 'medicina interna', 'medicina laboral', 'medicina legal', 'adultos mayores'],
     consultationAreas: ['Medicina interna', 'Medicina del trabajo', 'Medicina legal', 'Adultos', 'Adultos mayores', 'Seguimiento clínico', 'Evaluación integral'],
     phone: null, whatsapp: null, license: 'MP 36.996 · MN 157187 · CE 18.660 · CE 19.577 · CE 22.157',
-    slug: 'julio-guerini', photo: null
+    slug: 'julio-guerini', photo: './assets/images/profesionales/julio-cesar-guerini.webp',
+    photoAlt: 'Julio César Guerini, profesional de Médicos de Familia'
   },
   {
     type: 'professional', name: 'Dr. Marcelo H. Argüello', treatment: 'Dr.',
@@ -179,6 +181,7 @@ const professionals = [
   {
     type: 'professional', name: 'Dra. Paredes Natalia', treatment: 'Dra.',
     specialty: 'Pediatría',
+    filterCategories: ['Pediatría'],
     description: 'Pediatría para controles, crecimiento, desarrollo y orientación en salud infantil.',
     detail: 'Atiende pediatría general, controles de niño sano y consultas por enfermedad. También acompaña crecimiento y desarrollo, patologías crónicas pediátricas, nutrición infantil y puericultura.',
     keywords: ['pediatría', 'crecimiento y desarrollo', 'nutrición infantil', 'puericultura'],
@@ -232,6 +235,7 @@ const professionals = [
   {
     type: 'professional', name: 'Lic. Maria Julieta Agüero', treatment: 'Lic.',
     specialty: 'Nutrición',
+    filterCategories: ['Nutrición'],
     description: 'Nutrición para niños y adultos, orientada a mejorar hábitos alimentarios.',
     detail: 'Licenciada en nutrición. Propone un abordaje integral para mejorar hábitos alimentarios en niños y adultos, con orientación en obesidad y sobrepeso, diabetes, alimentación vegetariana y vegana, nutrición antiinflamatoria y microbiota.',
     keywords: ['nutrición', 'obesidad', 'diabetes', 'microbiota'],
@@ -358,6 +362,14 @@ const matchesFilter = (pro, filter) => {
   if (normalized === 'geriatría') {
     return ['geriatría', 'personas mayores', 'adultos mayores'].some((t) => haystack.includes(t));
   }
+  if (normalized === 'nutrición') {
+    // Categoría canónica: sólo especialidad/filterCategories, sin keywords ni
+    // consultationAreas, para no confundir un área mencionada en la
+    // descripción (p. ej. "nutrición infantil" en Pediatría) con la
+    // especialidad real del profesional.
+    const canonical = [pro.specialty, pro.cardSpecialty, ...(pro.filterCategories || [])].join(' ').toLowerCase();
+    return canonical.includes('nutrición');
+  }
 
   return haystack.includes(normalized);
 };
@@ -468,6 +480,7 @@ const renderProfessionals = (filter = 'Todos') => {
           <h3>${escapeHTML(pro.name)}</h3>
           <span class="pro-spec">${escapeHTML(visibleSpecialty)}</span>
           ${pro.license ? `<span class="pro-license">${escapeHTML(getCompactLicense(pro.license))}</span>` : ''}
+          ${pro.credential ? `<span class="pro-credential">${escapeHTML(pro.credential)}</span>` : ''}
           <p class="pro-desc">${escapeHTML(pro.description)}</p>
           <span class="pro-more" aria-hidden="true">Ver detalle y pedir turno</span>
         </div>
@@ -664,6 +677,10 @@ const renderProfessionalDialog = (pro) => {
         ${pro.license ? `<div class="professional-meta-row">
           <dt>Matrículas</dt>
           <dd>${escapeHTML(pro.license)}</dd>
+        </div>` : ''}
+        ${pro.credential ? `<div class="professional-meta-row">
+          <dt>Formación adicional</dt>
+          <dd>${escapeHTML(pro.credential)}</dd>
         </div>` : ''}
         ${pro.modalities?.length ? `<div class="professional-meta-row">
           <dt>Modalidad</dt>

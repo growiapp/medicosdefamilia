@@ -625,6 +625,18 @@ p {
 
 .hero-copy .eyebrow { margin-bottom: 22px; }
 
+.hero-title-line {
+  display: block;
+}
+
+.hero-title-line--sub {
+  margin-top: .14em;
+  font-size: .58em;
+  font-weight: 500;
+  color: var(--green);
+  letter-spacing: -.01em;
+}
+
 .hero-lede {
   max-width: 54ch;
   margin-top: 22px;
@@ -1469,6 +1481,16 @@ p {
   display: block;
   margin-top: 6px;
   color: var(--muted);
+  font-size: .76rem;
+  font-weight: 750;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.pro-credential {
+  display: block;
+  margin-top: 4px;
+  color: var(--green);
   font-size: .76rem;
   font-weight: 750;
   line-height: 1.4;
@@ -2992,7 +3014,7 @@ p {
   }
 
   .hero-copy h1 {
-    max-width: 13.5ch;
+    max-width: none;
     font-size: clamp(2.35rem, 10.8vw, 3.4rem);
     line-height: 1.02;
     letter-spacing: -.035em;
