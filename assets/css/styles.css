@@ -2013,6 +2013,8 @@ p {
 .services {
   border-block: 1px solid var(--line);
   background: var(--paper-2);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1100px;
 }
 
 .group-label {

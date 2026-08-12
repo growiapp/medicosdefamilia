@@ -31,15 +31,25 @@
 
   <link rel="icon" href="./assets/images/logos/medicos-familia-logo.jpeg" type="image/jpeg" />
   <link rel="apple-touch-icon" href="./assets/images/logos/medicos-familia-logo.jpeg" />
-  <link rel="preload" as="image" href="./assets/images/hero/familia-medicos-de-familia.webp" type="image/webp" fetchpriority="high" />
+  <link
+    rel="preload"
+    as="image"
+    href="./assets/images/hero/familia-medicos-de-familia.webp"
+    imagesrcset="./assets/images/hero/familia-medicos-de-familia-768w.webp 768w, ./assets/images/hero/familia-medicos-de-familia-1152w.webp 1152w, ./assets/images/hero/familia-medicos-de-familia.webp 1536w"
+    imagesizes="(min-width: 1081px) 540px, 92vw"
+    type="image/webp"
+    fetchpriority="high"
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://maps.googleapis.com" />
-  <link rel="preconnect" href="https://maps.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" />
+  </noscript>
 
-  <link rel="stylesheet" href="./assets/css/styles.css?v=20260730" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=20260812" />
   <noscript>
     <style>
       .reveal, .reveal * { opacity: 1 !important; transform: none !important; }
@@ -141,7 +151,14 @@
             </div>
 
             <figure class="hero-human-card">
-              <img src="./assets/images/hero/familia-medicos-de-familia.webp" alt="Familia de distintas generaciones, representativa de la atención integral de Médicos de Familia" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async" />
+              <img
+                src="./assets/images/hero/familia-medicos-de-familia.webp"
+                srcset="./assets/images/hero/familia-medicos-de-familia-768w.webp 768w, ./assets/images/hero/familia-medicos-de-familia-1152w.webp 1152w, ./assets/images/hero/familia-medicos-de-familia.webp 1536w"
+                sizes="(min-width: 1081px) 540px, 92vw"
+                alt="Familia de distintas generaciones, representativa de la atención integral de Médicos de Familia"
+                width="1536" height="1024"
+                loading="eager" fetchpriority="high" decoding="async"
+              />
             </figure>
 
             <div class="hero-facts" aria-label="Datos rápidos del centro">
@@ -484,7 +501,7 @@
     </aside>
   </div>
 
-  <script src="./assets/js/main.js?v=20260729b" defer></script>
+  <script src="./assets/js/main.js?v=20260812" defer></script>
 
   <script type="application/ld+json">
     {

@@ -302,7 +302,7 @@ const professionals = [
     subtitle: 'Espacio de Gerontología',
     description: 'Encuentros y actividades para promover un envejecimiento activo, saludable y con vínculos significativos.',
     detail: 'Red Mayor brinda atención psicológica, orientación familiar, acompañamiento terapéutico, talleres sociorecreativos y capacitaciones para profesionales e instituciones.',
-    logo: './assets/images/logos/red-mayor-logo.png',
+    logo: './assets/images/logos/red-mayor-logo.webp',
     services: [
       'Atención psicológica',
       'Orientación familiar',
