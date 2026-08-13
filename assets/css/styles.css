@@ -5,13 +5,13 @@
   --paper-4: #d8e2d9;
   --ink: #17221d;
   --ink-soft: #3f4d47;
-  --muted: #647169;
+  --muted: #626e66;
   --line: #ddd5c5;
   --line-strong: #c9bfad;
   --green: #284f43;
   --green-dark: #17382f;
   --green-soft: #dfe9df;
-  --clay: #b97855;
+  --clay: #945b3d;
   --cream: #fbfaf5;
   --white: #ffffff;
   --shadow-xs: 0 1px 2px rgba(23, 34, 29, .05);
@@ -562,66 +562,11 @@ p {
   padding-top: clamp(8px, 1.8vw, 24px);
 }
 
-.hero-copy > .eyebrow,
-.hero-copy > h1,
-.hero-copy > .hero-lede,
-.hero-copy > .hero-actions,
-.hero-copy .hero-actions .btn,
-.hero-panel .hero-premium-top,
-.hero-panel .hero-human-card,
-.hero-panel .hero-facts,
-.hero-panel .hero-fact {
-  opacity: 0;
-  transform: translateY(24px);
-}
-
-.hero-copy.visible > .eyebrow,
-.hero-copy.visible > h1,
-.hero-copy.visible > .hero-lede,
-.hero-copy.visible > .hero-actions,
-.hero-copy.visible .hero-actions .btn,
-.hero-panel.visible .hero-premium-top,
-.hero-panel.visible .hero-facts,
-.hero-panel.visible .hero-fact {
-  animation: heroEntry 640ms var(--ease-premium) forwards;
-}
-
-.hero-panel.visible .hero-human-card {
-  animation: heroImageEntry 720ms var(--ease-premium) 160ms forwards;
-}
-
-.hero-copy.visible > .eyebrow { animation-delay: 0ms; }
-.hero-copy.visible > h1 { animation-delay: 90ms; }
-.hero-copy.visible > .hero-lede { animation-delay: 180ms; }
-.hero-copy.visible > .hero-actions { animation-delay: 260ms; }
-.hero-copy.visible .hero-actions .btn:nth-child(1) { animation-delay: 300ms; }
-.hero-copy.visible .hero-actions .btn:nth-child(2) { animation-delay: 370ms; }
-.hero-panel.visible .hero-premium-top { animation-delay: 140ms; }
-.hero-panel.visible .hero-facts { animation-delay: 320ms; }
-.hero-panel.visible .hero-fact:nth-child(1) { animation-delay: 380ms; }
-.hero-panel.visible .hero-fact:nth-child(2) { animation-delay: 450ms; }
-
-@keyframes heroEntry {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes heroImageEntry {
-  from {
-    opacity: 0;
-    transform: translateY(24px) scale(.975);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
+/* Above-the-fold hero content (incl. the LCP image) renders at full
+   opacity immediately — no fade-in gate. The premium reveal/stagger
+   motion is reserved for below-the-fold sections (see .reveal below),
+   per LCP/FCP audit: this block previously delayed first paint of the
+   hero by ~300-900ms waiting on IntersectionObserver + a CSS transition. */
 
 .hero-copy .eyebrow { margin-bottom: 22px; }
 
@@ -2678,21 +2623,6 @@ p {
     --reveal-distance: 16px;
     --reveal-distance-lg: 18px;
     --reveal-distance-sm: 10px;
-  }
-
-  .hero-copy.visible > .eyebrow,
-  .hero-copy.visible > h1,
-  .hero-copy.visible > .hero-lede,
-  .hero-copy.visible > .hero-actions,
-  .hero-copy.visible .hero-actions .btn,
-  .hero-panel.visible .hero-premium-top,
-  .hero-panel.visible .hero-facts,
-  .hero-panel.visible .hero-fact {
-    animation-duration: 460ms;
-  }
-
-  .hero-panel.visible .hero-human-card {
-    animation-duration: 560ms;
   }
 }
 
